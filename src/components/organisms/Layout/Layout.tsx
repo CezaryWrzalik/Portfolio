@@ -20,8 +20,8 @@ export const Layout = ({children}: LayoutProps) => {
     <LayoutWrapper>
       <SidebarMenu menuItems={menuItems} currentActive={currentActive} handleClick={(id) => handleClick(id)} />
 			<MainWrapper >
-        {children}
 				<SidebarMarkers menuItems={menuItems} currentActive={currentActive} handleClick={(id) => handleClick(id)}/>
+        {children}
 			</MainWrapper>
     </LayoutWrapper>
   );

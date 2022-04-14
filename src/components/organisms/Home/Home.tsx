@@ -1,6 +1,14 @@
 import { Button } from "@atoms/Button/Button";
 import { Typography } from "@atoms/Typography/Typography";
-import { HomeWrapper, InfoWrapper, WelcomeTextWrapper } from "./Home.styled";
+import Image from 'next/image';
+import {
+  HomeButtonWrapper,
+  HomeIconWrapper,
+  HomeWrapper,
+  InfoWrapper,
+  WelcomeTextWrapper,
+} from "./Home.styled";
+import MeMoji from '@shared/images/MeMoji.png'
 
 export const Home = () => {
   return (
@@ -21,9 +29,15 @@ export const Home = () => {
           <Typography.TextBody_16>
             I’m a junior Front-end developer based in Wrocław
           </Typography.TextBody_16>
-					<Button fullWidth={false}>Contact me!</Button>
+
+          <HomeButtonWrapper>
+            <Button fullWidth={false}>Contact me!</Button>
+          </HomeButtonWrapper>
         </InfoWrapper>
       </WelcomeTextWrapper>
+      <HomeIconWrapper>
+        <Image src={MeMoji} alt="pet" />
+      </HomeIconWrapper>
     </HomeWrapper>
   );
 };

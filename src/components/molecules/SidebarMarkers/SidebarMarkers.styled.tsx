@@ -10,18 +10,19 @@ export const SidebarMarkersWrapper = styled.div`
 	align-items: center;
 	justify-content: center;
 	gap: 5px;
-`;
-
-export const MarkerContainer = styled.div<{
-  index?: number;
-  currentActive?: number;
-}>(
-  ({ index, currentActive, theme: { colors, radius } }) => `
-	width: 12px;
-	height: 12px;
-	border-radius: ${radius[50]}%;
-	border: 2px solid ${colors.dynamic};
-	cursor: pointer;
+	`;
+	
+	export const MarkerContainer = styled.div<{
+		index?: number;
+		currentActive?: number;
+	}>(
+		({ index, currentActive, theme: { colors, radius } }) => `
+		width: 12px;
+		height: 12px;
+		border-radius: ${radius[50]}%;
+		border: 2px solid ${colors.dynamic};
+		cursor: pointer;
+		z-index: 100;
 
 	:hover{
 		background: ${colors.dynamic};

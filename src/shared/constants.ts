@@ -1,7 +1,7 @@
 export const breakpoints = {
 	xs: 480,
 	sm: 650,
-	md: 992,
+	md: 1040,
 	lg: 1200,
 }
 
