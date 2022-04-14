@@ -1,3 +1,22 @@
 {
-  "extends": "next/core-web-vitals"
+  "root": true,
+  "env": {
+      "browser": true,
+      "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+      "project": "./tsconfig.json",
+      "tsconfigRootDir": "./",
+      "sourceType": "module",
+  },
+  "rules": {
+          "react/display-name": "off"
+  },
+  "extends": [
+      "prettier",
+      "plugin:prettier/recommended",
+      "prettier/@typescript-eslint",
+      "prettier/react"
+  ]
 }

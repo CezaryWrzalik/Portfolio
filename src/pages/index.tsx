@@ -1,10 +1,12 @@
 import type { NextPage } from 'next'
+import { Home } from 'src/components/organisms/Home/Home'
 
-const Home: NextPage = () => {
+const MainPage: NextPage = () => {
   return (
     <>
+      <Home />
     </>
   )
 }
 
-export default Home
+export default MainPage
