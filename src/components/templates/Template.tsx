@@ -9,7 +9,6 @@ export const Template = () => {
 	return(
 		<TemplateWrapper>
 			<Home />
-			<About />
 		</TemplateWrapper>
 	)
 }

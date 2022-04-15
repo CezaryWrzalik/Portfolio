@@ -70,11 +70,13 @@ export const ItemContainer = styled.div<{
 	`
 );
 
-export const ModalWrapper = styled.div`
-position: absolute;
-  height: 100%;
-  width: 100%;
-`;
+export const ModalWrapper = styled.div<{showMenu: boolean}>(
+  ({ showMenu }) => css`
+    ${showMenu && `position: absolute`};
+    height: 100%;
+    width: 100%;
+  `
+);
 export const ContentWrapper = styled.div``;
 
 export const IconWrapper = styled.div`

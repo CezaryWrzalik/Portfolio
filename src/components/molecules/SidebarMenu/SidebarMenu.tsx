@@ -40,7 +40,7 @@ export const SidebarMenu = ({
 
   return (
     <div>
-    <ModalWrapper ref={modalRef}>
+    <ModalWrapper showMenu={showMenu} ref={modalRef}>
       <ContentWrapper ref={contentRef}>
         <IconWrapper>
           <HamburgerIcon
