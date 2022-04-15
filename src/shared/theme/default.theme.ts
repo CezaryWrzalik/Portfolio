@@ -4,6 +4,7 @@ const defaultTheme = {
   colors: {
     body: {
       bgPrimary: palette.dark_gray,
+      bgSecondary: palette.dynamic,
     },
     sidebar: {
       bgPrimary: palette.black_gray,

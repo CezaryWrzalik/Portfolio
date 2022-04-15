@@ -39,21 +39,22 @@ export const SidebarMenu = ({
   useClickOutside(contentRef, closeMenu, modalRef);
 
   return (
+    <div>
     <ModalWrapper ref={modalRef}>
       <ContentWrapper ref={contentRef}>
         <IconWrapper>
           <HamburgerIcon
             open={showMenu}
             toggleMenu={() => toggleMenu()}
-          ></HamburgerIcon>
+            ></HamburgerIcon>
         </IconWrapper>
         <SidebarMenuWrapper showMenu={showMenu}>
           <MenuWrapper>
             {Object.keys(menuItems).map((name, id) => (
               <ItemContainer
-                index={id}
-                currentActive={currentActive}
-                onClick={() => handleClick(id)}
+              index={id}
+              currentActive={currentActive}
+              onClick={() => handleClick(id)}
               >
                 <Typography.TextBullet_16 marks={false}>
                   {name}
@@ -64,5 +65,6 @@ export const SidebarMenu = ({
         </SidebarMenuWrapper>
       </ContentWrapper>
     </ModalWrapper>
+            </div>
   );
 };

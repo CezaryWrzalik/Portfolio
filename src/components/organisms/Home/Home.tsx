@@ -2,6 +2,7 @@ import { Button } from "@atoms/Button/Button";
 import { Typography } from "@atoms/Typography/Typography";
 import Image from 'next/image';
 import {
+  EmojiWrapper,
   HomeButtonWrapper,
   HomeIconWrapper,
   HomeWrapper,
@@ -15,7 +16,7 @@ export const Home = () => {
     <HomeWrapper>
       <WelcomeTextWrapper>
         <Typography.TextH1_64>
-          Hi!<Typography.TextDyanmicColor>,</Typography.TextDyanmicColor> Hello{" "}
+          Hi!<Typography.TextDyanmicColor>,</Typography.TextDyanmicColor> Hello <EmojiWrapper>👋</EmojiWrapper>
           <br /> I'm
           <Typography.TextDyanmicColor> Cezary </Typography.TextDyanmicColor>
           Wrzalik

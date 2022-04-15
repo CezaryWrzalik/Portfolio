@@ -1,8 +1,8 @@
 import { breakpoints } from "@shared/constants";
 import styled, { css } from "styled-components";
 
-const sidebarMenuMobileStyles = css<{showMenu: boolean}>(
-  ({ showMenu, theme : {transitions} }) => `
+const sidebarMenuMobileStyles = css<{ showMenu: boolean }>(
+  ({ showMenu, theme: { transitions } }) => `
 	width: 100%;
 	padding-top: 45px;
 	height: 320px;
@@ -13,10 +13,13 @@ const sidebarMenuMobileStyles = css<{showMenu: boolean}>(
 	justify-content: center;
 	transition: ${transitions.default}s;
 	
-	${!showMenu && `
+	${
+    !showMenu &&
+    `
 	height: 0px;
 	padding: 0;
-	`}
+	`
+  }
 	`
 );
 
@@ -29,7 +32,7 @@ export const SidebarMenuWrapper = styled.div(
     display: flex;
     align-items: center;
     justify-content: center;
-		padding: 0;
+    padding: 0;
 
     @media (max-width: ${breakpoints.sm}px) {
       ${sidebarMenuMobileStyles};
@@ -68,22 +71,20 @@ export const ItemContainer = styled.div<{
 );
 
 export const ModalWrapper = styled.div`
-height: 100vh;
-width: 100%;
-`
-export const ContentWrapper = styled.div`
-
-`
+position: absolute;
+  height: 100%;
+  width: 100%;
+`;
+export const ContentWrapper = styled.div``;
 
 export const IconWrapper = styled.div`
-position: absolute;
-z-index: 5;
-right: 15px;
-top: 15px;
-visibility: hidden;
+  position: absolute;
+  z-index: 5;
+  right: 15px;
+  top: 15px;
+  visibility: hidden;
 
-@media (max-width: ${breakpoints.sm}px) {
-	visibility: visible;
-}
-
-`
+  @media (max-width: ${breakpoints.sm}px) {
+    visibility: visible;
+  }
+`;
