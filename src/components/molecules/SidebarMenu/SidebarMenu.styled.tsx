@@ -80,7 +80,7 @@ export const ModalWrapper = styled.div<{showMenu: boolean}>(
 export const ContentWrapper = styled.div``;
 
 export const IconWrapper = styled.div`
-  position: absolute;
+  position: fixed;
   z-index: 5;
   right: 15px;
   top: 15px;
