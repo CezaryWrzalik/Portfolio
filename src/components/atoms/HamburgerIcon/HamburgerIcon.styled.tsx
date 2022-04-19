@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const HamburgerIconWrapper = styled.div`
 	position: relative;
 	width: 30px;
+	height: 25px;
 `;
 
 export const SpanWrapper = styled.span<{ open: boolean }>(
@@ -63,10 +64,11 @@ export const SpanWrapper = styled.span<{ open: boolean }>(
 
 	&:nth-child(1) {
 		top: 5px;
+		left: 2px;
 	}
 
 	&:nth-child(2) {
-		left: calc(50% - 5px);
+		left: calc(50% - 3px);
 		top: 5px;
 	}
 
@@ -81,12 +83,12 @@ export const SpanWrapper = styled.span<{ open: boolean }>(
 	}
 
 	&:nth-child(5) {
-  left: 0px;
+  left: 2px;
   top: 15px;
 	}
 
 	&:nth-child(6) {
-  left: calc(50% - 5px);
+  left: calc(50% - 3px);
   top: 15px;
 	}
 	`
