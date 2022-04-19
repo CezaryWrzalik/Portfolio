@@ -25,9 +25,9 @@ export const HomeWrapper = styled.div(
 	display: grid;
 	grid-template: 1fr / 2fr 1fr;
 	height: 100%;
-	place-items: center;
 	color: ${colors.text.secondary};
-	padding: 10px;
+	padding: 4px;
+	width: 100%;
 	max-width: 2300px;
 	margin: auto;
 	cursor: default;

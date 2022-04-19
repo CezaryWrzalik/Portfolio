@@ -9,6 +9,8 @@ type LayoutProps = {
 }
 
 export const Layout = ({children}: LayoutProps) => {
+
+
   const [currentActive, setCurrentActive] = useState(1);
   const [menuItems, setMenuItems] = useState(menuItemsShared);
 	const handleClick = (id: number) => {

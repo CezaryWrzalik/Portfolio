@@ -25,8 +25,8 @@ export const TextH1_64 = styled.h1(
     ${repeatableHeaderCss};
     font-size: ${fontSizes[64]}px;
 
-    @media (max-width: ${breakpoints.sm}px), (max-height: ${breakpoints.sm}px) {
-      font-size: 48px;
+    @media (max-width: ${breakpoints.xs}px), (max-height: ${breakpoints.xs}px) {
+      font-size: 42px;
     }
   `
 );
