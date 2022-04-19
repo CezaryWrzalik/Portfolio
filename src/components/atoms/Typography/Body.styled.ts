@@ -15,7 +15,7 @@ export const TextBody_16 = styled.p<{ bold?: boolean }>(
     font-size: ${fontSizes[16]}px;
     font-weight: ${bold ? "bold" : "regular"};
 
-    @media (max-width: ${breakpoints.sm}px), (max-height: ${breakpoints.sm}px) {
+    @media (max-width: ${breakpoints.xs}px), (max-height: ${breakpoints.xs}px) {
       font-size: 14px;
     }
   `

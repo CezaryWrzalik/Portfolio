@@ -33,7 +33,7 @@ export const SidebarMenuWrapper = styled.div(
     align-items: center;
     justify-content: center;
     padding: 0;
-    z-index: 3;
+    z-index: 2;
 
     @media (max-width: ${breakpoints.sm}px) {
       ${sidebarMenuMobileStyles};
@@ -71,10 +71,10 @@ export const ItemContainer = styled.div<{
 	`
 );
 
-export const ModalWrapper = styled.div<{showMenu: boolean}>(
+export const ModalWrapper = styled.div<{ showMenu: boolean }>(
   ({ showMenu }) => css`
     ${showMenu && `position: absolute`};
-    height: 100%;
+    height: 200%;
     width: 100%;
   `
 );
