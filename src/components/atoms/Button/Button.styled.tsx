@@ -74,12 +74,13 @@ export const ButtonWrapper = styled.button<{
     border-radius: ${radius["20"]}px;
     cursor: pointer;
     border: 2px solid ${colors.button.border};
-    transition: ${transitions.default}s;
-
+    
     ${primaryButtonCss};
     ${center && `margin: auto`};
     ${fullWidth && "width: 100%"};
     ${variant && ButtonStyleTypes[variant]};
+    
+    transition: opacity ${transitions.default}s;
 
     :hover {
       background: ${colors.button.bgPrimary};

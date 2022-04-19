@@ -17,12 +17,12 @@ export const SidebarMarkersWrapper = styled.div`
 		currentActive?: number;
 	}>(
 		({ index, currentActive, theme: { colors, radius } }) => `
+		z-index: 100;
 		width: 12px;
 		height: 12px;
 		border-radius: ${radius[50]}%;
 		border: 2px solid ${colors.dynamic};
 		cursor: pointer;
-		z-index: 100;
 
 	:hover{
 		background: ${colors.dynamic};
