@@ -9,7 +9,7 @@ import {
   InfoWrapper,
   WelcomeTextWrapper,
 } from "./Home.styled";
-import MeMoji from "@shared/images/MeMoji.png";
+import MeMoji from "@shared/images/MeMoji.png"
 
 export const Home = () => {
   return (

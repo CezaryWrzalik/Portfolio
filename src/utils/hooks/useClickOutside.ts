@@ -14,7 +14,7 @@ const useClickOutside = (
         closeModal();
       }
     };
-
+    
     background.current?.addEventListener("click", handleClickOuside);
     return () => {
       background.current?.removeEventListener("click", handleClickOuside);
