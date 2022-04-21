@@ -52,7 +52,8 @@ export const SidebarMenu = ({
             <MenuWrapper>
               {Object.keys(menuItems).map((elementId) => (
                 <ItemContainer
-                elementId={elementId}
+                  key={elementId}
+                  elementId={elementId}
                   elementOnScreen={elementOnScreen}
                   onClick={() => handleClick(elementId as yValuesKeys)}
                 >

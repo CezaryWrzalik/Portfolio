@@ -45,3 +45,4 @@ export { IconToStart } from './icons/IconToStart';
 export { IconUp } from './icons/IconUp';
 export { IconUpAndDown } from './icons/IconUpAndDown';
 export { LogoSpeeki } from './icons/LogoSpeeki';
+export { Dev } from './icons/Dev';

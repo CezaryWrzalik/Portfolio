@@ -18,7 +18,7 @@ export const InputMessage: React.FC<InputMessageProps> = ({
         fill={["error"]}
         isLinearElement
         name={"IconAlert"}
-        size={16}
+        size={100}
       />
       <Message>{children}</Message>
     </InputMessageWrapper>

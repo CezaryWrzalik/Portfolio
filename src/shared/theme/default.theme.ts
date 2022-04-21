@@ -34,6 +34,7 @@ const defaultTheme = {
     },
     icons: {
       error: palette.red_orange,
+      dynamic: palette.dynamic,
     },
     dynamic: palette.dynamic,
 

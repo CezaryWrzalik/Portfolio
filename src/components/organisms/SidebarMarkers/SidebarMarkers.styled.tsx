@@ -22,8 +22,9 @@ export const MarkerContainer = styled.div<{
 		width: 12px;
 		height: 12px;
 		border-radius: ${radius[50]}%;
-		border: 2px solid ${colors.dynamic};
+		border: 2px solid ${elementOnScreen !== "Home" ? colors.body.bgPrimary : colors.dynamic };
 		cursor: pointer;
+    transition: .5s;
 
     @media(hover: hover){
 	:hover{
@@ -31,7 +32,7 @@ export const MarkerContainer = styled.div<{
 	}
 }
 
-    ${elementId === elementOnScreen && `background: ${colors.dynamic}`};
+    ${elementId === elementOnScreen && `background: ${elementOnScreen !== "Home" ? colors.body.bgPrimary : colors.dynamic }`};
   
   
   `

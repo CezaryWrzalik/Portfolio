@@ -10,8 +10,14 @@ import {
 import Border from "@shared/images/Border.png";
 import Me from "@shared/images/Me.png"
 import Image from "next/image";
+import { yValuesKeys } from "@@types/CommonTypes";
 
-export const About = () => {
+type AboutProps = {
+  elementOnScreen: yValuesKeys
+}
+
+export const About = ({elementOnScreen}: AboutProps) => {
+  console.log(elementOnScreen)
   return (
     <AboutWrapper id="About">
       <AboutTextWrapper>
@@ -35,10 +41,10 @@ export const About = () => {
         </Typography.TextBody_16>
       </AboutTextWrapper>
       <AboutPhotoWrapper>
-        <BorderWrapper>
+        <BorderWrapper elementOnScreen={elementOnScreen}>
           <Image src={Border} />
         </BorderWrapper>
-        <ImageWrapper>
+        <ImageWrapper elementOnScreen={elementOnScreen}>
           <Image src={Me} />
           <BlurElement />
         </ImageWrapper>

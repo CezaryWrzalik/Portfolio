@@ -15,6 +15,7 @@ export const SidebarMarkers = ({
     <SidebarMarkersWrapper>
       {Object.keys(menuItems).map((elementId) => (
         <MarkerContainer
+          key={elementId}
           elementId={elementId}
           elementOnScreen={elementOnScreen}
           onClick={() => handleClick(elementId as yValuesKeys)}

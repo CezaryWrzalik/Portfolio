@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const LayoutWrapper = styled.div`
   display: grid;
-  height: 200%;
+  height: 300%;
   grid-template: 1fr / 120px 1fr;
 
   @media (max-width: ${breakpoints.sm}px) {

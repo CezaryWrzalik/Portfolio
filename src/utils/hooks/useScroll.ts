@@ -10,6 +10,10 @@ export let yValues = {
     elementStart: 0,
     elementEnd: 0,
   },
+  Skills: {
+    elementStart: 0,
+    elementEnd: 0,
+  }
 };
 
 const useScroll = () => {
@@ -103,7 +107,10 @@ const useScroll = () => {
 
   const scrollToElement = (element: yValuesKeys) => {
     const choosedElement = yValues[element].elementStart;
-    window.scrollTo(0, choosedElement);
+    window.scrollTo({
+      top: choosedElement,
+      behavior: "smooth",
+    });
     setElementOnScreen(element);
   };
 

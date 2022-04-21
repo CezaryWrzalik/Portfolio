@@ -11,10 +11,6 @@ ${normalize};
 		box-sizing: inherit;
 }
 
-html{
-	scroll-behavior: smooth;
-}
-
 body{
 	font-family: ${({ theme }) => theme.fontFamily.primary};
 	background: #2D2D2D;
