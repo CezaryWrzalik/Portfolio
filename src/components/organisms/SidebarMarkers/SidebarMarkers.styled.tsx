@@ -25,11 +25,14 @@ export const MarkerContainer = styled.div<{
 		border: 2px solid ${colors.dynamic};
 		cursor: pointer;
 
+    @media(hover: hover){
 	:hover{
 		background: ${colors.dynamic};
 	}
+}
 
-	${elementId === elementOnScreen && `background: ${colors.dynamic}`};
+    ${elementId === elementOnScreen && `background: ${colors.dynamic}`};
+  
   
   `
 );

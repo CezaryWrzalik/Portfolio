@@ -50,14 +50,14 @@ export const SidebarMenu = ({
           </IconWrapper>
           <SidebarMenuWrapper showMenu={showMenu}>
             <MenuWrapper>
-              {Object.keys(menuItems).map((name) => (
+              {Object.keys(menuItems).map((elementId) => (
                 <ItemContainer
-                  name={name}
+                elementId={elementId}
                   elementOnScreen={elementOnScreen}
-                  onClick={() => handleClick(name as yValuesKeys)}
+                  onClick={() => handleClick(elementId as yValuesKeys)}
                 >
                   <Typography.TextBullet_16 marks={false}>
-                    {name}
+                    {elementId}
                   </Typography.TextBullet_16>
                 </ItemContainer>
               ))}

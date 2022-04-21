@@ -63,11 +63,14 @@ export const ItemContainer = styled.div<{
 		border-bottom: 1px solid ${colors.sidebar.borderPrimary};
 	}
 
+  @media(hover: hover){
 	:hover{
 		color: ${colors.text.dynamic};
 	}
+}
 
-	${elementId === elementOnScreen && `color: ${colors.dynamic}`}
+
+	  ${elementId === elementOnScreen && `color: ${colors.dynamic}`}
 	`
 );
 
