@@ -1,22 +1,22 @@
 {
   "root": true,
   "env": {
-      "browser": true,
-      "node": true
+    "browser": true,
+    "node": true
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-      "project": "./tsconfig.json",
-      "tsconfigRootDir": "./",
-      "sourceType": "module",
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "./",
+    "sourceType": "module"
   },
   "rules": {
-          "react/display-name": "off"
+    "react/display-name": "off"
   },
   "extends": [
-      "prettier",
-      "plugin:prettier/recommended",
-      "prettier/@typescript-eslint",
-      "prettier/react"
+    "prettier",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint",
+    "prettier/react"
   ]
 }
