@@ -1,10 +1,10 @@
 import { yValuesKeys } from "@@types/CommonTypes";
 import { SidebarMarkers } from "src/components/organisms/SidebarMarkers/SidebarMarkers";
 import { menuItemsShared } from "@shared/constants";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { SidebarMenu } from "../SidebarMenu/SidebarMenu";
 import { LayoutWrapper, MainWrapper } from "./Layout.styled";
-import useScroll from "@utils/hooks/useScroll";
+import { VerticalModal } from "@molecules/VerticalModal/VerticalModal";
 
 type LayoutProps = {
   children: JSX.Element;
@@ -23,22 +23,24 @@ export const Layout = ({
     scrollToElement(elementId);
   };
 
-
   return (
-    <LayoutWrapper>
-      <SidebarMenu
-        menuItems={menuItems}
-        elementOnScreen={elementOnScreen}
-        handleClick={(elementId) => handleClick(elementId)}
-      />
-      <MainWrapper>
-        <SidebarMarkers
+    <>
+      <LayoutWrapper>
+        <SidebarMenu
           menuItems={menuItems}
           elementOnScreen={elementOnScreen}
           handleClick={(elementId) => handleClick(elementId)}
-        />
-        {children}
-      </MainWrapper>
-    </LayoutWrapper>
+          />
+        <MainWrapper>
+          <SidebarMarkers
+            menuItems={menuItems}
+            elementOnScreen={elementOnScreen}
+            handleClick={(elementId) => handleClick(elementId)}
+            />
+          {children}
+        </MainWrapper>
+        <VerticalModal />
+      </LayoutWrapper>
+    </>
   );
 };

@@ -1,3 +1,4 @@
+import { breakpoints } from "@shared/constants";
 import styled, { css } from "styled-components";
 import { repeatableBodyCss } from "./Body.styled";
 
@@ -25,6 +26,10 @@ export const TextBullet_20 = styled.li(
     font-size: ${fontSizes[20]}px;
     list-style: none;
     position: relative;
+
+    @media (max-width: ${breakpoints.xs}px), (max-height: ${breakpoints.xs}px) {
+      font-size: 14px;
+    }
   `
 );
 

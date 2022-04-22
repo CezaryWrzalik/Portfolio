@@ -1,12 +1,12 @@
 import useScroll from "@utils/hooks/useScroll";
-import { About } from "../organisms/About/About";
 import { Home } from "../organisms/Home/Home";
 import { Layout } from "../organisms/Layout/Layout";
-import { Skills } from "../organisms/Skills/Skills";
+import { LeftSection } from "../organisms/LeftSection/LeftSection";
+import { RightSection } from "../organisms/RightSection/RightSection";
 import { AboutSkillsWrapper, TemplateWrapper } from "./Template.styled";
 
 export const Template = () => {
-  const { scrollToElement, elementOnScreen, setElementOnScreen } = useScroll();
+  const { scrollToElement, elementOnScreen, setElementOnScreen} = useScroll();
   return (
     <Layout
       scrollToElement={scrollToElement}
@@ -16,8 +16,8 @@ export const Template = () => {
       <TemplateWrapper>
         <Home />
         <AboutSkillsWrapper>
-          <Skills elementOnScreen={elementOnScreen}/>
-          <About elementOnScreen={elementOnScreen}/>
+          <RightSection elementOnScreen={elementOnScreen}/>
+          <LeftSection elementOnScreen={elementOnScreen}/>
         </AboutSkillsWrapper>
       </TemplateWrapper>
     </Layout>

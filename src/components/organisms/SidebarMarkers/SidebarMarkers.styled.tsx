@@ -18,13 +18,13 @@ export const MarkerContainer = styled.div<{
   elementId?: string;
   elementOnScreen?: string;
 }>(
-  ({ elementId, elementOnScreen, theme: { colors, radius } }) => `
+  ({ elementId, elementOnScreen, theme: { colors, radius, transitions } }) => `
 		width: 12px;
 		height: 12px;
 		border-radius: ${radius[50]}%;
 		border: 2px solid ${elementOnScreen !== "Home" ? colors.body.bgPrimary : colors.dynamic };
 		cursor: pointer;
-    transition: .5s;
+    transition: ${transitions.default}s;
 
     @media(hover: hover){
 	:hover{

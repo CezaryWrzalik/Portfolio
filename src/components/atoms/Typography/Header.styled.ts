@@ -35,6 +35,10 @@ export const TextH2_24 = styled.h2(
   ({ theme: { fontSizes } }) => css`
     ${repeatableHeaderCss};
     font-size: ${fontSizes[24]}px;
+
+    @media (max-width: ${breakpoints.xs}px), (max-height: ${breakpoints.xs}px) {
+      font-size: 20px;
+    }
   `
 );
 
@@ -50,5 +54,9 @@ export const TextH3_20 = styled.h3(
   ({ theme: { fontSizes } }) => css`
     ${repeatableHeaderCss};
     font-size: ${fontSizes[20]}px;
+
+    @media (max-width: ${breakpoints.xs}px), (max-height: ${breakpoints.xs}px) {
+      font-size: 16px;
+    }
   `
 );

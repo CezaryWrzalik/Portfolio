@@ -1,5 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
 import { ButtonVariants } from "@@types/CommonTypes";
+import { breakpoints } from "@shared/constants";
 
 const buttonHoverAnimation = keyframes`
 0%{
@@ -74,6 +75,11 @@ export const ButtonWrapper = styled.button<{
     border-radius: ${radius["20"]}px;
     cursor: pointer;
     border: 2px solid ${colors.button.border};
+
+    @media (max-width: ${breakpoints.xs}px), (max-height: ${breakpoints.xs}px) {
+
+      padding: 12px 30px;
+    }
     
     ${primaryButtonCss};
     ${center && `margin: auto`};

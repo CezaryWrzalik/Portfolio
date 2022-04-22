@@ -13,7 +13,7 @@ export let yValues = {
   Skills: {
     elementStart: 0,
     elementEnd: 0,
-  }
+  },
 };
 
 const useScroll = () => {
@@ -46,14 +46,35 @@ const useScroll = () => {
       return;
     }
 
-    isScrolling.current = true;
-
+    
     const y = window.innerHeight;
+    const currentElement = yValues[elementOnScreen];
+    
+    // if (e.deltaY < 0 && y >= currentElement.elementStart) {
+    //   isScrolling.current = true;
+    //   preventScrolling();
+    //   console.log(y);
+    //   console.log(currentElement.elementStart);
+    //   console.log(y >= currentElement.elementStart);
 
-    if (
-      y >= yValues[elementOnScreen].elementEnd ||
-      y <= yValues[elementOnScreen].elementStart
-    ) {
+    //   if (previousElement) {
+    //     scrollToElement(previousElement);
+    //   }
+    // }
+    
+    // console.log(y + document.documentElement.scrollTop);
+    // console.log(currentElement.elementEnd);
+    // console.log(y >= currentElement.elementEnd);
+    // if (e.deltaY > 0 && y + document.documentElement.scrollTop >= currentElement.elementEnd ) {
+    //   isScrolling.current = true;
+    //   preventScrolling();
+
+    //   if (nextElement) {
+    //     scrollToElement(nextElement);
+    //   }
+    // }
+
+    if (y >= currentElement.elementEnd || y <= currentElement.elementStart) {
       preventScrolling();
 
       if (e.deltaY > 0 && nextElement) {
