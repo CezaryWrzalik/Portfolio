@@ -1,7 +1,6 @@
 import { ItemsType, yValuesKeys } from "@@types/CommonTypes";
 import { HamburgerIcon } from "@atoms/HamburgerIcon/HamburgerIcon";
 import { Typography } from "@atoms/Typography/Typography";
-import { menuItemsShared } from "@shared/constants";
 import useClickOutside from "@utils/hooks/useClickOutside";
 import { useRef, useState } from "react";
 import {
@@ -12,18 +11,16 @@ import {
   ModalWrapper,
   SidebarMenuWrapper,
 } from "./SidebarMenu.styled";
+import { useRecoilState } from "recoil";
+import { currElIndexAtom } from "src/recoil/atom/currElIndexAtom";
 
 export type SidebarMenuProps = {
   menuItems: ItemsType;
-  elementOnScreen: string;
-  handleClick: (id: yValuesKeys) => void;
+  handleClick: (elementIndex: number) => void;
 };
 
-export const SidebarMenu = ({
-  menuItems = menuItemsShared,
-  elementOnScreen,
-  handleClick,
-}: SidebarMenuProps) => {
+export const SidebarMenu = ({ menuItems, handleClick }: SidebarMenuProps) => {
+  const [currElIndex] = useRecoilState(currElIndexAtom);
   const [showMenu, setShowMenu] = useState(true);
   const modalRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -50,15 +47,15 @@ export const SidebarMenu = ({
           </IconWrapper>
           <SidebarMenuWrapper showMenu={showMenu}>
             <MenuWrapper>
-              {Object.keys(menuItems).map((elementId) => (
+              {menuItems.map((value: string, i: number) => (
                 <ItemContainer
-                  key={elementId}
-                  elementId={elementId}
-                  elementOnScreen={elementOnScreen}
-                  onClick={() => handleClick(elementId as yValuesKeys)}
+                  key={i}
+                  elementId={i}
+                  currElIndex={currElIndex}
+                  onClick={() => handleClick(i)}
                 >
                   <Typography.TextBullet_16 marks={false}>
-                    {elementId}
+                    {value}
                   </Typography.TextBullet_16>
                 </ItemContainer>
               ))}

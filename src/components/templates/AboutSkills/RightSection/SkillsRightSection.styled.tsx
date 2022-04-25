@@ -2,9 +2,9 @@ import { yValuesKeys } from "@@types/CommonTypes";
 import styled from "styled-components";
 
 export const SkillsRightSectionWrapper = styled.div<{
-  elementOnScreen: yValuesKeys;
+  currElIndex: number;
 }>(
-  ({ elementOnScreen, theme: { colors, transitions } }) => `
+  ({ currElIndex, theme: { colors, transitions } }) => `
 	background: ${colors.body.bgPrimary};
   position: absolute;
   height: 100%;
@@ -12,7 +12,7 @@ export const SkillsRightSectionWrapper = styled.div<{
   display: grid;
   place-items: center;
 	top: 0;
-	left: ${elementOnScreen === "Skills" ? "0" : "-100%"};
+	left: ${currElIndex  >= 2 ? "0" : "-100%"};
 	transition: ${transitions.default}s;
 	`
 );

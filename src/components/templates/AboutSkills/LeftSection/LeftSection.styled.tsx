@@ -21,9 +21,9 @@ export const ImagesWrapper = styled.div`
   }
 `;
 
-export const ImageWrapper = styled.div<{ elementOnScreen: yValuesKeys }>(
-  ({ elementOnScreen, theme: { transitions } }) => `
-  opacity: ${elementOnScreen === "About" ? "1" : "0"};
+export const ImageWrapper = styled.div<{ currElIndex: number }>(
+  ({ currElIndex, theme: { transitions } }) => `
+  opacity: ${currElIndex === 1 ? "1" : "0"};
   transition: ${transitions.default}s;
   position: absolute;
   transform: translateY(-50%);
@@ -56,16 +56,19 @@ export const BorderWrapper = styled(ImageWrapper)`
   }
 `;
 
-export const SkillsImageWrapper = styled.div<{ elementOnScreen: yValuesKeys }>(
-  ({ elementOnScreen, theme: { transitions } }) => `
+export const SkillsImageWrapper = styled.div<{ currElIndex: number }>(
+  ({ currElIndex, theme: { transitions } }) => `
       position: absolute;
       left: 50%;
       top: 50%;
       transform-origin: 0 0;
       transform: rotate(-90deg) translate(-50%, -50%);
       transition: ${transitions.default}s;
-      opacity: ${elementOnScreen === "Skills" ? "1" : "0"};
-      width: 100%;
+      opacity: ${currElIndex >= 2 ? "1" : "0"};
+
+      @media (max-width: ${breakpoints.sm}px){
+        width: 100%;
+      }
 `
 );
 

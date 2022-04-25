@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
 export const ProjectsWrapper = styled.div`
-  height: 100%;
+  height: 1800px;
 	background: red;
 `;

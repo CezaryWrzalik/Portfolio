@@ -4,21 +4,21 @@ import { Layout } from "../organisms/Layout/Layout";
 import { LeftSection } from "./AboutSkills/LeftSection/LeftSection";
 import { RightSection } from "./AboutSkills/RightSection/RightSection";
 import { AboutSkillsWrapper, TemplateWrapper } from "./Template.styled";
+import { Projects } from "./Projects/Projects";
 
 export const Template = () => {
-  const { scrollToElement, elementOnScreen, setElementOnScreen} = useScroll();
+  const { scrollToElement } = useScroll();
   return (
     <Layout
       scrollToElement={scrollToElement}
-      elementOnScreen={elementOnScreen}
-      setElementOnScreen={setElementOnScreen}
     >
       <TemplateWrapper>
         <Home />
         <AboutSkillsWrapper>
-          <RightSection elementOnScreen={elementOnScreen}/>
-          <LeftSection elementOnScreen={elementOnScreen}/>
+          <RightSection/>
+          <LeftSection/>
         </AboutSkillsWrapper>
+        <Projects />
       </TemplateWrapper>
     </Layout>
   );

@@ -12,36 +12,34 @@ import Me from "@shared/images/Me.png";
 import Hi from "@shared/images/Hi.png";
 import Skills from "@shared/images/Skills.png";
 import About from "@shared/images/About.png";
-import { yValuesKeys } from "@@types/CommonTypes";
 import { AnimatedImage } from "@molecules/AnimatedImage/AnimatedImage";
+import { useRecoilState } from "recoil";
+import { currElIndexAtom } from "src/recoil/atom/currElIndexAtom";
 
-type LeftSectionProps = {
-  elementOnScreen: yValuesKeys;
-};
-
-export const LeftSection = ({ elementOnScreen }: LeftSectionProps) => {
+export const LeftSection = () => {
+  const [currElIndex] = useRecoilState(currElIndexAtom);
   return (
     <LeftSectionWrapper>
       <AnimatedImage
-        visible={elementOnScreen !== "About"}
+        visible={currElIndex !== 1}
         image={About}
         side="Top"
       />
       <AnimatedImage
-        visible={elementOnScreen === "About"}
+        visible={currElIndex === 1}
         image={Hi}
         side="Top"
       />
       <ImagesWrapper>
-        <BorderWrapper elementOnScreen={elementOnScreen}>
+        <BorderWrapper currElIndex={currElIndex}>
           <Image src={Border} />
         </BorderWrapper>
-        <ImageWrapper elementOnScreen={elementOnScreen}>
+        <ImageWrapper currElIndex={currElIndex}>
           <Image src={Me} />
           <BlurElement />
         </ImageWrapper>
       </ImagesWrapper>
-      <SkillsImageWrapper elementOnScreen={elementOnScreen}>
+      <SkillsImageWrapper currElIndex={currElIndex}>
         <Image src={Skills} />
       </SkillsImageWrapper>
     </LeftSectionWrapper>

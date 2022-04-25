@@ -1,24 +1,24 @@
-import { menuItemsShared } from "@shared/constants";
 import { SidebarMenuProps } from "src/components/organisms/SidebarMenu/SidebarMenu";
 import {
   MarkerContainer,
   SidebarMarkersWrapper,
 } from "./SidebarMarkers.styled";
-import { yValuesKeys } from "@@types/CommonTypes";
+import { useRecoilState } from "recoil";
+import { currElIndexAtom } from "src/recoil/atom/currElIndexAtom";
 
 export const SidebarMarkers = ({
-  menuItems = menuItemsShared,
-  elementOnScreen,
+  menuItems,
   handleClick,
 }: SidebarMenuProps) => {
+  const [currElIndex] = useRecoilState(currElIndexAtom);
   return (
     <SidebarMarkersWrapper>
-      {Object.keys(menuItems).map((elementId) => (
+      {menuItems.map((value: string, markerIndex: number) => (
         <MarkerContainer
-          key={elementId}
-          elementId={elementId}
-          elementOnScreen={elementOnScreen}
-          onClick={() => handleClick(elementId as yValuesKeys)}
+          key={markerIndex}
+          markerIndex={markerIndex}
+          currElIndex={currElIndex}
+          onClick={() => handleClick(markerIndex)}
         ></MarkerContainer>
       ))}
     </SidebarMarkersWrapper>

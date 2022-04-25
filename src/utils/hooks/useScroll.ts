@@ -1,3 +1,5 @@
+import { useRecoilState } from "recoil";
+import { currElIndexAtom } from "src/recoil/atom/currElIndexAtom";
 import { yValuesKeys } from "@@types/CommonTypes";
 import { useEffect, useRef, useState } from "react";
 
@@ -14,21 +16,27 @@ export let yValues = {
     elementStart: 0,
     elementEnd: 0,
   },
+  Projects: {
+    elementStart: 0,
+    elementEnd: 0,
+  },
 };
 
+export const ObjectKeys = Object.keys(yValues);
+
 const useScroll = () => {
-  const [elementOnScreen, setElementOnScreen] = useState<yValuesKeys>("Home");
+  const [currElIndex, setCurrElIndex] = useRecoilState(currElIndexAtom);
+  const elementOnScreen = Object.values(yValues)[currElIndex];
+  const scrollFromTopRef = useRef(0);
   const isScrolling = useRef(false);
-  const ObjectKeys = Object.keys(yValues);
-  const currentElementIndex = ObjectKeys.indexOf(elementOnScreen);
-  const previousElement = ObjectKeys[currentElementIndex - 1] as yValuesKeys;
-  const nextElement = ObjectKeys[currentElementIndex + 1] as yValuesKeys;
+  const prevElement = currElIndex > 0 ? currElIndex - 1 : 0;
+  const nextElement = currElIndex < 5 ? currElIndex + 1 : 0;
 
   const updateScrollPosition = () => {
-    let scrollFromTop = 0;
-    scrollFromTop = document.documentElement.scrollTop;
+    scrollFromTopRef.current = document.documentElement.scrollTop;
+    const scrollY = scrollFromTopRef.current;
 
-    if (scrollFromTop === yValues[elementOnScreen].elementStart) {
+    if (scrollY === elementOnScreen.elementStart) {
       isScrolling.current = false;
     }
   };
@@ -46,42 +54,26 @@ const useScroll = () => {
       return;
     }
 
-    const y = window.innerHeight;
-    const currentElement = yValues[elementOnScreen];
+    const scrollY = scrollFromTopRef.current;
+    const windowY = window.innerHeight;
 
-    // if (e.deltaY < 0 && y >= currentElement.elementStart) {
-    //   isScrolling.current = true;
-    //   preventScrolling();
-    //   console.log(y);
-    //   console.log(currentElement.elementStart);
-    //   console.log(y >= currentElement.elementStart);
-
-    //   if (previousElement) {
-    //     scrollToElement(previousElement);
-    //   }
-    // }
-
-    // console.log(y + document.documentElement.scrollTop);
-    // console.log(currentElement.elementEnd);
-    // console.log(y >= currentElement.elementEnd);
-    // if (e.deltaY > 0 && y + document.documentElement.scrollTop >= currentElement.elementEnd ) {
-    //   isScrolling.current = true;
-    //   preventScrolling();
-
-    //   if (nextElement) {
-    //     scrollToElement(nextElement);
-    //   }
-    // }
-
-    if (y >= currentElement.elementEnd || y <= currentElement.elementStart) {
+    //CATCH SCROLL UP
+    if (e.deltaY < 0 && scrollY <= elementOnScreen.elementStart) {
+      isScrolling.current = true;
       preventScrolling();
 
-      if (e.deltaY > 0 && nextElement) {
-        scrollToElement(nextElement);
+      if (prevElement > -1) {
+        scrollToElement(prevElement);
       }
+    }
 
-      if (e.deltaY < 0 && previousElement) {
-        scrollToElement(previousElement);
+    //CATCH SCROLL DOWN
+    if (e.deltaY > 0 && windowY + scrollY >= elementOnScreen.elementEnd) {
+      isScrolling.current = true;
+      preventScrolling();
+
+      if (nextElement) {
+        scrollToElement(nextElement);
       }
     }
   };
@@ -101,8 +93,8 @@ const useScroll = () => {
 
       if (touchMoveValue > marginOfError && nextElement)
         scrollToElement(nextElement);
-      else if (touchMoveValue < -marginOfError && previousElement)
-        scrollToElement(previousElement);
+      else if (touchMoveValue < -marginOfError && prevElement)
+        scrollToElement(prevElement);
     };
 
     document.addEventListener("touchend", swipe, { once: true });
@@ -122,17 +114,17 @@ const useScroll = () => {
           elementEnd: elementYMax,
         },
       };
-      scrollToElement(elementOnScreen);
+      scrollToElement(currElIndex);
     });
   };
 
-  const scrollToElement = (element: yValuesKeys) => {
-    const choosedElement = yValues[element].elementStart;
+  const scrollToElement = (elementIndex: number) => {
+    const choosedElement = Object.values(yValues)[elementIndex].elementStart;
     window.scrollTo({
       top: choosedElement,
       behavior: "smooth",
     });
-    setElementOnScreen(element);
+    setCurrElIndex(elementIndex);
   };
 
   useEffect(() => {
@@ -157,11 +149,11 @@ const useScroll = () => {
 
   useEffect(() => {
     updateYOfElements();
-    scrollToElement("Home");
+    scrollToElement(0);
     updateScrollPosition();
   }, []);
 
-  return { scrollToElement, elementOnScreen, setElementOnScreen };
+  return { scrollToElement };
 };
 
 export default useScroll;

@@ -7,6 +7,7 @@ export const AboutRightSectionWrapper = styled.div`
   width: 100%;
   display: grid;
   place-items: center;
+	overflow: hidden;
 `;
 
 export const TextWrapper = styled.div(

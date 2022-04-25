@@ -48,10 +48,10 @@ export const MenuWrapper = styled.ul`
 `;
 
 export const ItemContainer = styled.div<{
-  elementId?: string;
-  elementOnScreen?: string;
+  elementId?: number;
+  currElIndex?: number;
 }>(
-  ({ elementId, elementOnScreen, theme: { colors } }) => `
+  ({ elementId, currElIndex, theme: { colors } }) => `
 		padding: 17px;
 		text-align: center;
 		width: 100%;
@@ -70,7 +70,7 @@ export const ItemContainer = styled.div<{
 }
 
 
-	  ${elementId === elementOnScreen && `color: ${colors.dynamic}`}
+	  ${elementId === currElIndex && `color: ${colors.dynamic}`}
 	`
 );
 

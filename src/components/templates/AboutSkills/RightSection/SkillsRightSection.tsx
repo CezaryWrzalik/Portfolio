@@ -2,16 +2,14 @@ import { AnimatedImage } from "@molecules/AnimatedImage/AnimatedImage";
 import Projects from "@shared/images/Projects.png";
 import { TextWrapper } from "./AboutRightSection.styled";
 import { SkillsRightSectionWrapper } from "./SkillsRightSection.styled";
-import { yValuesKeys } from "@@types/CommonTypes";
 import { SkillsContent } from "../../content/SkillsContent/SkillsContent";
+import { useRecoilState } from "recoil";
+import { currElIndexAtom } from "src/recoil/atom/currElIndexAtom";
 
-type SkillsRightSectionProps = {
-	elementOnScreen: yValuesKeys;
-}
-
-export const SkillsRightSection = ({elementOnScreen}: SkillsRightSectionProps) => {
+export const SkillsRightSection = () => {
+  const [currElIndex] = useRecoilState(currElIndexAtom);
   return (
-    <SkillsRightSectionWrapper id="Skills" elementOnScreen={elementOnScreen}>
+    <SkillsRightSectionWrapper id="Skills" currElIndex={currElIndex}>
       <TextWrapper>
         <SkillsContent />
       </TextWrapper>

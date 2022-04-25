@@ -1,4 +1,3 @@
-import { breakpoints } from "@shared/constants";
 import styled from "styled-components";
 
 export const SidebarMarkersWrapper = styled.div`
@@ -11,28 +10,31 @@ export const SidebarMarkersWrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 5px;
-  z-index: 0;
+  z-index: 3;
 `;
 
 export const MarkerContainer = styled.div<{
-  elementId?: string;
-  elementOnScreen?: string;
+  markerIndex?: number;
+  currElIndex: number;
 }>(
-  ({ elementId, elementOnScreen, theme: { colors, radius, transitions } }) => `
+  ({ markerIndex, currElIndex, theme: { colors, radius, transitions } }) => `
 		width: 12px;
 		height: 12px;
 		border-radius: ${radius[50]}%;
-		border: 2px solid ${elementOnScreen !== "Home" ? colors.body.bgPrimary : colors.dynamic };
+		border: 2px solid ${currElIndex > 0 ? colors.body.bgPrimary : colors.dynamic};
 		cursor: pointer;
     transition: ${transitions.default}s;
 
     @media(hover: hover){
-	:hover{
-		background: ${colors.dynamic};
+	    :hover{
+		  background: ${colors.dynamic};
 	}
 }
 
-    ${elementId === elementOnScreen && `background: ${elementOnScreen !== "Home" ? colors.body.bgPrimary : colors.dynamic }`};
+    ${
+      markerIndex === currElIndex &&
+      `background: ${currElIndex > 0 ? colors.body.bgPrimary : colors.dynamic}`
+    };
   
   
   `
