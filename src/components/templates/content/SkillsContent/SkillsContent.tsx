@@ -2,6 +2,9 @@ import { Typography } from "@atoms/Typography/Typography";
 import { IconManager } from "@molecules/IconManager/IconManager";
 import { ContentWrapper, SkillsList } from "./SkillsContent.styled";
 
+const languages = ["Html, Css, Sass", "JavaScript", "TypeScript"];
+const technologies = ["React", "Next.js" , "Styled-Components", "Redux / Redux Toolkit", "Node.js, Express", "Figma", "Git"]
+
 export const SkillsContent = () => {
   return (
     <>
@@ -17,23 +20,17 @@ export const SkillsContent = () => {
       <ContentWrapper>
         <Typography.TextH2_24><Typography.TextDyanmicColor>Languages i speak:</Typography.TextDyanmicColor></Typography.TextH2_24>
         <SkillsList>
-          <Typography.TextBullet_20>Html, Css, Sass</Typography.TextBullet_20>
-          <Typography.TextBullet_20>JavaScript</Typography.TextBullet_20>
-          <Typography.TextBullet_20>TypeScript</Typography.TextBullet_20>
+          {languages.map((language) => (
+            <Typography.TextBullet_20>{language}</Typography.TextBullet_20>
+          ))}
         </SkillsList>
       </ContentWrapper>
       <ContentWrapper>
         <Typography.TextH2_24><Typography.TextDyanmicColor>Other technologies:</Typography.TextDyanmicColor></Typography.TextH2_24>
         <SkillsList>
-          <Typography.TextBullet_20>React</Typography.TextBullet_20>
-          <Typography.TextBullet_20>Next.js</Typography.TextBullet_20>
-          <Typography.TextBullet_20>Styled-Components</Typography.TextBullet_20>
-          <Typography.TextBullet_20>
-            Redux / Redux Toolkit
-          </Typography.TextBullet_20>
-          <Typography.TextBullet_20>Node.js / Express</Typography.TextBullet_20>
-          <Typography.TextBullet_20>Figma</Typography.TextBullet_20>
-          <Typography.TextBullet_20>Git</Typography.TextBullet_20>
+          {technologies.map((technology) => (
+            <Typography.TextBullet_20>{technology}</Typography.TextBullet_20>
+          ))}
         </SkillsList>
       </ContentWrapper>
     </>

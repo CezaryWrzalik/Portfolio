@@ -2,6 +2,7 @@ import Image from "next/image";
 import {
   BlurElement,
   BorderWrapper,
+  ImagesWrapper,
   ImageWrapper,
   LeftSectionWrapper,
   SkillsImageWrapper,
@@ -22,22 +23,24 @@ export const LeftSection = ({ elementOnScreen }: LeftSectionProps) => {
   return (
     <LeftSectionWrapper>
       <AnimatedImage
-			visible={elementOnScreen !== "About"}
+        visible={elementOnScreen !== "About"}
         image={About}
         side="Top"
       />
-			 <AnimatedImage
-			 visible={elementOnScreen === "About"}
+      <AnimatedImage
+        visible={elementOnScreen === "About"}
         image={Hi}
         side="Top"
       />
-      <BorderWrapper elementOnScreen={elementOnScreen}>
-        <Image src={Border} />
-      </BorderWrapper>
-      <ImageWrapper elementOnScreen={elementOnScreen}>
-        <Image src={Me} />
-        <BlurElement />
-      </ImageWrapper>
+      <ImagesWrapper>
+        <BorderWrapper elementOnScreen={elementOnScreen}>
+          <Image src={Border} />
+        </BorderWrapper>
+        <ImageWrapper elementOnScreen={elementOnScreen}>
+          <Image src={Me} />
+          <BlurElement />
+        </ImageWrapper>
+      </ImagesWrapper>
       <SkillsImageWrapper elementOnScreen={elementOnScreen}>
         <Image src={Skills} />
       </SkillsImageWrapper>

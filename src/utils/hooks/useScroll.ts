@@ -46,10 +46,9 @@ const useScroll = () => {
       return;
     }
 
-    
     const y = window.innerHeight;
     const currentElement = yValues[elementOnScreen];
-    
+
     // if (e.deltaY < 0 && y >= currentElement.elementStart) {
     //   isScrolling.current = true;
     //   preventScrolling();
@@ -61,7 +60,7 @@ const useScroll = () => {
     //     scrollToElement(previousElement);
     //   }
     // }
-    
+
     // console.log(y + document.documentElement.scrollTop);
     // console.log(currentElement.elementEnd);
     // console.log(y >= currentElement.elementEnd);
@@ -123,6 +122,7 @@ const useScroll = () => {
           elementEnd: elementYMax,
         },
       };
+      scrollToElement(elementOnScreen);
     });
   };
 

@@ -1,8 +1,8 @@
 import useScroll from "@utils/hooks/useScroll";
-import { Home } from "../organisms/Home/Home";
+import { Home } from "./Home/Home";
 import { Layout } from "../organisms/Layout/Layout";
-import { LeftSection } from "../organisms/LeftSection/LeftSection";
-import { RightSection } from "../organisms/RightSection/RightSection";
+import { LeftSection } from "./AboutSkills/LeftSection/LeftSection";
+import { RightSection } from "./AboutSkills/RightSection/RightSection";
 import { AboutSkillsWrapper, TemplateWrapper } from "./Template.styled";
 
 export const Template = () => {

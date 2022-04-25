@@ -1,46 +1,59 @@
 import { yValuesKeys } from "@@types/CommonTypes";
+import { breakpoints } from "@shared/constants";
 import styled from "styled-components";
 
 export const LeftSectionWrapper = styled.div(
   ({ theme: { colors } }) => `
-	position: relative;
-	height: 100%
-	width: 100%;
-	background: ${colors.body.bgSecondary};
-	display: grid;
-	place-items: center;
+  background: ${colors.body.bgSecondary};
+  place-items: center;
+  position: relative;
+  display: grid;
 	`
 );
 
+export const ImagesWrapper = styled.div`
+  position: relative;
+  max-width: 220px;
+  width: 40%;
+
+  @media (max-width: ${breakpoints.sm}px) {
+    width: 100%;
+  }
+`;
+
 export const ImageWrapper = styled.div<{ elementOnScreen: yValuesKeys }>(
   ({ elementOnScreen, theme: { transitions } }) => `
-    position: absolute;
-    opacity: ${elementOnScreen === "About" ? "1" : "0"};
-    transition: ${transitions.default}s;
-    
-    span {
-      max-height: 40%;
-    }
-    `
+  opacity: ${elementOnScreen === "About" ? "1" : "0"};
+  transition: ${transitions.default}s;
+  position: absolute;
+  transform: translateY(-50%);
+  margin: -10px 10px 10px -10px;
+  
+  @media(max-width: ${breakpoints.sm}px){
+    margin: 0;
+  }
+  `
 );
 
 export const BlurElement = styled.div(
-  ({ theme: { colors } }) =>
-    `
+  ({ theme: { colors } }) => `
   position: absolute;
   height: 100%;
-  width: 100%;
   background: ${colors.body.bgPrimary};
+  width: 100%;
 	opacity: .4;
 	top: 0;
-	
   `
 );
 
 export const BorderWrapper = styled(ImageWrapper)`
   position: absolute;
-  padding-left: 40px;
-  padding-top: 40px;
+  display: none;
+
+  @media (min-width: ${breakpoints.sm}px) {
+    display: block;
+    margin: 10px -10px -10px 10px;
+  }
 `;
 
 export const SkillsImageWrapper = styled.div<{ elementOnScreen: yValuesKeys }>(
@@ -52,6 +65,7 @@ export const SkillsImageWrapper = styled.div<{ elementOnScreen: yValuesKeys }>(
       transform: rotate(-90deg) translate(-50%, -50%);
       transition: ${transitions.default}s;
       opacity: ${elementOnScreen === "Skills" ? "1" : "0"};
+      width: 100%;
 `
 );
 

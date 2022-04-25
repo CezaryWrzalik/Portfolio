@@ -1,7 +1,7 @@
 import { Button } from "@atoms/Button/Button";
-import { AboutContent } from "src/components/content/AboutContent/AboutContent";
 import { AnimatedImage } from "@molecules/AnimatedImage/AnimatedImage";
 import Skills from "@shared/images/Skills.png";
+import { AboutContent } from "../../content/AboutContent/AboutContent";
 import {
   AboutRightSectionWrapper,
   ButtonWrapper,

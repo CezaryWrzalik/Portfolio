@@ -2,8 +2,8 @@ import { AnimatedImage } from "@molecules/AnimatedImage/AnimatedImage";
 import Projects from "@shared/images/Projects.png";
 import { TextWrapper } from "./AboutRightSection.styled";
 import { SkillsRightSectionWrapper } from "./SkillsRightSection.styled";
-import { SkillsContent } from "src/components/content/SkillsContent/SkillsContent";
 import { yValuesKeys } from "@@types/CommonTypes";
+import { SkillsContent } from "../../content/SkillsContent/SkillsContent";
 
 type SkillsRightSectionProps = {
 	elementOnScreen: yValuesKeys;
