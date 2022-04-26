@@ -1,6 +1,6 @@
 import { Button } from "@atoms/Button/Button";
 import { Typography } from "@atoms/Typography/Typography";
-import { ImageTictactoe } from "@shared/images";
+import { ImageTictactoe, ImageTictactoeMobile } from "@shared/images";
 import Image from "next/image";
 import {
   ProjectContentButton,
@@ -11,7 +11,9 @@ import {
   ProjectContentTitle,
   ProjectContentWrapper,
   ProjectContentYear,
+  ProjectHeaderMobile,
   ProjectImageWrapper,
+  ProjectImageWrapperMobile,
   ProjectLimiter,
   ProjectWrapper,
 } from "./Project.styled";
@@ -19,10 +21,16 @@ import {
 export const Project = () => {
   return (
     <ProjectWrapper>
+      <ProjectHeaderMobile>
+        <Typography.TextH3_20>Tic-tac-toe</Typography.TextH3_20>
+      </ProjectHeaderMobile>
       <ProjectLimiter>
         <ProjectImageWrapper>
           <Image src={ImageTictactoe} layout="fill" objectFit="contain" />
         </ProjectImageWrapper>
+        <ProjectImageWrapperMobile>
+          <Image src={ImageTictactoeMobile} layout="fill" objectFit="contain" />
+        </ProjectImageWrapperMobile>
         <ProjectContentWrapper>
           <ProjectContentTitle>
             <Typography.TextH3_20>Tic-tac-toe</Typography.TextH3_20>

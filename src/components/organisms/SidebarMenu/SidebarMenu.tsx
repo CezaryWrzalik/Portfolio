@@ -1,4 +1,3 @@
-import { ItemsType, yValuesKeys } from "@@types/CommonTypes";
 import { HamburgerIcon } from "@atoms/HamburgerIcon/HamburgerIcon";
 import { Typography } from "@atoms/Typography/Typography";
 import useClickOutside from "@utils/hooks/useClickOutside";
@@ -15,7 +14,7 @@ import { useRecoilState } from "recoil";
 import { currElIndexAtom } from "src/recoil/atom/currElIndexAtom";
 
 export type SidebarMenuProps = {
-  menuItems: ItemsType;
+  menuItems: string[];
   handleClick: (elementIndex: number) => void;
 };
 
