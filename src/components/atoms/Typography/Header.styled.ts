@@ -54,6 +54,7 @@ export const TextH3_20 = styled.h3(
   ({ theme: { fontSizes } }) => css`
     ${repeatableHeaderCss};
     font-size: ${fontSizes[20]}px;
+    display: inline;
 
     @media (max-width: ${breakpoints.xs}px), (max-height: ${breakpoints.xs}px) {
       font-size: 16px;

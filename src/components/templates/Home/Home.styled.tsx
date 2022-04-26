@@ -16,7 +16,7 @@ export const HomeWrapper = styled.div(
 	display: grid;
 	grid-template: 1fr / 2fr 1fr;
 	height: 100%;
-	color: ${colors.text.secondary};
+	color: ${colors.text.primary};
 	padding: 4px;
 	width: 100%;
 	max-width: 2300px;

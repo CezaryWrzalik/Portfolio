@@ -31,13 +31,22 @@ const primaryButtonCss = css<{ disabled?: boolean }>(
     background: ${colors.button.bgPrimary};
     color: ${colors.button.textPrimary};
 
+    :hover {
+      background: inherit;
+      color: ${colors.text.dynamic};
+    }
   `
 );
 
 const secondaryButtonCss = css(
   ({ theme: { colors } }) => css`
     background: inherit;
-    color: ${colors.button.text};
+    color: ${colors.text.dynamic};
+
+    :hover {
+      background: ${colors.button.bgPrimary};
+      color: ${colors.button.textPrimary};
+    }
   `
 );
 
@@ -48,11 +57,10 @@ const teritaryButtonCss = css(
   `
 );
 
-
 export const ButtonStyleTypes = {
   primary: primaryButtonCss,
   secondary: secondaryButtonCss,
-	teritary: teritaryButtonCss,
+  teritary: teritaryButtonCss,
 };
 
 export const ButtonWrapper = styled.button<{
@@ -67,9 +75,6 @@ export const ButtonWrapper = styled.button<{
     fullWidth,
     theme: { radius, colors, transitions },
   }) => css`
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 12px 50px;
     border: none;
     border-radius: ${radius["20"]}px;
@@ -77,22 +82,14 @@ export const ButtonWrapper = styled.button<{
     border: 2px solid ${colors.button.border};
 
     @media (max-width: ${breakpoints.xs}px), (max-height: ${breakpoints.xs}px) {
-
       padding: 12px 30px;
     }
-    
+
     ${primaryButtonCss};
     ${center && `margin: auto`};
     ${fullWidth && "width: 100%"};
     ${variant && ButtonStyleTypes[variant]};
-    
-    transition: opacity ${transitions.default}s;
 
-    :hover {
-      background: ${colors.button.bgPrimary};
-			color: ${colors.button.textPrimary};
-      opacity: 0.8;
-      animation: ${buttonHoverAnimation} ease-in-out 1.2s;
-    }
+    transition: ${transitions.default}s;
   `
 );

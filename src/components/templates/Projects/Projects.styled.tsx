@@ -12,35 +12,64 @@ const firstEntryAnimation = ({ theme }: any) => keyframes`
 0%{
 	background: ${theme.colors.body.bgSecondary};
 	opacity: 1;
+	visibility: visible;
+
 }
 50%{background: ${theme.colors.body.bgSecondary};
 	opacity: 1;
+	visibility: visible;
+
+}
+99%{
+	background: ${theme.colors.body.bgTeritary};
+	opacity: 0;
+	visibility: visible;
+
 }
 100%{
 	background: ${theme.colors.body.bgTeritary};
 	opacity: 0;
+	visibility: hidden;
+
 }
 `;
 
 export const FirstEntryImageWrapper = styled.div<{ animate: boolean }>(
   ({ animate, theme: { colors } }) => css`
-    position: relative;
+    position: absolute;
     display: grid;
     height: 100%;
     width: 100%;
     background: ${colors.body.bgSecondary};
     opacity: 1;
-		transition: .5s;
+    transition: 0.5s;
+    visibility: visible;
 
     ${animate &&
     css`
       animation: ${firstEntryAnimation} ease-in-out 2s;
       background: ${colors.body.bgTeritary};
-			opacity: 0;
+      opacity: 0;
+      visibility: hidden;
     `}
   `
 );
 
-export const ContentWrapper  = styled.div`
+export const ContentWrapper = styled.div<{ animate?: boolean }>(
+  ({ animate, theme: { colors } }) => `
+		color: ${colors.text.secondary};
+		padding-top: 50px;
+		text-align: center;
+		text-transform: uppercase;
+		opacity: 0;
+		${
+      animate &&
+      `opacity: 1;
+		transition-delay: 2s;
+		transition-duration: 1s;
+		`
+    };
+		`
+);
 
-`
+export const ProjectsList = styled.div``;

@@ -5,6 +5,7 @@ import ImageMe from "./Me.png";
 import ImageMeMoji from "./MeMoji.png";
 import ImageProjects from './Projects.png';
 import ImageSkills from './Skills.png';
+import ImageTictactoe from './Tictactoe.png';
 
 export {
 	ImageAbout,
@@ -14,4 +15,5 @@ export {
 	ImageMeMoji,
 	ImageProjects,
 	ImageSkills,
+	ImageTictactoe,
 }

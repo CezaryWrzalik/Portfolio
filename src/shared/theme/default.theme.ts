@@ -18,8 +18,8 @@ const defaultTheme = {
       textSecondary: palette.dynamic,
     },
     text: {
-      primary: palette.dark_white,
-      secondary: palette.white,
+      primary: palette.white,
+      secondary: palette.gray,
       tertiary: palette.light_gray,
       dynamic: palette.dynamic,
     },

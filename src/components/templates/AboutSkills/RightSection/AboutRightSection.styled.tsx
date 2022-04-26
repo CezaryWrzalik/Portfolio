@@ -14,7 +14,7 @@ export const TextWrapper = styled.div(
   ({ theme: { colors } }) => `
 	display: grid;
 	gap: 20px;
-	color: ${colors.text.secondary};
+	color: ${colors.text.primary};
 	max-width: 440px;
 	padding-right: 40px;
 

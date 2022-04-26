@@ -18,6 +18,7 @@ export const AnimatedImageWrapper = styled.div<{
   display: grid;
   place-items: center;
 	opacity: ${visible ? "1" : "0"};
+  transition: opacity ${transitions.default}s;
 
   ${halfScreen && `width: 50%`};
 	${side === "Top" && "top: 0%"};
