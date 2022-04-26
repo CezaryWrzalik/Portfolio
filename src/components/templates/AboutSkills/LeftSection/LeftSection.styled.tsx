@@ -23,7 +23,7 @@ export const ImagesWrapper = styled.div`
 
 export const ImageWrapper = styled.div<{ currElIndex: number }>(
   ({ currElIndex, theme: { transitions } }) => `
-  opacity: ${currElIndex === 1 ? "1" : "0"};
+  opacity: ${currElIndex <= 1 ? "1" : "0"};
   transition: ${transitions.default}s;
   position: absolute;
   transform: translateY(-50%);

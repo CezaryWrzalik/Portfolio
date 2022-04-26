@@ -1,20 +1,34 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
+const stylesForMiddle = css`
+  height: 100%;
+  transition: ease-in-out 1s;
+  width: 100%;
+`;
 
-export const AnimatedImageWrapper = styled.div<{visible: boolean,  side: "Top" | "Bottom" }>(
-  ({ side, visible, theme: {transitions} }) => `
+export const AnimatedImageWrapper = styled.div<{
+  visible: boolean;
+  side: "Top" | "Bottom" | "Mid";
+  halfScreen: boolean;
+}>(
+  ({ side, visible, halfScreen, theme: { transitions } }) => `
   position: absolute;
   width: 100%;
-  height: 100px;
+  height: 10%;
   display: grid;
   place-items: center;
 	opacity: ${visible ? "1" : "0"};
-	transition: ${transitions.default}s;
 
-	${side === 'Top' ? "top: 0" : "bottom: 0"};
+  ${halfScreen && `width: 50%`};
+	${side === "Top" && "top: 0%"};
+	${side === "Bottom" && "Bottom: 0%"};
+	${side === "Mid" && stylesForMiddle};
+  
 	
   span{
-		${side === 'Top' ? "top: -50%" : "top: 50%"};
+    ${side === "Top" && "top: -50%"};
+    ${side === "Bottom" && "Bottom: -50%"};
+    ${side === "Mid" && "Mid: 50%"};
   }
 }`
 );

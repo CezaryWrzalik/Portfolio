@@ -30,7 +30,7 @@ const useScroll = () => {
   const scrollFromTopRef = useRef(0);
   const isScrolling = useRef(false);
   const prevElement = currElIndex > 0 ? currElIndex - 1 : 0;
-  const nextElement = currElIndex < 5 ? currElIndex + 1 : 0;
+  const nextElement = currElIndex < 3 ? currElIndex + 1 : 0;
 
   const updateScrollPosition = () => {
     scrollFromTopRef.current = document.documentElement.scrollTop;
