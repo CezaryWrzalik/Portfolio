@@ -12,6 +12,7 @@ import {
 } from "./SidebarMenu.styled";
 import { useRecoilState } from "recoil";
 import { currElIndexAtom } from "src/recoil/atom/currElIndexAtom";
+import { BackgroundModal } from "@atoms/BackgroundModal/BackgroundModal";
 
 export type SidebarMenuProps = {
   menuItems: string[];
@@ -21,7 +22,7 @@ export type SidebarMenuProps = {
 export const SidebarMenu = ({ menuItems, handleClick }: SidebarMenuProps) => {
   const [currElIndex] = useRecoilState(currElIndexAtom);
   const [showMenu, setShowMenu] = useState(true);
-  const modalRef = useRef<HTMLDivElement>(null);
+  const backgroundRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => {
@@ -32,36 +33,35 @@ export const SidebarMenu = ({ menuItems, handleClick }: SidebarMenuProps) => {
     setShowMenu(false);
   };
 
-  useClickOutside(contentRef, closeMenu, modalRef);
+  useClickOutside(contentRef, closeMenu, backgroundRef);
 
   return (
-    <div>
-      <ModalWrapper showMenu={showMenu} ref={modalRef}>
-        <ContentWrapper ref={contentRef}>
-          <IconWrapper>
-            <HamburgerIcon
-              open={showMenu}
-              toggleMenu={() => toggleMenu()}
-            ></HamburgerIcon>
-          </IconWrapper>
-          <SidebarMenuWrapper showMenu={showMenu}>
-            <MenuWrapper>
-              {menuItems.map((value: string, i: number) => (
-                <ItemContainer
-                  key={i}
-                  elementId={i}
-                  currElIndex={currElIndex}
-                  onClick={() => handleClick(i)}
-                >
-                  <Typography.TextBullet_16 marks={false}>
-                    {value}
-                  </Typography.TextBullet_16>
-                </ItemContainer>
-              ))}
-            </MenuWrapper>
-          </SidebarMenuWrapper>
-        </ContentWrapper>
-      </ModalWrapper>
-    </div>
+    <>
+      <ContentWrapper ref={contentRef}>
+        <IconWrapper>
+          <HamburgerIcon
+            open={showMenu}
+            toggleMenu={() => toggleMenu()}
+          ></HamburgerIcon>
+        </IconWrapper>
+        <SidebarMenuWrapper showMenu={showMenu}>
+          <MenuWrapper>
+            {menuItems.map((value: string, i: number) => (
+              <ItemContainer
+                key={i}
+                elementId={i}
+                currElIndex={currElIndex}
+                onClick={() => handleClick(i)}
+              >
+                <Typography.TextBullet_16 marks={false}>
+                  {value}
+                </Typography.TextBullet_16>
+              </ItemContainer>
+            ))}
+          </MenuWrapper>
+        </SidebarMenuWrapper>
+      </ContentWrapper>
+      <BackgroundModal active={showMenu} ref={backgroundRef} />
+    </>
   );
 };

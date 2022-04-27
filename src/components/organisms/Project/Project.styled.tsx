@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const ProjectWrapper = styled.div`
   border-bottom: 1px solid black;
-  padding: 50px;
+  padding: 50px 40px;
 `;
 
 export const ProjectLimiter = styled.div`
@@ -18,7 +18,8 @@ export const ProjectLimiter = styled.div`
   transition: 0.5s;
 
   @media (max-width: ${breakpoints.md}px) {
-    padding: 50px 0px;
+    position: relative;
+    padding: 20px 20px;
     gap: 20px;
   }
 
@@ -46,17 +47,41 @@ export const ProjectImageWrapperMobile = styled.div`
   }
 `;
 
-export const ProjectContentWrapper = styled.div`
+export const ProjectContentWrapper = styled.div<{
+  mobileContentVisible: boolean;
+}>(
+  ({ mobileContentVisible, theme: { colors, radius } }) => `
   display: flex;
   flex-direction: column;
   row-gap: 10px;
   justify-content: center;
-
+  left: 0;
+  
   @media (max-width: ${breakpoints.sm}px) {
+    transition: opacity .5s, visibility 0s .5s;
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 4;
+
+    ${
+      mobileContentVisible &&
+      `
+      transition: opacity .5s, visibility 0s 0s;
+    opacity: 1;
+    visibility: visible;
+    `
+    }
     grid-template: 1fr / 1fr;
-    display: none;
+    background: ${colors.body.bgTeritary}90;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 0px 5px ${colors.body.bgPrimary};
+    padding: 20px;
+    border-radius: ${radius[20]}px;
   }
-`;
+  `
+);
 
 export const ProjectContentTitle = styled.div``;
 
@@ -83,7 +108,13 @@ export const ProjectContentStage = styled.div``;
 
 export const ProjectContentButtons = styled.div`
   display: grid;
-  grid-template: 50px / 200px 200px;
+  grid-template: 1fr / 1fr 1fr;
+  width: 100%;
+  gap: 10px;
+
+  @media (max-width: ${breakpoints.md}px) {
+    grid-template: 1fr 1fr / 1fr;
+  }
 `;
 
 export const ProjectContentButton = styled.div`
@@ -92,9 +123,9 @@ export const ProjectContentButton = styled.div`
 `;
 
 export const ProjectHeaderMobile = styled.div`
-display: none;
+  display: none;
 
-@media (max-width: ${breakpoints.sm}px) {
-  display: block;
-}
-`
+  @media (max-width: ${breakpoints.sm}px) {
+    display: block;
+  }
+`;
