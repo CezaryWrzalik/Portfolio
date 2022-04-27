@@ -21,7 +21,7 @@ export type SidebarMenuProps = {
 
 export const SidebarMenu = ({ menuItems, handleClick }: SidebarMenuProps) => {
   const [currElIndex] = useRecoilState(currElIndexAtom);
-  const [showMenu, setShowMenu] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
   const backgroundRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 

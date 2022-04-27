@@ -38,7 +38,7 @@ export const FirstEntryImageWrapper = styled.div<{ animate: boolean }>(
   ({ animate, theme: { colors } }) => css`
     position: absolute;
     display: grid;
-    height: 100%;
+    height: 100vh;
     width: 100%;
     background: ${colors.body.bgSecondary};
     opacity: 1;

@@ -18,11 +18,20 @@
     "paths": {
       "@atoms/*": ["src/components/atoms/*"],
       "@molecules/*": ["src/components/molecules/*"],
+      "@organisms/*": ["src/components/organisms/*"],
+      "@templates/*": ["src/components/templates/*"],
+      "@content/*": ["src/components/content/*"],
       "@utils/*": ["src/utils/*"],
       "@shared/*": ["src/shared/*"],
-      "@@types/*": ["src/types/*"]
+      "@@types/*": ["src/types/*"],
+      "@@recoil/*": ["src/recoil/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/content/AboutContent"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/components/content/AboutContent"
+  ],
   "exclude": ["node_modules"]
 }

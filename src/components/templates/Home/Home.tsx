@@ -1,5 +1,5 @@
 import { HomeIconWrapper, HomeWrapper } from "./Home.styled";
-import { HomeContent } from "../content/HomeContent/HomeContent";
+import { HomeContent } from "../../content/HomeContent/HomeContent";
 import Image from "next/image";
 import MeMoji from "@shared/images/MeMoji.png";
 

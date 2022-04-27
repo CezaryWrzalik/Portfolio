@@ -75,7 +75,7 @@ export const ButtonWrapper = styled.button<{
     fullWidth,
     theme: { radius, colors, transitions },
   }) => css`
-    padding: 12px 50px;
+    padding: 12px 40px;
     border: none;
     border-radius: ${radius["20"]}px;
     cursor: pointer;
@@ -90,6 +90,7 @@ export const ButtonWrapper = styled.button<{
     ${fullWidth && "width: 100%"};
     ${variant && ButtonStyleTypes[variant]};
 
-    transition: ${transitions.default}s;
+    transition: background ${transitions.default}s,
+      color ${transitions.default}s;
   `
 );
