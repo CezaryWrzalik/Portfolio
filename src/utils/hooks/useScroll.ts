@@ -1,7 +1,6 @@
 import { useRecoilState } from "recoil";
 import { currElIndexAtom } from "@@recoil/atom/currElIndexAtom";
 import { useEffect, useRef } from "react";
-import { start } from "repl";
 
 export let yValues = {
   Home: {
@@ -120,20 +119,26 @@ const useScroll = () => {
     const touchCurrentY = e.changedTouches[0].screenY;
     const direction = touchStartY < touchCurrentY ? "up" : "down";
 
-    if (direction === "down" && elementOnScreen.elementEnd <= scrollBottom) {
-      e.preventDefault();
-      updateScrollError("down");
-      if (scrollError > 2500 && nextElement) {
-        scrollToElement(nextElement);
+    if (direction === "down") {
+      scrollDirection.current = "down";
+      if (elementOnScreen.elementEnd <= scrollBottom) {
+        e.preventDefault();
+        updateScrollError("down");
+        if (scrollError > 2500 && nextElement) {
+          scrollToElement(nextElement);
+        }
       }
     }
-    if (direction === "up" && elementOnScreen.elementStart >= scrollTop) {
-      e.preventDefault();
-      updateScrollError("up");
-      if (scrollError < -2500 && prevElement) {
-        scrollToElement(prevElement - 1, true);
-      }
 
+    if (direction === "up") {
+      scrollDirection.current = "up";
+      if (elementOnScreen.elementStart >= scrollTop) {
+        e.preventDefault();
+        updateScrollError("up");
+        if (scrollError < -2500 && prevElement) {
+          scrollToElement(prevElement - 1, true);
+        }
+      }
     }
   };
 
