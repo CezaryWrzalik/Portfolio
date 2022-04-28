@@ -1,6 +1,7 @@
 import { useRecoilState } from "recoil";
 import { currElIndexAtom } from "@@recoil/atom/currElIndexAtom";
-import { useEffect, useRef} from "react";
+import { useEffect, useRef } from "react";
+import { start } from "repl";
 
 export let yValues = {
   Home: {
@@ -33,6 +34,7 @@ const useScroll = () => {
   const isScrolling = useRef(false);
   const scrollDirection = useRef("down");
   const scrollErrorRef = useRef(0);
+  const touchStartRef = useRef(0);
   const elementOnScreen = Object.values(yValuesRef.current)[currElIndex];
   const prevElement = currElIndex >= 0 ? currElIndex : false;
   const nextElement = currElIndex < 4 ? currElIndex + 1 : false;
@@ -88,8 +90,8 @@ const useScroll = () => {
       if (elementOnScreen.elementStart >= scrollTop) {
         updateScrollError("up");
         e.preventDefault();
-        if (scrollError < -500 && prevElement ) {
-          scrollToElement(prevElement -1, true);
+        if (scrollError < -500 && prevElement) {
+          scrollToElement(prevElement - 1, true);
         }
       }
     }
@@ -103,6 +105,35 @@ const useScroll = () => {
           scrollToElement(nextElement);
         }
       }
+    }
+  };
+
+  const handleTouchStart = (e: TouchEvent) => {
+    touchStartRef.current = e.changedTouches[0].screenY;
+  };
+
+  const handleSwipe = (e: TouchEvent) => {
+    const scrollError = scrollErrorRef.current;
+    const scrollBottom = window.scrollY + window.innerHeight;
+    const scrollTop = window.scrollY;
+    const touchStartY = touchStartRef.current;
+    const touchCurrentY = e.changedTouches[0].screenY;
+    const direction = touchStartY < touchCurrentY ? "up" : "down";
+
+    if (direction === "down" && elementOnScreen.elementEnd <= scrollBottom) {
+      e.preventDefault();
+      updateScrollError("down");
+      if (scrollError > 2500 && nextElement) {
+        scrollToElement(nextElement);
+      }
+    }
+    if (direction === "up" && elementOnScreen.elementStart >= scrollTop) {
+      e.preventDefault();
+      updateScrollError("up");
+      if (scrollError < -2500 && prevElement) {
+        scrollToElement(prevElement - 1, true);
+      }
+
     }
   };
 
@@ -174,10 +205,14 @@ const useScroll = () => {
     window.addEventListener("resize", updateYOfElements, { passive: false });
     window.addEventListener("wheel", handleScroll, { passive: false });
     window.addEventListener("scroll", handleScroll, { passive: false });
+    window.addEventListener("touchstart", handleTouchStart, { passive: false });
+    window.addEventListener("touchmove", handleSwipe, { passive: false });
     return () => {
       window.removeEventListener("resize", updateYOfElements);
       window.removeEventListener("wheel", handleScroll);
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleSwipe);
     };
   }, [currElIndex]);
 
