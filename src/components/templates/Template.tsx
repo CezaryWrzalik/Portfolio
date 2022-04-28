@@ -6,6 +6,7 @@ import { RightSection } from "./AboutSkills/RightSection/RightSection";
 import { AboutSkillsWrapper, TemplateWrapper } from "./Template.styled";
 import { Projects } from "./Projects/Projects";
 import { Contact } from "./Contact/Contact";
+import { Footer } from "@molecules/Footer/Footer";
 
 export const Template = () => {
   const { scrollToElement } = useScroll();

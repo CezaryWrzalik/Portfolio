@@ -10,4 +10,6 @@ export const LayoutWrapper = styled.div`
   }
 `;
 
-export const MainWrapper = styled.div``;
+export const MainWrapper = styled.div`
+  position: relative;
+`;
