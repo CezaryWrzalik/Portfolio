@@ -59,8 +59,6 @@ export const ContentWrapper = styled.div<{ animate?: boolean }>(
   ({ animate, theme: { colors } }) => `
 		color: ${colors.text.secondary};
 		padding-top: 50px;
-		text-align: center;
-		text-transform: uppercase;
 		opacity: 0;
 		${
       animate &&

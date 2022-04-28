@@ -34,8 +34,8 @@ export const ProjectTextContent = React.forwardRef<
       </ProjectContentTitle>
       <ProjectContentDescription>{description}</ProjectContentDescription>
       <ProjectContentTechnologies>
-        {technologies.map((technology) => (
-          <Typography.TextBullet_16 marks>{technology}</Typography.TextBullet_16>
+        {technologies.map((technology, i) => (
+          <Typography.TextBullet_16 key={i} marks>{technology}</Typography.TextBullet_16>
         ))}
       </ProjectContentTechnologies>
       <ProjectContentStage>

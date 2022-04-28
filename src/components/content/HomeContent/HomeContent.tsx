@@ -15,7 +15,7 @@ export const HomeContent = () => {
         <EmojiWrapper>👋</EmojiWrapper>
         <br /> I'm
         <Typography.TextDyanmicColor> Cezary </Typography.TextDyanmicColor>
-        Wrzalik
+        Terefere
       </Typography.TextH1_64>
       <Typography.TextH3_20>
         <Typography.TextDyanmicColor>

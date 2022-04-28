@@ -8,7 +8,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
   ({ ...rest }: BaseInputProps, ref) => {
     return (
       <BaseInputWrapper>
-        <BaseInputElement {...rest} ref={ref} />;
+        <BaseInputElement {...rest} ref={ref} />
       </BaseInputWrapper>
     );
   }

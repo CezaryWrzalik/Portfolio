@@ -5,6 +5,7 @@ import { LeftSection } from "./AboutSkills/LeftSection/LeftSection";
 import { RightSection } from "./AboutSkills/RightSection/RightSection";
 import { AboutSkillsWrapper, TemplateWrapper } from "./Template.styled";
 import { Projects } from "./Projects/Projects";
+import { Contact } from "./Contact/Contact";
 
 export const Template = () => {
   const { scrollToElement } = useScroll();
@@ -19,6 +20,7 @@ export const Template = () => {
           <LeftSection/>
         </AboutSkillsWrapper>
         <Projects />
+        <Contact />
       </TemplateWrapper>
     </Layout>
   );

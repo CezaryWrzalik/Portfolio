@@ -22,8 +22,6 @@ body{
 html,body,#__next, #root{
 	width: 100%;
 	height: 100%;
-	overflow-X; hidden;
-}
 
 ::-webkit-scrollbar {
   width: 0;

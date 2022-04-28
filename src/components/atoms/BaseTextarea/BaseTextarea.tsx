@@ -10,5 +10,5 @@ export const BaseTextarea = React.forwardRef<
   HTMLTextAreaElement,
   SingleTextareaProps
 >(({ isResize = true, ...rest }, ref) => {
-  return <BaseTextareaWrapper isResize={isResize} ref={ref} {...rest} />;
+  return <BaseTextareaWrapper isResize={isResize} ref={ref} {...rest} />
 });

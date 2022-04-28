@@ -12,6 +12,7 @@ import {
   ProjectsList,
   ProjectsWrapper,
 } from "./Projects.styled";
+import { SectionHeader } from "@molecules/SectionHeader/SectionHeader";
 
 export const Projects = () => {
   const [currElIndex] = useRecoilState(currElIndexAtom);
@@ -34,10 +35,10 @@ export const Projects = () => {
         />
       </FirstEntryImageWrapper>
       <ContentWrapper animate={animate}>
-        <Typography.TextH2_24_15>Portfolio</Typography.TextH2_24_15>
+        <SectionHeader>Portfolio</SectionHeader>
         <ProjectsList>
-          {projectsData.map((projectData) => (
-            <Project projectData={projectData} />
+          {projectsData.map((projectData, i) => (
+            <Project key={i} projectData={projectData} />
           ))}
         </ProjectsList>
       </ContentWrapper>

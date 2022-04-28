@@ -20,16 +20,16 @@ export const SkillsContent = () => {
       <ContentWrapper>
         <Typography.TextH2_24><Typography.TextDyanmicColor>Languages i speak:</Typography.TextDyanmicColor></Typography.TextH2_24>
         <SkillsList>
-          {languages.map((language) => (
-            <Typography.TextBullet_20>{language}</Typography.TextBullet_20>
+          {languages.map((language, i) => (
+            <Typography.TextBullet_20 key={i}>{language}</Typography.TextBullet_20>
           ))}
         </SkillsList>
       </ContentWrapper>
       <ContentWrapper>
         <Typography.TextH2_24><Typography.TextDyanmicColor>Other technologies:</Typography.TextDyanmicColor></Typography.TextH2_24>
         <SkillsList>
-          {technologies.map((technology) => (
-            <Typography.TextBullet_20>{technology}</Typography.TextBullet_20>
+          {technologies.map((technology, i) => (
+            <Typography.TextBullet_20 key={i}>{technology}</Typography.TextBullet_20>
           ))}
         </SkillsList>
       </ContentWrapper>

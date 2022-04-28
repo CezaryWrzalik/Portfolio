@@ -1,7 +1,7 @@
 import { useRecoilState } from "recoil";
 import { currElIndexAtom } from "src/recoil/atom/currElIndexAtom";
-import { yValuesKeys } from "@@types/CommonTypes";
 import { useEffect, useRef, useState } from "react";
+import next from "next";
 
 export let yValues = {
   Home: {
@@ -20,84 +20,83 @@ export let yValues = {
     elementStart: 0,
     elementEnd: 0,
   },
+  Contact: {
+    elementStart: 0,
+    elementEnd: 0,
+  },
 };
 
 export const ObjectKeys = Object.keys(yValues);
 
 const useScroll = () => {
+  const [yValuesState, setYvaluesState] = useState(yValues);
   const [currElIndex, setCurrElIndex] = useRecoilState(currElIndexAtom);
-  const elementOnScreen = Object.values(yValues)[currElIndex];
-  const scrollFromTopRef = useRef(0);
-  const isScrolling = useRef(false);
+  const elementOnScreen = Object.values(yValuesState)[currElIndex];
+  const scrollDirection = useRef("");
+  const scrollErrorRef = useRef(0);
   const prevElement = currElIndex > 0 ? currElIndex - 1 : 0;
-  const nextElement = currElIndex < 3 ? currElIndex + 1 : 0;
-
-  const updateScrollPosition = () => {
-    scrollFromTopRef.current = document.documentElement.scrollTop;
-    const scrollY = scrollFromTopRef.current;
-
-    if (scrollY === elementOnScreen.elementStart) {
-      isScrolling.current = false;
-    }
-  };
+  const nextElement = currElIndex < 4 ? currElIndex + 1 : 0;
 
   const handleScroll = (e: any) => {
-    const preventScrolling = () => {
-      e.preventDefault();
-      e.stopPropagation();
-    };
+    const scrollBottom = window.scrollY + window.innerHeight;
+    const scrollTop = window.scrollY;
+    const scrollError = scrollErrorRef.current;
 
-    updateScrollPosition();
-
-    if (isScrolling.current) {
-      preventScrolling();
-      return;
+    if (
+      scrollDirection.current === "down" &&
+      elementOnScreen.elementEnd <= scrollBottom
+    ) {
+      preventScroll(currElIndex, true);
     }
 
-    const scrollY = scrollFromTopRef.current;
-    const windowY = window.innerHeight;
+    if (
+      scrollDirection.current === "up" &&
+      elementOnScreen.elementStart >= scrollTop
+    ) {
+      preventScroll(currElIndex);
+    }
 
-    //CATCH SCROLL UP
-    if (e.deltaY < 0 && scrollY <= elementOnScreen.elementStart) {
-      isScrolling.current = true;
-      preventScrolling();
-
-      if (prevElement > -1) {
-        scrollToElement(prevElement);
+    if (e.deltaY < 0) {
+      scrollDirection.current = "up";
+      if (elementOnScreen.elementStart >= scrollTop) {
+        updateScrollError("up");
+        e.preventDefault();
+        if (scrollError < -300) {
+          scrollToElement(prevElement);
+        }
       }
     }
 
-    //CATCH SCROLL DOWN
-    if (e.deltaY > 0 && windowY + scrollY >= elementOnScreen.elementEnd) {
-      isScrolling.current = true;
-      preventScrolling();
-
-      if (nextElement) {
-        scrollToElement(nextElement);
+    if (e.deltaY > 0) {
+      scrollDirection.current = "down";
+      if (elementOnScreen.elementEnd <= scrollBottom) {
+        updateScrollError("down");
+        e.preventDefault();
+        if (scrollError > 300) {
+          scrollToElement(nextElement);
+        }
       }
     }
   };
 
-  const handleSwipe = (e: TouchEvent) => {
-    const marginOfError = 100;
-    let touchStart = 0;
-    let touchEnd = 0;
-
-    if (e.type === "touchstart") {
-      touchStart = e.changedTouches[0].screenY;
+  const updateScrollError = (direction: string) => {
+    if (direction === "reset") {
+      scrollErrorRef.current = 0;
     }
 
-    const swipe = (e: TouchEvent) => {
-      touchEnd = e.changedTouches[0].screenY;
-      const touchMoveValue = touchStart - touchEnd;
+    if (direction === "up") {
+      if (scrollErrorRef.current > 0) {
+        updateScrollError("reset");
+      }
+      scrollErrorRef.current -= 100;
+    }
 
-      if (touchMoveValue > marginOfError && nextElement)
-        scrollToElement(nextElement);
-      else if (touchMoveValue < -marginOfError && prevElement)
-        scrollToElement(prevElement);
-    };
-
-    document.addEventListener("touchend", swipe, { once: true });
+    if (direction === "down") {
+      if (scrollErrorRef.current < 0) {
+        updateScrollError("reset");
+      }
+      scrollErrorRef.current += 100;
+    }
   };
 
   const updateYOfElements = () => {
@@ -106,51 +105,54 @@ const useScroll = () => {
       const yMin = element?.getBoundingClientRect().top;
       const yMax = element?.getBoundingClientRect().bottom;
       const elementYMin = yMin! + document.documentElement.scrollTop;
+
       const elementYMax = yMax! + document.documentElement.scrollTop;
+
       yValues = {
         ...yValues,
         [key]: {
-          elementStart: elementYMin,
-          elementEnd: elementYMax,
+          elementStart: Math.round(elementYMin),
+          elementEnd: Math.round(elementYMax),
         },
       };
-      scrollToElement(currElIndex);
+      setYvaluesState(yValues);
+    });
+  };
+
+  const preventScroll = (elementIndex: number, bottom?: boolean) => {
+    const top = Object.values(yValues)[elementIndex].elementStart;
+    const bot =
+      Object.values(yValues)[elementIndex].elementEnd - window.innerHeight;
+    window.scrollTo({
+      top: bottom ? bot : top,
     });
   };
 
   const scrollToElement = (elementIndex: number) => {
     const choosedElement = Object.values(yValues)[elementIndex].elementStart;
+
     window.scrollTo({
       top: choosedElement,
       behavior: "smooth",
     });
+    updateScrollError("reset");
     setCurrElIndex(elementIndex);
   };
 
   useEffect(() => {
-    window.addEventListener("resize", updateYOfElements);
-    window.addEventListener("mousedown", handleScroll, false);
+    updateYOfElements();
+    window.addEventListener("resize", updateYOfElements, { passive: false });
     window.addEventListener("wheel", handleScroll, { passive: false });
-    window.addEventListener("touchmove", handleScroll, { passive: false });
-    window.addEventListener("keydown", handleScroll, false);
-    window.addEventListener("scroll", updateScrollPosition, false);
-    window.addEventListener("touchstart", handleSwipe, { passive: false });
-
+    window.addEventListener("scroll", handleScroll, { passive: false });
     return () => {
       window.removeEventListener("resize", updateYOfElements);
-      window.removeEventListener("wheel", handleScroll, false);
-      window.removeEventListener("mousedown", handleScroll, false);
-      window.removeEventListener("touchmove", handleScroll, false);
-      window.removeEventListener("scroll", updateScrollPosition, false);
-      window.removeEventListener("keydown", handleScroll, false);
-      window.removeEventListener("touchstart", handleSwipe);
+      window.removeEventListener("wheel", handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
-  }, [elementOnScreen, handleScroll]);
+  }, [currElIndex]);
 
   useEffect(() => {
-    updateYOfElements();
     scrollToElement(0);
-    updateScrollPosition();
   }, []);
 
   return { scrollToElement };
