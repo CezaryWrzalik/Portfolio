@@ -1,7 +1,6 @@
 import { useRecoilState } from "recoil";
-import { currElIndexAtom } from "src/recoil/atom/currElIndexAtom";
-import { useEffect, useRef, useState } from "react";
-import next from "next";
+import { currElIndexAtom } from "@@recoil/atom/currElIndexAtom";
+import { useEffect, useRef} from "react";
 
 export let yValues = {
   Home: {
@@ -29,23 +28,50 @@ export let yValues = {
 export const ObjectKeys = Object.keys(yValues);
 
 const useScroll = () => {
-  const [yValuesState, setYvaluesState] = useState(yValues);
   const [currElIndex, setCurrElIndex] = useRecoilState(currElIndexAtom);
-  const elementOnScreen = Object.values(yValuesState)[currElIndex];
-  const scrollDirection = useRef("");
+  const yValuesRef = useRef(yValues);
+  const isScrolling = useRef(false);
+  const scrollDirection = useRef("down");
   const scrollErrorRef = useRef(0);
-  const prevElement = currElIndex > 0 ? currElIndex - 1 : 0;
-  const nextElement = currElIndex < 4 ? currElIndex + 1 : 0;
+  const elementOnScreen = Object.values(yValuesRef.current)[currElIndex];
+  const prevElement = currElIndex >= 0 ? currElIndex : false;
+  const nextElement = currElIndex < 4 ? currElIndex + 1 : false;
+
+  const handleCheckPosition = () => {
+    const scrollTop = window.scrollY;
+    const scrollBottom = window.scrollY + window.innerHeight;
+
+    if (scrollDirection.current !== "up") {
+      if (elementOnScreen.elementStart === scrollTop) {
+        isScrolling.current = false;
+      }
+    }
+
+    if (scrollDirection.current === "up") {
+      if (elementOnScreen.elementEnd === scrollBottom) {
+        isScrolling.current = false;
+      }
+    }
+  };
 
   const handleScroll = (e: any) => {
     const scrollBottom = window.scrollY + window.innerHeight;
     const scrollTop = window.scrollY;
     const scrollError = scrollErrorRef.current;
 
+    if (isScrolling.current) {
+      handleCheckPosition();
+      e.preventDefault();
+      return;
+    }
+
+    // Preventing from overscolling
+    // Temporary solution till i get beteter solution
     if (
       scrollDirection.current === "down" &&
       elementOnScreen.elementEnd <= scrollBottom
     ) {
+      e.preventDefault();
       preventScroll(currElIndex, true);
     }
 
@@ -53,6 +79,7 @@ const useScroll = () => {
       scrollDirection.current === "up" &&
       elementOnScreen.elementStart >= scrollTop
     ) {
+      e.preventDefault();
       preventScroll(currElIndex);
     }
 
@@ -61,8 +88,8 @@ const useScroll = () => {
       if (elementOnScreen.elementStart >= scrollTop) {
         updateScrollError("up");
         e.preventDefault();
-        if (scrollError < -300) {
-          scrollToElement(prevElement);
+        if (scrollError < -500 && prevElement ) {
+          scrollToElement(prevElement -1, true);
         }
       }
     }
@@ -72,7 +99,7 @@ const useScroll = () => {
       if (elementOnScreen.elementEnd <= scrollBottom) {
         updateScrollError("down");
         e.preventDefault();
-        if (scrollError > 300) {
+        if (scrollError > 500 && nextElement) {
           scrollToElement(nextElement);
         }
       }
@@ -115,7 +142,7 @@ const useScroll = () => {
           elementEnd: Math.round(elementYMax),
         },
       };
-      setYvaluesState(yValues);
+      yValuesRef.current = yValues;
     });
   };
 
@@ -128,11 +155,14 @@ const useScroll = () => {
     });
   };
 
-  const scrollToElement = (elementIndex: number) => {
-    const choosedElement = Object.values(yValues)[elementIndex].elementStart;
+  const scrollToElement = (elementIndex: number, bottom?: boolean) => {
+    const choosedElementTop = Object.values(yValues)[elementIndex].elementStart;
+    const choosedElementBot =
+      Object.values(yValues)[elementIndex].elementEnd - window.innerHeight;
 
+    isScrolling.current = true;
     window.scrollTo({
-      top: choosedElement,
+      top: bottom ? choosedElementBot : choosedElementTop,
       behavior: "smooth",
     });
     updateScrollError("reset");
