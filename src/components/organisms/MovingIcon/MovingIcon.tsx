@@ -10,7 +10,6 @@ type MovingIconProps = {
 };
 
 export const MovingIcon = ({ iconName }: MovingIconProps) => {
-  const [currElIndex] = useRecoilState(currElIndexAtom);
   const [position, setPosition] = useState({
     x: 0,
     y: 0,
@@ -39,7 +38,7 @@ export const MovingIcon = ({ iconName }: MovingIconProps) => {
   }, []);
 
   return (
-    <MovingIconWrapper x={position.x} y={position.y} currElIndex={currElIndex}>
+    <MovingIconWrapper x={position.x} y={position.y}>
       <IconManager name={iconName} size={50} sizeY={30} />
     </MovingIconWrapper>
   );
