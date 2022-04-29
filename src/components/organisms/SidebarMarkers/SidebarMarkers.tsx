@@ -1,16 +1,15 @@
-import { SidebarMenuProps } from "src/components/organisms/SidebarMenu/SidebarMenu";
+import { SidebarMenuProps } from "@organisms/SidebarMenu/SidebarMenu";
 import {
   MarkerContainer,
   SidebarMarkersWrapper,
 } from "./SidebarMarkers.styled";
 import { useRecoilState } from "recoil";
-import { currElIndexAtom } from "src/recoil/atom/currElIndexAtom";
+import { currElIndexAtom } from "@@recoil/atom/currElIndexAtom";
+import { ObjectKeys } from "@utils/hooks/useScroll";
 
-export const SidebarMarkers = ({
-  menuItems,
-  handleClick,
-}: SidebarMenuProps) => {
+export const SidebarMarkers = ({ handleClick }: SidebarMenuProps) => {
   const [currElIndex] = useRecoilState(currElIndexAtom);
+  const menuItems = ObjectKeys;
   return (
     <SidebarMarkersWrapper>
       {menuItems.map((value: string, markerIndex: number) => (

@@ -1,4 +1,3 @@
-import { yValuesKeys } from "@@types/CommonTypes";
 import { breakpoints } from "@shared/constants";
 import styled from "styled-components";
 
@@ -7,6 +6,7 @@ export const LeftSectionWrapper = styled.div(
   background: ${colors.body.bgSecondary};
   place-items: center;
   position: relative;
+  z-index: 3;
   display: grid;
 	`
 );

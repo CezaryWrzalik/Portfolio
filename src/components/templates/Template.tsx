@@ -1,25 +1,28 @@
-import useScroll from "@utils/hooks/useScroll";
-import { Home } from "./Home/Home";
-import { Layout } from "../organisms/Layout/Layout";
-import { LeftSection } from "./AboutSkills/LeftSection/LeftSection";
+import {
+  AboutSkillsWrapper,
+  TemplateWrapper,
+  WrapperForMovingIcons,
+} from "./Template.styled";
 import { RightSection } from "./AboutSkills/RightSection/RightSection";
-import { AboutSkillsWrapper, TemplateWrapper } from "./Template.styled";
+import { LeftSection } from "./AboutSkills/LeftSection/LeftSection";
+import { Layout } from "@organisms/Layout/Layout";
 import { Projects } from "./Projects/Projects";
 import { Contact } from "./Contact/Contact";
-import { Footer } from "@molecules/Footer/Footer";
+import { Home } from "./Home/Home";
+import { MovingIcons } from "@organisms/MovingIcons/MovingIcons";
 
 export const Template = () => {
-  const { scrollToElement } = useScroll();
   return (
-    <Layout
-      scrollToElement={scrollToElement}
-    >
+    <Layout>
       <TemplateWrapper>
-        <Home />
-        <AboutSkillsWrapper>
-          <RightSection/>
-          <LeftSection/>
-        </AboutSkillsWrapper>
+        <WrapperForMovingIcons>
+          <MovingIcons numOfEachIcon={5}/>
+          <Home />
+          <AboutSkillsWrapper>
+            <RightSection />
+            <LeftSection />
+          </AboutSkillsWrapper>
+        </WrapperForMovingIcons>
         <Projects />
         <Contact />
       </TemplateWrapper>

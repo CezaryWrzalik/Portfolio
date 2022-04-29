@@ -7,23 +7,23 @@ import {
   IconWrapper,
   ItemContainer,
   MenuWrapper,
-  ModalWrapper,
   SidebarMenuWrapper,
 } from "./SidebarMenu.styled";
 import { useRecoilState } from "recoil";
 import { currElIndexAtom } from "src/recoil/atom/currElIndexAtom";
 import { BackgroundModal } from "@atoms/BackgroundModal/BackgroundModal";
+import { ObjectKeys } from "@utils/hooks/useScroll";
 
 export type SidebarMenuProps = {
-  menuItems: string[];
   handleClick: (elementIndex: number) => void;
 };
 
-export const SidebarMenu = ({ menuItems, handleClick }: SidebarMenuProps) => {
+export const SidebarMenu = ({ handleClick }: SidebarMenuProps) => {
   const [currElIndex] = useRecoilState(currElIndexAtom);
   const [showMenu, setShowMenu] = useState(false);
   const backgroundRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const menuItems = ObjectKeys;
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
