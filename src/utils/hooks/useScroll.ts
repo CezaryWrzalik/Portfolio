@@ -208,7 +208,6 @@ const useScroll = () => {
 
   const delayScroll = () => {
     setTimeout(() => {
-      console.log('5000');
       canScrollRef.current = true;
     }, 2500);
   }

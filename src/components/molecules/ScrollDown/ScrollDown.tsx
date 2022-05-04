@@ -6,7 +6,6 @@ export type ScrollDownProps = {
 }
 
 export const ScrollDown = ({side}: ScrollDownProps) => {
-	console.log(side);
   return (
     <ScrollDownWrapper side={side}>
       <ScrollDownTextWrapper>Scroll down</ScrollDownTextWrapper>
