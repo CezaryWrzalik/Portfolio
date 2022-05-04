@@ -36,6 +36,8 @@ const useScroll = () => {
   const scrollErrorRef = useRef(0);
   const touchStartRef = useRef(0);
   const elementOnScreen = Object.values(yValuesRef.current)[currElIndex];
+  const elementStart = elementOnScreen.elementStart;
+  const elementEnd = elementOnScreen.elementEnd;
   const prevElement = currElIndex >= 0 ? currElIndex : false;
   const nextElement = currElIndex < 4 ? currElIndex + 1 : false;
 
@@ -74,7 +76,7 @@ const useScroll = () => {
       elementOnScreen.elementEnd <= scrollBottom
     ) {
       e.preventDefault();
-      preventScroll(currElIndex, true);
+      preventScroll(true);
     }
 
     if (
@@ -82,7 +84,7 @@ const useScroll = () => {
       elementOnScreen.elementStart >= scrollTop
     ) {
       e.preventDefault();
-      preventScroll(currElIndex);
+      preventScroll();
     }
 
     if (e.deltaY < 0 && canScrollRef.current) {
@@ -91,7 +93,7 @@ const useScroll = () => {
         updateScrollError("up");
         e.preventDefault();
         if (scrollError < -500 && prevElement) {
-          scrollToElement(prevElement - 1, true);
+          setCurrElIndex(prevElement - 1);
         }
       }
     }
@@ -102,7 +104,7 @@ const useScroll = () => {
         updateScrollError("down");
         e.preventDefault();
         if (scrollError > 500 && nextElement) {
-          scrollToElement(nextElement);
+          setCurrElIndex(nextElement);
         }
       }
     }
@@ -126,7 +128,7 @@ const useScroll = () => {
         e.preventDefault();
         updateScrollError("down");
         if (scrollError > 2500 && nextElement) {
-          scrollToElement(nextElement);
+          setCurrElIndex(nextElement);
         }
       }
     }
@@ -137,7 +139,7 @@ const useScroll = () => {
         e.preventDefault();
         updateScrollError("up");
         if (scrollError < -2500 && prevElement) {
-          scrollToElement(prevElement - 1, true);
+          setCurrElIndex(prevElement - 1);
         }
       }
     }
@@ -183,37 +185,38 @@ const useScroll = () => {
     });
   };
 
-  const preventScroll = (elementIndex: number, bottom?: boolean) => {
-    const top = Object.values(yValues)[elementIndex].elementStart;
-    const bot =
-      Object.values(yValues)[elementIndex].elementEnd - window.innerHeight;
+  const preventScroll = (bottom?: boolean) => {
+    const top = elementStart
+    const bot = elementEnd - window.innerHeight;
+    
     window.scrollTo({
       top: bottom ? bot : top,
     });
   };
 
-  const scrollToElement = (elementIndex: number, bottom?: boolean) => {
-    const choosedElementTop = Object.values(yValues)[elementIndex].elementStart;
-    const choosedElementBot =
-      Object.values(yValues)[elementIndex].elementEnd - window.innerHeight;
-
-      isScrollingRef.current = true;
+  const scrollToElement = () => {
+    const top = elementStart;
+    const bot = elementEnd - window.innerHeight;
+    const bottom = scrollDirection.current === "up";
+    isScrollingRef.current = true;
     window.scrollTo({
-      top: bottom ? choosedElementBot : choosedElementTop,
+      top: bottom ? bot : top,
       behavior: "smooth",
     });
+
     updateScrollError("reset");
-    setCurrElIndex(elementIndex);
+    setCurrElIndex(currElIndex);
   };
 
   const delayScroll = () => {
     setTimeout(() => {
       canScrollRef.current = true;
     }, 2500);
-  }
+  };
 
   useEffect(() => {
     updateYOfElements();
+    scrollToElement();
     window.addEventListener("resize", updateYOfElements, { passive: false });
     window.addEventListener("wheel", handleScroll, { passive: false });
     window.addEventListener("scroll", handleScroll, { passive: false });
@@ -229,11 +232,10 @@ const useScroll = () => {
   }, [currElIndex]);
 
   useEffect(() => {
-    scrollToElement(0);
     delayScroll();
   }, []);
 
-  return { scrollToElement };
+  return {};
 };
 
 export default useScroll;

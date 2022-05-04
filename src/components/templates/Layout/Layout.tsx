@@ -1,23 +1,25 @@
 import { SidebarMarkers } from "src/components/organisms/SidebarMarkers/SidebarMarkers";
 import { SidebarMenu } from "../../organisms/SidebarMenu/SidebarMenu";
-import { LayoutMenuWrapper, LayoutWrapper, MainWrapper } from "./Layout.styled";
+import {LayoutWrapper, MainWrapper } from "./Layout.styled";
 import { VerticalModal } from "@molecules/VerticalModal/VerticalModal";
-import useScroll, { ObjectKeys } from "@utils/hooks/useScroll";
+import useScroll from "@utils/hooks/useScroll";
 import { Footer } from "@atoms/Footer/Footer";
 import { PageLoader } from "@molecules/PageLoader/PageLoader";
 import { useEffect, useState } from "react";
-import { ScrollDown } from "@molecules/ScrollDown/ScrollDown";
+import { useRecoilState } from "recoil";
+import { currElIndexAtom } from "@@recoil/atom/currElIndexAtom";
 
 type LayoutProps = {
   children: JSX.Element;
 };
 
 export const Layout = ({ children }: LayoutProps) => {
+  const [currElIndex, setCurrElIndex] = useRecoilState(currElIndexAtom);
   const [isVisible, setIsVisible] = useState(false);
-  const { scrollToElement } = useScroll();
+  useScroll();
 
   const handleClick = (elementIndex: number) => {
-    scrollToElement(elementIndex);
+    setCurrElIndex(elementIndex);
   };
 
   useEffect(() => {

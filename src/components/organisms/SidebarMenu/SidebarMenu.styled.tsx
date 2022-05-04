@@ -70,7 +70,7 @@ export const ItemContainer = styled.div<{
 
   @media(hover: hover){
 	:hover{
-		color: ${colors.text.dynamic};
+		color: ${colors.dynamic};
 	}
 }
 

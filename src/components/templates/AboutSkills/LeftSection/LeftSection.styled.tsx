@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const LeftSectionWrapper = styled.div(
   ({ theme: { colors } }) => `
-  background: ${colors.body.bgSecondary};
+  background: ${colors.dynamic};
   place-items: center;
   position: relative;
   z-index: 3;

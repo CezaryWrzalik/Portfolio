@@ -4,7 +4,7 @@ export const BaseTextareaWrapper = styled.textarea<{
   isResize?: boolean;
 }>(
   ({ theme: { colors, fontSizes, radius }, isResize }) => css`
-    border: 2px solid ${colors.input.borderPrimary};
+    border: 2px solid ${colors.dynamic};
     background: inherit;
     border-radius: ${radius[5]}px;
     caret-color: ${colors.input.textPrimary};

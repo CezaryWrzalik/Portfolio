@@ -5,3 +5,6 @@ export { Circle } from "./icons/Circle";
 export { Triangle } from "./icons/Triangle";
 export { IconAlert } from "./icons/IconAlert";
 export { Arrow } from "./icons/Arrow";
+export { Settings } from "./icons/Settings";
+export { Plus } from "./icons/Plus";
+export { Minus } from "./icons/Minus";

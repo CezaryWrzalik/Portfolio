@@ -1,17 +1,36 @@
-import { AnimatedImageWrapper } from "./AnimatedImage.styled";
+import { AnimatedImageWrapper, ImageWrapper } from "./AnimatedImage.styled";
 import Image, { StaticImageData } from "next/image";
+import { useSetRecoilState } from "recoil";
+import { currElIndexAtom } from "@@recoil/atom/currElIndexAtom";
 
-type AnimatedImageProps = {
-	side: "Top" | "Bottom" | "Mid";
-	image: StaticImageData;
-	visible?: boolean;
+export type AnimatedImageProps = {
+  side: "Top" | "Bottom" | "Mid";
+  image: StaticImageData;
+  visible?: boolean;
   halfScreen?: boolean;
-}
+  direction?: "Top" | "Bottom";
+  destination?: 0 | 1 | 2 | 3 | 4;
+};
 
-export const AnimatedImage = ({image, side, visible = true, halfScreen = false}: AnimatedImageProps) => {
+export const AnimatedImage = ({
+  image,
+  side,
+  visible = true,
+  halfScreen = false,
+  direction,
+  destination,
+}: AnimatedImageProps) => {
+  const setCurrElIndex = useSetRecoilState(currElIndexAtom);
+  const handleClick = () => {
+    if (destination) {
+      setCurrElIndex(destination);
+    }
+  };
   return (
     <AnimatedImageWrapper side={side} visible={visible} halfScreen={halfScreen}>
-      <Image src={image} />
+      <ImageWrapper direction={direction} side={side} onClick={handleClick}>
+        <Image src={image} />
+      </ImageWrapper>
     </AnimatedImageWrapper>
   );
 };

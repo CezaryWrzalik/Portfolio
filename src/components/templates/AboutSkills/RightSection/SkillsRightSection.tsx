@@ -13,7 +13,7 @@ export const SkillsRightSection = () => {
       <TextWrapper>
         <SkillsContent />
       </TextWrapper>
-      <AnimatedImage image={Projects} side="Bottom" />
+      <AnimatedImage image={Projects} side="Bottom" direction='Top' destination={4}/>
     </SkillsRightSectionWrapper>
   );
 };

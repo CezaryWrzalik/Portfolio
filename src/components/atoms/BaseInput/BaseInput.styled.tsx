@@ -5,7 +5,7 @@ const commonInputStyles = css(
   ({ theme: { colors, fontSizes, radius } }) => `
     caret-color: ${colors.input.textPrimary};
     color: ${colors.input.textPrimary};
-    border: 2px solid ${colors.input.borderPrimary};
+    border: 2px solid ${colors.dynamic};
     border-radius: ${radius[5]}px;
     background-color: inherit;
     height: 90%;

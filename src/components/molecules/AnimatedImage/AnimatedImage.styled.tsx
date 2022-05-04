@@ -14,22 +14,38 @@ export const AnimatedImageWrapper = styled.div<{
   ({ side, visible, halfScreen, theme: { transitions } }) => `
   position: absolute;
   width: 100%;
-  height: 10%;
-  display: grid;
   place-items: center;
+  display: grid;
 	opacity: ${visible ? "1" : "0"};
-  transition: opacity ${transitions.default}s;
+  visibility: ${visible ? "visible" : "hidden"};;
+  transition: opacity ${transitions.default}s, visibility 0s;
+  cursor: pointer;
 
   ${halfScreen && `width: 50%`};
 	${side === "Top" && "top: 0%"};
 	${side === "Bottom" && "Bottom: 0%"};
 	${side === "Mid" && stylesForMiddle};
-  
-	
-  span{
+
+`
+);
+
+export const ImageWrapper = styled.div<{
+  direction?: "Top" | "Bottom";
+  side: "Top" | "Bottom" | "Mid";
+}>(
+  ({ direction, side, theme: { transitions } }) => `
+    position: relative;
+    transition: ${transitions.default}s;
+
     ${side === "Top" && "top: -50%"};
     ${side === "Bottom" && "Bottom: -50%"};
     ${side === "Mid" && "Mid: 50%"};
-  }
-}`
+
+    :hover {
+      display: block;
+      height: 100%;
+      ${direction === "Top" && "top: -100%"};
+      ${direction === "Bottom" && "top: 0%"};
+    }
+  `
 );

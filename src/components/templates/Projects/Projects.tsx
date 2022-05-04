@@ -3,7 +3,7 @@ import { AnimatedImage } from "@molecules/AnimatedImage/AnimatedImage";
 import { ImageProjects } from "@shared/images";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { Project } from "@organisms/Project/Project";
+import { SingleProject } from "@organisms/SingleProject/SingleProject";
 import { currElIndexAtom } from "@@recoil/atom/currElIndexAtom";
 import { projectsData } from "@content/ProjectContent/projectsData";
 import {
@@ -38,7 +38,7 @@ export const Projects = () => {
         <SectionHeader>Portfolio</SectionHeader>
         <ProjectsList>
           {projectsData.map((projectData, i) => (
-            <Project key={i} projectData={projectData} />
+            <SingleProject key={i} projectData={projectData} />
           ))}
         </ProjectsList>
       </ContentWrapper>

@@ -3,14 +3,14 @@ import useClickOutside from "@utils/hooks/useClickOutside";
 import { useRef, useState } from "react";
 import { ProjectImageContent } from "@content/ProjectContent/ProjectImageContent";
 import { ProjectTextContent } from "@content/ProjectContent/ProjectTextContent";
-import { ProjectLimiter, ProjectWrapper } from "./Project.styled";
+import { ProjectLimiter, ProjectWrapper } from "./SingleProject.styled";
 import { ProjectDataType } from "@@types/CommonTypes";
 
-export type ProjectProps = {
+export type SingleProjectProps = {
   projectData: ProjectDataType; 
 }
 
-export const Project = ({projectData}: ProjectProps) => {
+export const SingleProject = ({projectData}: SingleProjectProps) => {
   const [mobileContentVisible, setMobileContentVisible] = useState(false);
   const contentRef = useRef(null);
   const backgroundRef = useRef(null);

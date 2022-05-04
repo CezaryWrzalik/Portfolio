@@ -28,12 +28,12 @@ const buttonHoverAnimation = keyframes`
 
 const primaryButtonCss = css<{ disabled?: boolean }>(
   ({ theme: { colors } }) => css`
-    background: ${colors.button.bgPrimary};
+    background: ${colors.dynamic};
     color: ${colors.button.textPrimary};
 
     :hover {
       background: inherit;
-      color: ${colors.text.dynamic};
+      color: ${colors.dynamic};
     }
   `
 );
@@ -41,11 +41,11 @@ const primaryButtonCss = css<{ disabled?: boolean }>(
 const secondaryButtonCss = css(
   ({ theme: { colors } }) => css`
     background: inherit;
-    color: ${colors.text.dynamic};
+    color: ${colors.dynamic};
 
     :hover {
-      background: ${colors.button.bgPrimary};
-      color: ${colors.button.textPrimary};
+      background: ${colors.dynamic};
+      color: ${colors.text.primary};
     }
   `
 );
@@ -53,7 +53,7 @@ const secondaryButtonCss = css(
 const teritaryButtonCss = css(
   ({ theme: { colors } }) => css`
     background: inherit;
-    color: ${colors.button.textSecondary};
+    color: ${colors.dynamic};
   `
 );
 
@@ -79,7 +79,7 @@ export const ButtonWrapper = styled.button<{
     border: none;
     border-radius: ${radius["20"]}px;
     cursor: pointer;
-    border: 2px solid ${colors.button.border};
+    border: 2px solid ${colors.dynamic};
 
     @media (max-width: ${breakpoints.xs}px), (max-height: ${breakpoints.xs}px) {
       padding: 12px 30px;

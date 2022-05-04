@@ -5,9 +5,9 @@ import {
   ProjectImageWrapper,
 } from "./ProjectContent.styled";
 import Image from "next/image";
-import { ProjectProps } from "@organisms/Project/Project";
+import { SingleProjectProps } from "@organisms/SingleProject/SingleProject";
 
-interface ProjectImageContentProps extends ProjectProps {
+interface ProjectImageContentProps extends SingleProjectProps {
   showMobileContent: () => void;
 }
 

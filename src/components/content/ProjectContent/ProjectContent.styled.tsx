@@ -84,7 +84,7 @@ export const ProjectContentYear = styled.span(
 	
 	padding: 1px 5px;
 	margin-left: 10px;
-	background: ${colors.body.bgSecondary};
+	background: ${colors.dynamic};
 	border-radius: ${radius[5]}px;
 	`
 );

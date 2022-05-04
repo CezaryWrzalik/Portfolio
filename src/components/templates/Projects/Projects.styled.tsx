@@ -10,12 +10,12 @@ export const ProjectsWrapper = styled.div(
 
 const firstEntryAnimation = ({ theme }: any) => keyframes`
 0%{
-	background: ${theme.colors.body.bgSecondary};
+	background: ${theme.colors.dynamic};
 	opacity: 1;
 	visibility: visible;
 
 }
-50%{background: ${theme.colors.body.bgSecondary};
+50%{background: ${theme.colors.dynamic};
 	opacity: 1;
 	visibility: visible;
 
@@ -40,7 +40,7 @@ export const FirstEntryImageWrapper = styled.div<{ animate: boolean }>(
     display: grid;
     height: 100vh;
     width: 100%;
-    background: ${colors.body.bgSecondary};
+    background: ${colors.dynamic};
     opacity: 1;
     transition: 0.5s;
     visibility: visible;
@@ -48,7 +48,7 @@ export const FirstEntryImageWrapper = styled.div<{ animate: boolean }>(
     ${animate &&
     css`
       animation: ${firstEntryAnimation} ease-in-out 2s;
-      background: ${colors.body.bgTeritary};
+      background: ${colors.dynamic};
       opacity: 0;
       visibility: hidden;
     `}

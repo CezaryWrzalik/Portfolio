@@ -21,14 +21,18 @@ export const LeftSection = () => {
   return (
     <LeftSectionWrapper>
       <AnimatedImage
+        destination={1}
         visible={currElIndex !== 1}
         image={About}
         side="Top"
+        direction={currElIndex === 0 ? "Top" : "Bottom"}
       />
       <AnimatedImage
+        destination={2}
         visible={currElIndex === 1}
         image={Hi}
         side="Top"
+        direction="Bottom"
       />
       <ImagesWrapper>
         <BorderWrapper currElIndex={currElIndex}>

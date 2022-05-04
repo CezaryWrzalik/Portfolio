@@ -1,6 +1,6 @@
 import { Button } from "@atoms/Button/Button";
 import { Typography } from "@atoms/Typography/Typography";
-import { ProjectProps } from "@organisms/Project/Project";
+import { SingleProjectProps } from "@organisms/SingleProject/SingleProject";
 import React from "react";
 import {
   ProjectContentButton,
@@ -13,7 +13,7 @@ import {
   ProjectContentYear,
 } from "./ProjectContent.styled";
 
-interface ProjectTextContentProps extends ProjectProps {
+interface ProjectTextContentProps extends SingleProjectProps {
   mobileContentVisible: boolean;
 }
 

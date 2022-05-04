@@ -7,12 +7,9 @@ import { RecoilRoot } from "recoil";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
-    <ThemeProvider theme={themeVariant[Theme.DEFAULT]}>
       <RecoilRoot>
-        <GlobalStyled />
         <Component {...pageProps} />
       </RecoilRoot>
-    </ThemeProvider>
   );
 }
 
