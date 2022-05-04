@@ -1,4 +1,4 @@
-import { HamburgerIcon } from "@atoms/HamburgerIcon/HamburgerIcon";
+import { HamburgerIcon } from "@molecules/HamburgerIcon/HamburgerIcon";
 import { Typography } from "@atoms/Typography/Typography";
 import useClickOutside from "@utils/hooks/useClickOutside";
 import { useRef, useState } from "react";
@@ -16,9 +16,10 @@ import { ObjectKeys } from "@utils/hooks/useScroll";
 
 export type SidebarMenuProps = {
   handleClick: (elementIndex: number) => void;
+  isVisible?: boolean;
 };
 
-export const SidebarMenu = ({ handleClick }: SidebarMenuProps) => {
+export const SidebarMenu = ({ handleClick, isVisible}: SidebarMenuProps) => {
   const [currElIndex] = useRecoilState(currElIndexAtom);
   const [showMenu, setShowMenu] = useState(false);
   const backgroundRef = useRef<HTMLDivElement>(null);
@@ -44,7 +45,7 @@ export const SidebarMenu = ({ handleClick }: SidebarMenuProps) => {
             toggleMenu={() => toggleMenu()}
           ></HamburgerIcon>
         </IconWrapper>
-        <SidebarMenuWrapper showMenu={showMenu}>
+        <SidebarMenuWrapper showMenu={showMenu} isVisible={isVisible}>
           <MenuWrapper>
             {menuItems.map((value: string, i: number) => (
               <ItemContainer

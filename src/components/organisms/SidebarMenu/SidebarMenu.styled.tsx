@@ -23,10 +23,15 @@ const sidebarMenuMobileStyles = css<{ showMenu: boolean }>(
 	`
 );
 
-export const SidebarMenuWrapper = styled.div(
-  ({ theme: { colors } }) => css`
+export const SidebarMenuWrapper = styled.div<{
+  isVisible?: boolean;
+  showMenu: boolean;
+}>(
+  ({ isVisible, theme: { colors, transitions } }) => css`
     position: fixed;
     width: 120px;
+    left: ${isVisible ? "0" : "-120"}px;
+    transition: left ${transitions.default}s 1s;
     height: 100%;
     background: ${colors.sidebar.bgPrimary};
     display: flex;

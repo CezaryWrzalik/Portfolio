@@ -30,7 +30,8 @@ export const ObjectKeys = Object.keys(yValues);
 const useScroll = () => {
   const [currElIndex, setCurrElIndex] = useRecoilState(currElIndexAtom);
   const yValuesRef = useRef(yValues);
-  const isScrolling = useRef(false);
+  const isScrollingRef = useRef(false);
+  const canScrollRef = useRef(false);
   const scrollDirection = useRef("down");
   const scrollErrorRef = useRef(0);
   const touchStartRef = useRef(0);
@@ -44,13 +45,13 @@ const useScroll = () => {
 
     if (scrollDirection.current !== "up") {
       if (elementOnScreen.elementStart === scrollTop) {
-        isScrolling.current = false;
+        isScrollingRef.current = false;
       }
     }
 
     if (scrollDirection.current === "up") {
       if (elementOnScreen.elementEnd === scrollBottom) {
-        isScrolling.current = false;
+        isScrollingRef.current = false;
       }
     }
   };
@@ -60,7 +61,7 @@ const useScroll = () => {
     const scrollTop = window.scrollY;
     const scrollError = scrollErrorRef.current;
 
-    if (isScrolling.current) {
+    if (isScrollingRef.current || !canScrollRef.current) {
       handleCheckPosition();
       e.preventDefault();
       return;
@@ -84,7 +85,7 @@ const useScroll = () => {
       preventScroll(currElIndex);
     }
 
-    if (e.deltaY < 0) {
+    if (e.deltaY < 0 && canScrollRef.current) {
       scrollDirection.current = "up";
       if (elementOnScreen.elementStart >= scrollTop) {
         updateScrollError("up");
@@ -95,7 +96,7 @@ const useScroll = () => {
       }
     }
 
-    if (e.deltaY > 0) {
+    if (e.deltaY > 0 && canScrollRef.current) {
       scrollDirection.current = "down";
       if (elementOnScreen.elementEnd <= scrollBottom) {
         updateScrollError("down");
@@ -196,7 +197,7 @@ const useScroll = () => {
     const choosedElementBot =
       Object.values(yValues)[elementIndex].elementEnd - window.innerHeight;
 
-    isScrolling.current = true;
+      isScrollingRef.current = true;
     window.scrollTo({
       top: bottom ? choosedElementBot : choosedElementTop,
       behavior: "smooth",
@@ -204,6 +205,13 @@ const useScroll = () => {
     updateScrollError("reset");
     setCurrElIndex(elementIndex);
   };
+
+  const delayScroll = () => {
+    setTimeout(() => {
+      console.log('5000');
+      canScrollRef.current = true;
+    }, 2500);
+  }
 
   useEffect(() => {
     updateYOfElements();
@@ -223,6 +231,7 @@ const useScroll = () => {
 
   useEffect(() => {
     scrollToElement(0);
+    delayScroll();
   }, []);
 
   return { scrollToElement };

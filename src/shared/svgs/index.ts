@@ -4,3 +4,4 @@ export { Square } from "./icons/Square";
 export { Circle } from "./icons/Circle";
 export { Triangle } from "./icons/Triangle";
 export { IconAlert } from "./icons/IconAlert";
+export { Arrow } from "./icons/Arrow";

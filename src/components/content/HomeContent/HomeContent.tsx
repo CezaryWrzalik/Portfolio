@@ -26,7 +26,6 @@ export const HomeContent = () => {
         <Typography.TextBody_16>
           I’m a junior Front-end developer based in Wrocław
         </Typography.TextBody_16>
-
         <HomeButtonWrapper>
           <Button fullWidth={false}>Contact me!</Button>
         </HomeButtonWrapper>
