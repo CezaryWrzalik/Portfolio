@@ -22,7 +22,7 @@ export const AnimatedImage = ({
 }: AnimatedImageProps) => {
   const setCurrElIndex = useSetRecoilState(currElIndexAtom);
   const handleClick = () => {
-    if (destination) {
+    if (destination || destination === 0) {
       setCurrElIndex(destination);
     }
   };

@@ -1,6 +1,7 @@
 import { useRecoilState } from "recoil";
 import { currElIndexAtom } from "@@recoil/atom/currElIndexAtom";
 import { useEffect, useRef } from "react";
+import { scrollAtom } from "@@recoil/atom/scrollAtom";
 
 export let yValues = {
   Home: {
@@ -29,6 +30,7 @@ export const ObjectKeys = Object.keys(yValues);
 
 const useScroll = () => {
   const [currElIndex, setCurrElIndex] = useRecoilState(currElIndexAtom);
+  const [canScroll, setCanScroll] = useRecoilState(scrollAtom);
   const yValuesRef = useRef(yValues);
   const isScrollingRef = useRef(false);
   const canScrollRef = useRef(false);
@@ -62,6 +64,8 @@ const useScroll = () => {
     const scrollBottom = window.scrollY + window.innerHeight;
     const scrollTop = window.scrollY;
     const scrollError = scrollErrorRef.current;
+
+    // console.log(isScrollingRef.current, !canScrollRef.current, canScroll)
 
     if (isScrollingRef.current || !canScrollRef.current) {
       handleCheckPosition();
@@ -186,9 +190,9 @@ const useScroll = () => {
   };
 
   const preventScroll = (bottom?: boolean) => {
-    const top = elementStart
+    const top = elementStart;
     const bot = elementEnd - window.innerHeight;
-    
+
     window.scrollTo({
       top: bottom ? bot : top,
     });
@@ -211,6 +215,7 @@ const useScroll = () => {
   const delayScroll = () => {
     setTimeout(() => {
       canScrollRef.current = true;
+      setCanScroll(true);
     }, 2500);
   };
 
@@ -230,6 +235,10 @@ const useScroll = () => {
       window.removeEventListener("touchmove", handleSwipe);
     };
   }, [currElIndex]);
+
+  useEffect(() => {
+    canScrollRef.current = canScroll;
+  }, [canScroll]);
 
   useEffect(() => {
     delayScroll();

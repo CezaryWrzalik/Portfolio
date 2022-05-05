@@ -15,6 +15,7 @@ export type yValuesKeys = keyof typeof yValues;
 
 export type ButtonVariants = "primary" | "secondary" | "teritary";
 
+export type SectionIndexes = 0 | 1 | 2 | 3 | 4;
 export type SectionsType = {
   home: 0;
   about: 1;
@@ -22,3 +23,5 @@ export type SectionsType = {
   projects: 3;
   contact: 4;
 };
+
+export type AnimationTypes = "slideTop" | "opacity";
