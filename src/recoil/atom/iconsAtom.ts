@@ -2,5 +2,5 @@ import { atom } from "recoil";
 
 export const iconsAtom = atom({
   key: "iconsAtom",
-  default: 15,
+  default: 8,
 });

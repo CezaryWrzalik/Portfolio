@@ -16,12 +16,12 @@ export const HomeSettingsWrapper = styled.div(
 	cursor: pointer;
 	transition: ${transitions.default}s;
 
-	@media(max-width: ${breakpoints.sm}px){
-		display: none;
-	}
-
 	:hover {
 		background: ${colors.dynamic};
+	}
+
+	@media(max-width: ${breakpoints.sm}px){
+		display: none;
 	}
 	`
 );
@@ -50,39 +50,12 @@ export const SettingsWrapper = styled.div<{ isVisible: boolean }>(
 	`
 );
 
-export const IconsNumberSetting = styled.div(
-  ({ theme: { colors } }) => `
-  display: grid;
-  grid-template: 1fr / auto 20px 20px;
-  gap: 10px;
-	
-  svg {
-		fill: ${colors.text.secondary};
-    cursor: pointer;
-    :hover {
-			opacity: 0.4;
-    }
-  }
-	`
-);
 
-export const ColorPicker = styled.div`
+
+export const ColorSetting = styled.div`
   display: grid;
   place-items: center;
   grid-template: 1fr / auto auto;
   gap: 10px;
-  input[type="color"] {
-    -webkit-appearance: none;
-    border: none;
-    width: 32px;
-    height: 32px;
-    padding: 0;
-    border: 1px solid black;
-  }
-  input[type="color"]::-webkit-color-swatch-wrapper {
-    padding: 0;
-  }
-  input[type="color"]::-webkit-color-swatch {
-    border: none;
-  }
+
 `;
