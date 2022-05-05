@@ -10,7 +10,7 @@ export const SidebarMarkersWrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 5px;
-  z-index: 3;
+  z-index: 4;
 `;
 
 export const MarkerContainer = styled.div<{
@@ -21,7 +21,7 @@ export const MarkerContainer = styled.div<{
 		width: 12px;
 		height: 12px;
 		border-radius: ${radius[50]}%;
-		border: 2px solid ${currElIndex > 0 ? colors.body.bgPrimary : colors.dynamic};
+		border: 2px solid ${currElIndex > 0 && currElIndex < 4 ? colors.body.bgPrimary : colors.dynamic};
 		cursor: pointer;
     transition: ${transitions.default}s;
 
@@ -33,7 +33,7 @@ export const MarkerContainer = styled.div<{
 
     ${
       markerIndex === currElIndex &&
-      `background: ${currElIndex > 0 ? colors.body.bgPrimary : colors.dynamic}`
+      `background: ${currElIndex > 0 && currElIndex < 4 ? colors.body.bgPrimary : colors.dynamic}`
     };
   
   

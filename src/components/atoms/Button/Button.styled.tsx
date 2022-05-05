@@ -90,7 +90,6 @@ export const ButtonWrapper = styled.button<{
     ${fullWidth && "width: 100%"};
     ${variant && ButtonStyleTypes[variant]};
 
-    transition: background ${transitions.default}s,
-      color ${transitions.default}s;
+    transition: ${transitions.default}s;
   `
 );

@@ -56,26 +56,26 @@ export const ItemContainer = styled.div<{
   elementId?: number;
   currElIndex?: number;
 }>(
-  ({ elementId, currElIndex, theme: { colors } }) => `
+  ({ elementId, currElIndex, theme: { colors, transitions } }) => `
 		padding: 17px;
 		text-align: center;
 		width: 100%;
 		border-top: 1px solid ${colors.sidebar.borderPrimary};
 		color: ${colors.text.tertiary};
 		cursor: pointer;
+    transition: ${transitions.default}s;
 
-	&:last-child {
+	  &:last-child {
 		border-bottom: 1px solid ${colors.sidebar.borderPrimary};
-	}
+	  }
 
-  @media(hover: hover){
-	:hover{
-		color: ${colors.dynamic};
-	}
-}
+    ${elementId === currElIndex && `color: ${colors.dynamic}`};
 
-
-	  ${elementId === currElIndex && `color: ${colors.dynamic}`}
+    @media(hover: hover){
+	  :hover{
+		  color: ${colors.dynamic};
+	  }
+  }
 	`
 );
 
