@@ -1,5 +1,6 @@
 import { Button } from "@atoms/Button/Button";
 import { AnimatedImage } from "@molecules/AnimatedImage/AnimatedImage";
+import { sections } from "@shared/constants";
 import Skills from "@shared/images/Skills.png";
 import { AboutContent } from "../../../content/AboutContent/AboutContent";
 import {
@@ -17,7 +18,7 @@ export const AboutRightSection = () => {
           <Button variant="primary">Contact me</Button>
         </ButtonWrapper>
       </TextWrapper>
-      <AnimatedImage image={Skills} side="Bottom" />
+      <AnimatedImage image={Skills} side="Bottom" direction={"Top"} destination={sections.skills}/>
     </AboutRightSectionWrapper>
   );
 };

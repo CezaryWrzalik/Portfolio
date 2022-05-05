@@ -14,3 +14,11 @@ export type IconName = keyof typeof Icons;
 export type yValuesKeys = keyof typeof yValues;
 
 export type ButtonVariants = "primary" | "secondary" | "teritary";
+
+export type SectionsType = {
+  home: 0;
+  about: 1;
+  skills: 2;
+  projects: 3;
+  contact: 4;
+};

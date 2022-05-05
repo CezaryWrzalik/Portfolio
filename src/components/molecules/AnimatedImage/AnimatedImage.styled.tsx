@@ -21,31 +21,51 @@ export const AnimatedImageWrapper = styled.div<{
   transition: opacity ${transitions.default}s, visibility 0s;
   cursor: pointer;
 
+
   ${halfScreen && `width: 50%`};
 	${side === "Top" && "top: 0%"};
-	${side === "Bottom" && "Bottom: 0%"};
+	${side === "Bottom" && "bottom: 0%"};
 	${side === "Mid" && stylesForMiddle};
 
 `
+);
+
+const stylesForBottom = css<{ direction?: "Top" | "Bottom" }>(
+  ({ direction }) => css`
+    bottom: -50%;
+
+    :hover {
+      ${direction === "Top" && "bottom: 0%"};
+      ${direction === "Bottom" && "bottom: -100%"};
+    }
+  `
+);
+
+const stylesForTop = css<{ direction?: "Top" | "Bottom" }>(
+  ({ direction }) => css`
+    top: -50%;
+    :hover {
+      ${direction === "Top" && "top: -100%"};
+      ${direction === "Bottom" && "top: 0%"};
+    }
+  `
 );
 
 export const ImageWrapper = styled.div<{
   direction?: "Top" | "Bottom";
   side: "Top" | "Bottom" | "Mid";
 }>(
-  ({ direction, side, theme: { transitions } }) => `
+  ({ direction, side, theme: { transitions } }) => css`
     position: relative;
     transition: ${transitions.default}s;
 
-    ${side === "Top" && "top: -50%"};
-    ${side === "Bottom" && "Bottom: -50%"};
+    ${side === "Top" && stylesForTop};
+    ${side === "Bottom" && stylesForBottom};
     ${side === "Mid" && "Mid: 50%"};
 
     :hover {
       display: block;
       height: 100%;
-      ${direction === "Top" && "top: -100%"};
-      ${direction === "Bottom" && "top: 0%"};
     }
   `
 );
