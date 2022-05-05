@@ -1,6 +1,7 @@
 import { currElIndexAtom } from "@@recoil/atom/currElIndexAtom";
 import { Button } from "@atoms/Button/Button";
 import { Typography } from "@atoms/Typography/Typography";
+import { sections } from "@shared/constants";
 import { useSetRecoilState } from "recoil";
 import {
   EmojiWrapper,
@@ -31,7 +32,9 @@ export const HomeContent = () => {
           I’m a junior Front-end developer based in Wrocław
         </Typography.TextBody_16>
         <HomeButtonWrapper>
-          <Button fullWidth={false} onClick={() => setCurrElIndex(4)}>Contact me!</Button>
+          <Button onClick={() => setCurrElIndex(sections.contact)}>
+            Contact me!
+          </Button>
         </HomeButtonWrapper>
       </InfoWrapper>
     </WelcomeTextWrapper>

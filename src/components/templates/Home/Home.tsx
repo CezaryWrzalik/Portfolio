@@ -1,9 +1,9 @@
-import { HomeIconWrapper, HomeWrapper } from "./Home.styled";
-import { HomeContent } from "../../content/HomeContent/HomeContent";
-import Image from "next/image";
-import MeMoji from "@shared/images/MeMoji.png";
-import { ScrollDown } from "@molecules/ScrollDown/ScrollDown";
 import { HomeSettings } from "@organisms/HomeSettings/HomeSettings";
+import { HomeContent } from "@content/HomeContent/HomeContent";
+import { ScrollDown } from "@molecules/ScrollDown/ScrollDown";
+import { HomeIconWrapper, HomeWrapper } from "./Home.styled";
+import { ImageMeMoji } from "@shared/images";
+import Image from "next/image";
 
 export const Home = () => {
   return (
@@ -12,7 +12,7 @@ export const Home = () => {
       <ScrollDown side="Right" />
       <HomeContent />
       <HomeIconWrapper>
-        <Image src={MeMoji} alt="pet" />
+        <Image src={ImageMeMoji} alt="pet" />
       </HomeIconWrapper>
       <ScrollDown side="Left" />
     </HomeWrapper>

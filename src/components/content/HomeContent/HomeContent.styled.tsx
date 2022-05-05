@@ -45,7 +45,8 @@ export const HomeButtonWrapper = styled.div``;
 
 export const EmojiWrapper = styled.span`
   display: inline-block;
+  cursor: default;
   :hover {
-    animation: ${waveAnimation} ease-in-out 1.2s;
+    animation: ${waveAnimation} ease-in-out 0.8s;
   }
 `;

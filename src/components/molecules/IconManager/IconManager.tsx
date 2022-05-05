@@ -12,7 +12,7 @@ export interface IIconManagerProps {
 	name: IconName;
 	onClick?: () => void;
 	rotate?: number;
-	size: number;
+	size?: number;
 	sizeY?: number;
 }
 

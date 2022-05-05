@@ -22,6 +22,7 @@ export const ScrollDownWrapper = styled.div<ScrollDownProps>(
   z-index: 10;
   gap: 10px;
   place-items: center;
+
   ${`${side}: 0px`};
 	`
 );
@@ -31,8 +32,9 @@ export const ScrollDownTextWrapper = styled.div(
     display: block;
     transform: rotate(-90deg);
     width: 150px;
-    color: ${colors.text.tertiary};
     font-size: 14px;
+    color: ${colors.text.tertiary};
+    cursor: default;
     animation: ${TextAnimation} 1s linear infinite;
   `
 );

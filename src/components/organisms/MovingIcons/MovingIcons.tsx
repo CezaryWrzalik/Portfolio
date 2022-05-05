@@ -1,5 +1,5 @@
 import { currElIndexAtom } from "@@recoil/atom/currElIndexAtom";
-import { MovingIcon } from "@organisms/MovingIcon/MovingIcon";
+import { MovingIcon } from "@organisms/MovingIcons/MovingIcon/MovingIcon";
 import { useRecoilState } from "recoil";
 import { MovingIconsWrapper } from "./MovingIcons.styled";
 

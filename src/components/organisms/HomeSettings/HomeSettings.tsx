@@ -24,12 +24,14 @@ export const HomeSettings = () => {
   return (
     <>
       <HomeSettingsWrapper onClick={handleClick}>
-        <IconManager name={"Settings"} size={0} />
+        <IconManager name={"Settings"}/>
       </HomeSettingsWrapper>
+
       <SettingsWrapper isVisible={isVisible} ref={contentRef}>
         <IconsSettings />
         <ColorsSettings />
       </SettingsWrapper>
+      
       <BackgroundModal active={isVisible} ref={backgroundRef} />
     </>
   );

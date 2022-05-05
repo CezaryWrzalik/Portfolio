@@ -2,10 +2,10 @@ import { IconManager } from "@molecules/IconManager/IconManager";
 import { ScrollDownTextWrapper, ScrollDownWrapper } from "./ScrollDown.styled";
 
 export type ScrollDownProps = {
-	side: "Left" | "Right"
-}
+  side: "Left" | "Right";
+};
 
-export const ScrollDown = ({side}: ScrollDownProps) => {
+export const ScrollDown = ({ side }: ScrollDownProps) => {
   return (
     <ScrollDownWrapper side={side}>
       <ScrollDownTextWrapper>Scroll down</ScrollDownTextWrapper>
