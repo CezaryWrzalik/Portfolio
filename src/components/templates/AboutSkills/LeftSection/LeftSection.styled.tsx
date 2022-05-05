@@ -6,6 +6,7 @@ export const LeftSectionWrapper = styled.div(
   background: ${colors.dynamic};
   place-items: center;
   position: relative;
+  grid-template: 0 0 1fr / 1fr;
   z-index: 3;
   display: grid;
 	`

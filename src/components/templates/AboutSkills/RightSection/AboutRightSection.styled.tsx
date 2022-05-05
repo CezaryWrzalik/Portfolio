@@ -6,6 +6,7 @@ export const AboutRightSectionWrapper = styled.div`
   height: 100%;
   width: 100%;
   display: grid;
+	grid-template: 1fr / 1fr;
   place-items: center;
 	overflow: hidden;
 `;
@@ -13,6 +14,7 @@ export const AboutRightSectionWrapper = styled.div`
 export const TextWrapper = styled.div(
   ({ theme: { colors } }) => `
 	display: grid;
+	position: relative;
 	gap: 20px;
 	color: ${colors.text.primary};
 	max-width: 440px;

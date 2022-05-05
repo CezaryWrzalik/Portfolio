@@ -7,44 +7,57 @@ import {
   LeftSectionWrapper,
   SkillsImageWrapper,
 } from "./LeftSection.styled";
-import Border from "@shared/images/Border.png";
-import Me from "@shared/images/Me.png";
-import Hi from "@shared/images/Hi.png";
-import Skills from "@shared/images/Skills.png";
-import About from "@shared/images/About.png";
 import { AnimatedImage } from "@molecules/AnimatedImage/AnimatedImage";
 import { useRecoilState } from "recoil";
 import { currElIndexAtom } from "src/recoil/atom/currElIndexAtom";
+import { sections } from "@shared/constants";
+import { FirstLoadAnimation } from "@organisms/FirstLoadAnimations/FirstLoadAnimation";
+import {
+  ImageAbout,
+  ImageBorder,
+  ImageHi,
+  ImageMe,
+  ImageSkills,
+} from "@shared/images";
 
 export const LeftSection = () => {
   const [currElIndex] = useRecoilState(currElIndexAtom);
   return (
     <LeftSectionWrapper>
-      <AnimatedImage
-        destination={1}
-        visible={currElIndex !== 1}
-        image={About}
-        side="Top"
-        direction={currElIndex === 0 ? "Top" : "Bottom"}
-      />
-      <AnimatedImage
-        destination={2}
-        visible={currElIndex === 1}
-        image={Hi}
-        side="Top"
-        direction="Bottom"
-      />
+      <FirstLoadAnimation
+        section={sections.skills}
+        delay={6}
+      >
+        <AnimatedImage
+          destination={sections.about}
+          visible={currElIndex !== 1}
+          image={ImageAbout}
+          side="Top"
+          direction={currElIndex === 0 ? "Top" : "Bottom"}
+        />
+      </FirstLoadAnimation>
+      <FirstLoadAnimation section={sections.about} delay={7} last>
+        <AnimatedImage
+          destination={sections.home}
+          visible={currElIndex === 1}
+          image={ImageHi}
+          side="Top"
+          direction="Bottom"
+        />
+      </FirstLoadAnimation>
       <ImagesWrapper>
-        <BorderWrapper currElIndex={currElIndex}>
-          <Image src={Border} />
-        </BorderWrapper>
-        <ImageWrapper currElIndex={currElIndex}>
-          <Image src={Me} />
-          <BlurElement />
-        </ImageWrapper>
+        <FirstLoadAnimation section={sections.about} delay={7}>
+          <BorderWrapper currElIndex={currElIndex}>
+            <Image src={ImageBorder} />
+          </BorderWrapper>
+          <ImageWrapper currElIndex={currElIndex}>
+            <Image src={ImageMe} />
+            <BlurElement />
+          </ImageWrapper>
+        </FirstLoadAnimation>
       </ImagesWrapper>
       <SkillsImageWrapper currElIndex={currElIndex}>
-        <Image src={Skills} />
+        <Image src={ImageSkills} />
       </SkillsImageWrapper>
     </LeftSectionWrapper>
   );
