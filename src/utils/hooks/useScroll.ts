@@ -139,7 +139,7 @@ const useScroll = () => {
       if (elementEnd <= scrollBottom) {
         e.preventDefault();
         updateScrollError("down");
-        if (scrollError > 2500 && nextElement) {
+        if (scrollError > 500 && nextElement) {
           setCurrElIndex(nextElement);
         }
       }
@@ -150,7 +150,7 @@ const useScroll = () => {
       if (elementStart >= scrollTop) {
         e.preventDefault();
         updateScrollError("up");
-        if (scrollError < -2500 && prevElement) {
+        if (scrollError < -500 && prevElement) {
           setCurrElIndex(prevElement - 1);
         }
       }
