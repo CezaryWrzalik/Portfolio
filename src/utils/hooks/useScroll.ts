@@ -37,33 +37,38 @@ const useScroll = () => {
   const scrollDirection = useRef("down");
   const scrollErrorRef = useRef(0);
   const touchStartRef = useRef(0);
-  const elementOnScreen = Object.values(yValuesRef.current)[currElIndex];
-  const elementStart = elementOnScreen.elementStart;
-  const elementEnd = elementOnScreen.elementEnd;
   const prevElement = currElIndex >= 0 ? currElIndex : false;
   const nextElement = currElIndex < 4 ? currElIndex + 1 : false;
 
   const handleCheckPosition = () => {
     const scrollTop = window.scrollY;
     const scrollBottom = window.scrollY + window.innerHeight;
-
+    const elementOnScreen = Object.values(yValuesRef.current)[currElIndex];
+    const elementStart = elementOnScreen.elementStart;
+    const elementEnd = elementOnScreen.elementEnd;
+    
     if (scrollDirection.current !== "up") {
-      if (elementOnScreen.elementStart === scrollTop) {
+      if (elementStart === scrollTop) {
         isScrollingRef.current = false;
       }
     }
-
+    
     if (scrollDirection.current === "up") {
-      if (elementOnScreen.elementEnd === scrollBottom) {
+      if (elementEnd === scrollBottom) {
         isScrollingRef.current = false;
       }
     }
   };
-
+  
   const handleScroll = (e: any) => {
     const scrollBottom = window.scrollY + window.innerHeight;
     const scrollTop = window.scrollY;
     const scrollError = scrollErrorRef.current;
+    const elementOnScreen = Object.values(yValuesRef.current)[currElIndex];
+    const elementStart = elementOnScreen.elementStart;
+    const elementEnd = elementOnScreen.elementEnd;
+    
+    updateYOfElements();
 
     // console.log(isScrollingRef.current, !canScrollRef.current, canScroll)
 
@@ -77,7 +82,7 @@ const useScroll = () => {
     // Temporary solution till i get beteter solution
     if (
       scrollDirection.current === "down" &&
-      elementOnScreen.elementEnd <= scrollBottom
+      elementEnd <= scrollBottom
     ) {
       e.preventDefault();
       preventScroll(true);
@@ -85,7 +90,7 @@ const useScroll = () => {
 
     if (
       scrollDirection.current === "up" &&
-      elementOnScreen.elementStart >= scrollTop
+      elementStart >= scrollTop
     ) {
       e.preventDefault();
       preventScroll();
@@ -93,7 +98,7 @@ const useScroll = () => {
 
     if (e.deltaY < 0 && canScrollRef.current) {
       scrollDirection.current = "up";
-      if (elementOnScreen.elementStart >= scrollTop) {
+      if (elementStart >= scrollTop) {
         updateScrollError("up");
         e.preventDefault();
         if (scrollError < -500 && prevElement) {
@@ -104,7 +109,7 @@ const useScroll = () => {
 
     if (e.deltaY > 0 && canScrollRef.current) {
       scrollDirection.current = "down";
-      if (elementOnScreen.elementEnd <= scrollBottom) {
+      if (elementEnd <= scrollBottom) {
         updateScrollError("down");
         e.preventDefault();
         if (scrollError > 500 && nextElement) {
@@ -119,6 +124,9 @@ const useScroll = () => {
   };
 
   const handleSwipe = (e: TouchEvent) => {
+    const elementOnScreen = Object.values(yValuesRef.current)[currElIndex];
+    const elementStart = elementOnScreen.elementStart;
+    const elementEnd = elementOnScreen.elementEnd;
     const scrollError = scrollErrorRef.current;
     const scrollBottom = window.scrollY + window.innerHeight;
     const scrollTop = window.scrollY;
@@ -128,7 +136,7 @@ const useScroll = () => {
 
     if (direction === "down") {
       scrollDirection.current = "down";
-      if (elementOnScreen.elementEnd <= scrollBottom) {
+      if (elementEnd <= scrollBottom) {
         e.preventDefault();
         updateScrollError("down");
         if (scrollError > 2500 && nextElement) {
@@ -139,7 +147,7 @@ const useScroll = () => {
 
     if (direction === "up") {
       scrollDirection.current = "up";
-      if (elementOnScreen.elementStart >= scrollTop) {
+      if (elementStart >= scrollTop) {
         e.preventDefault();
         updateScrollError("up");
         if (scrollError < -2500 && prevElement) {
@@ -190,6 +198,9 @@ const useScroll = () => {
   };
 
   const preventScroll = (bottom?: boolean) => {
+    const elementOnScreen = Object.values(yValuesRef.current)[currElIndex];
+    const elementStart = elementOnScreen.elementStart;
+    const elementEnd = elementOnScreen.elementEnd;
     const top = elementStart;
     const bot = elementEnd - window.innerHeight;
 
@@ -199,10 +210,14 @@ const useScroll = () => {
   };
 
   const scrollToElement = () => {
+    const elementOnScreen = Object.values(yValuesRef.current)[currElIndex];
+    const elementStart = elementOnScreen.elementStart;
+    const elementEnd = elementOnScreen.elementEnd;
     const top = elementStart;
     const bot = elementEnd - window.innerHeight;
     const bottom = scrollDirection.current === "up";
     isScrollingRef.current = true;
+    console.log(currElIndex);
     window.scrollTo({
       top: bottom ? bot : top,
       behavior: "smooth",
@@ -235,11 +250,11 @@ const useScroll = () => {
       window.removeEventListener("touchmove", handleSwipe);
     };
   }, [currElIndex]);
-
+  
   useEffect(() => {
     canScrollRef.current = canScroll;
   }, [canScroll]);
-
+  
   useEffect(() => {
     delayScroll();
   }, []);
