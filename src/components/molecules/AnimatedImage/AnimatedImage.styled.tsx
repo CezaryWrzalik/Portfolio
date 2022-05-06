@@ -3,19 +3,19 @@ import styled, { css } from "styled-components";
 const stylesForMiddle = css`
   height: 100%;
   width: 100%;
-  transition: 1s ease-in-out;
+  transition: 1.5s ease-in-out;
 `;
 
 export const AnimatedImageWrapper = styled.div<{
   visible: boolean;
   side: "Top" | "Bottom" | "Mid";
   halfScreen: boolean;
+  projects?: boolean
 }>(
-  ({ side, visible, halfScreen, theme: { transitions } }) => `
+  ({ side, visible, halfScreen, projects, theme: { transitions } }) => `
   position: absolute;
   width: 100%;
   place-items: center;
-  height: 150px;
   display: grid;
 	opacity: ${visible ? "1" : "0"};
   visibility: ${visible ? "visible" : "hidden"};;
@@ -23,7 +23,7 @@ export const AnimatedImageWrapper = styled.div<{
   cursor: pointer;
 
 
-
+  ${projects && `height: 150px`};
   ${halfScreen && `width: 50%`};
 	${side === "Top" && "top: 0%"};
 	${side === "Bottom" && "bottom: 0%"};

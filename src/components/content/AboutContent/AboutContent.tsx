@@ -1,8 +1,14 @@
+import { currElIndexAtom } from "@@recoil/atom/currElIndexAtom";
+import { Button } from "@atoms/Button/Button";
 import { Typography } from "@atoms/Typography/Typography";
 import { FirstLoadAnimation } from "@organisms/FirstLoadAnimations/FirstLoadAnimation";
 import { sections } from "@shared/constants";
+import { useSetRecoilState } from "recoil";
+import { ButtonWrapper } from "./AboutContent.styled";
 
 export const AboutContent = () => {
+  const setCurrElIndex = useSetRecoilState(currElIndexAtom);
+
   return (
     <>
       <FirstLoadAnimation
@@ -46,6 +52,17 @@ export const AboutContent = () => {
           computer games.
         </Typography.TextBody_16>
       </FirstLoadAnimation>
+      <FirstLoadAnimation
+          section={sections.about}
+          delay={5}
+          animation={"slideTop"}
+        >
+          <ButtonWrapper>
+            <Button variant="primary" onClick={() => setCurrElIndex(sections.contact)}>
+              Contact me
+            </Button>
+          </ButtonWrapper>
+        </FirstLoadAnimation>
     </>
   );
 };

@@ -1,3 +1,4 @@
+import { ProjectDataType } from "@@types/CommonTypes";
 import { Button } from "@atoms/Button/Button";
 import { Typography } from "@atoms/Typography/Typography";
 import { SingleProjectProps } from "@organisms/SingleProject/SingleProject";
@@ -13,7 +14,8 @@ import {
   ProjectContentYear,
 } from "./ProjectContent.styled";
 
-interface ProjectTextContentProps extends SingleProjectProps {
+interface ProjectTextContentProps {
+  projectData: ProjectDataType;
   mobileContentVisible: boolean;
 }
 
@@ -21,7 +23,15 @@ export const ProjectTextContent = React.forwardRef<
   HTMLDivElement,
   ProjectTextContentProps
 >(({ mobileContentVisible, projectData }, ref) => {
-  const { title, year, technologies, description, stage } = projectData;
+  const {
+    title,
+    year,
+    technologies,
+    description,
+    stage,
+    previewLink,
+    pageLink,
+  } = projectData;
 
   return (
     <ProjectContentWrapper
@@ -35,7 +45,9 @@ export const ProjectTextContent = React.forwardRef<
       <ProjectContentDescription>{description}</ProjectContentDescription>
       <ProjectContentTechnologies>
         {technologies.map((technology, i) => (
-          <Typography.TextBullet_16 key={i} marks>{technology}</Typography.TextBullet_16>
+          <Typography.TextBullet_16 key={i} marks>
+            {technology}
+          </Typography.TextBullet_16>
         ))}
       </ProjectContentTechnologies>
       <ProjectContentStage>
@@ -44,12 +56,16 @@ export const ProjectTextContent = React.forwardRef<
       </ProjectContentStage>
       <ProjectContentButtons>
         <ProjectContentButton>
-          <Button fullWidth>Preview</Button>
+          <a href={previewLink}>
+            <Button fullWidth>Preview</Button>
+          </a>
         </ProjectContentButton>
         <ProjectContentButton>
-          <Button variant="secondary" fullWidth>
-            Visit Site
-          </Button>
+          <a href={pageLink}>
+            <Button variant="secondary" fullWidth>
+              Visit Site
+            </Button>
+          </a>
         </ProjectContentButton>
       </ProjectContentButtons>
     </ProjectContentWrapper>

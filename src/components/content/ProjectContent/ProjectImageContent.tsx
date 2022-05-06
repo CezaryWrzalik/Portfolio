@@ -6,9 +6,11 @@ import {
 } from "./ProjectContent.styled";
 import Image from "next/image";
 import { SingleProjectProps } from "@organisms/SingleProject/SingleProject";
+import { ProjectDataType } from "@@types/CommonTypes";
 
-interface ProjectImageContentProps extends SingleProjectProps {
+interface ProjectImageContentProps {
   showMobileContent: () => void;
+  projectData: ProjectDataType;
 }
 
 export const ProjectImageContent = ({

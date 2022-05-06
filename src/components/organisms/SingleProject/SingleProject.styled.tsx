@@ -11,12 +11,12 @@ export const ProjectLimiter = styled.div`
   margin: auto;
   text-align: start;
   text-transform: none;
+  min-height: 200px;
   gap: 100px;
   font-weight: bold;
   display: grid;
   grid-template: 1fr / 1fr 1fr;
   max-width: 1100px;
-  transition: 0.5s;
 
   @media (max-width: ${breakpoints.md}px) {
     padding: 20px 20px;

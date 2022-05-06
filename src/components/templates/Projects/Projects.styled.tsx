@@ -4,6 +4,7 @@ export const ProjectsWrapper = styled.div(
   ({ theme: { colors } }) => `
 	background: ${colors.body.bgTeritary};
 	height: 100%;
+	min-height: 100vh;
 	position: relative;
 	`
 );
@@ -38,7 +39,7 @@ export const FirstEntryImageWrapper = styled.div<{ animate: boolean }>(
   ({ animate, theme: { colors } }) => css`
     position: absolute;
     display: grid;
-    height: 100%;
+    height: 100vh;
     width: 100%;
     background: ${colors.dynamic};
     opacity: 1;

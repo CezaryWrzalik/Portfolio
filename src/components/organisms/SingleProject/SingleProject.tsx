@@ -1,16 +1,17 @@
 import { BackgroundModal } from "@atoms/BackgroundModal/BackgroundModal";
 import useClickOutside from "@utils/hooks/useClickOutside";
-import { useRef, useState } from "react";
 import { ProjectImageContent } from "@content/ProjectContent/ProjectImageContent";
 import { ProjectTextContent } from "@content/ProjectContent/ProjectTextContent";
 import { ProjectLimiter, ProjectWrapper } from "./SingleProject.styled";
 import { ProjectDataType } from "@@types/CommonTypes";
+import { useRef, useState } from "react";
 
 export type SingleProjectProps = {
-  projectData: ProjectDataType; 
-}
+  projectData: ProjectDataType;
+  index: number;
+};
 
-export const SingleProject = ({projectData}: SingleProjectProps) => {
+export const SingleProject = ({ projectData, index }: SingleProjectProps) => {
   const [mobileContentVisible, setMobileContentVisible] = useState(false);
   const contentRef = useRef(null);
   const backgroundRef = useRef(null);
@@ -29,7 +30,10 @@ export const SingleProject = ({projectData}: SingleProjectProps) => {
     <>
       <ProjectWrapper>
         <ProjectLimiter>
-          <ProjectImageContent showMobileContent={showMobileContent} projectData={projectData}/>
+          <ProjectImageContent
+            showMobileContent={showMobileContent}
+            projectData={projectData}
+          />
           <ProjectTextContent
             mobileContentVisible={mobileContentVisible}
             ref={contentRef}

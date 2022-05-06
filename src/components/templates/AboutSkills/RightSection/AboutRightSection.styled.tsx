@@ -25,7 +25,3 @@ export const TextWrapper = styled.div(
   }
 	`
 );
-
-export const ButtonWrapper = styled.div`
-	max-width: 200px;
-`
