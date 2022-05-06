@@ -15,7 +15,7 @@ export const HomeWrapper = styled.div(
 	color: ${colors.text.primary};
 	
 	
-	@media (min-width: ${breakpoints.lg}px){
+	@media (min-width: ${breakpoints.xl}px){
 		grid-template: 1fr / 1fr 1fr;
 	}
 	

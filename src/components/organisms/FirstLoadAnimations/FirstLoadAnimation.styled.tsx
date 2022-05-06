@@ -9,8 +9,9 @@ export const RelativeWrapper = styled.div<{
   isVisible: boolean;
   delay: number;
   animation?: AnimationTypes;
+  noAnimation?: boolean;
 }>(
-  ({ isVisible, delay, animation, theme: { transitions } }) => css`
+  ({ isVisible, delay, animation, noAnimation, theme: { transitions } }) => css`
     position: relative;
     width: 100%;
     top: ${animation === "slideTop" ? "300px" : "0px"};
@@ -22,5 +23,11 @@ export const RelativeWrapper = styled.div<{
 			opacity: 1;
 		${animation === "slideTop" && stylesForSlideTop}
 		`}
+
+    ${noAnimation &&
+    `
+    opacity: 1;
+    transition: 0s 0s;
+    `}
   `
 );

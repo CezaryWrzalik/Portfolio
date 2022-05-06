@@ -25,6 +25,7 @@ export const LeftSection = () => {
   return (
     <LeftSectionWrapper>
       <FirstLoadAnimation
+        visibleAt={0}
         section={sections.skills}
         delay={6}
       >

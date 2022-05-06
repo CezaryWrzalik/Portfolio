@@ -2,8 +2,8 @@ import styled, { css } from "styled-components";
 
 const stylesForMiddle = css`
   height: 100%;
-  transition: ease-in-out 1s;
   width: 100%;
+  transition: 1s ease-in-out;
 `;
 
 export const AnimatedImageWrapper = styled.div<{
@@ -15,11 +15,13 @@ export const AnimatedImageWrapper = styled.div<{
   position: absolute;
   width: 100%;
   place-items: center;
+  height: 150px;
   display: grid;
 	opacity: ${visible ? "1" : "0"};
   visibility: ${visible ? "visible" : "hidden"};;
-  transition: opacity ${transitions.default}s, visibility 0s;
+  transition: opacity ${transitions.default}s, visibility 0s, top 1s;
   cursor: pointer;
+
 
 
   ${halfScreen && `width: 50%`};
@@ -61,7 +63,7 @@ export const ImageWrapper = styled.div<{
 
     ${side === "Top" && stylesForTop};
     ${side === "Bottom" && stylesForBottom};
-    ${side === "Mid" && "Mid: 50%"};
+    ${side === "Mid" && "Top: 0%"};
 
     :hover {
       display: block;

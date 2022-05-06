@@ -1,12 +1,12 @@
-import { SidebarMarkers } from "src/components/organisms/SidebarMarkers/SidebarMarkers";
-import { SidebarMenu } from "../../organisms/SidebarMenu/SidebarMenu";
-import {LayoutWrapper, MainWrapper } from "./Layout.styled";
+import { SidebarMarkers } from "@organisms/Menu/SidebarMarkers/SidebarMarkers";
 import { VerticalModal } from "@molecules/VerticalModal/VerticalModal";
+import { SidebarMenu } from "@organisms/Menu/SidebarMenu/SidebarMenu";
+import { PageLoader } from "@molecules/PageLoader/PageLoader";
+import {LayoutWrapper, MainWrapper } from "./Layout.styled";
 import useScroll from "@utils/hooks/useScroll";
 import { Footer } from "@atoms/Footer/Footer";
-import { PageLoader } from "@molecules/PageLoader/PageLoader";
 import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { currElIndexAtom } from "@@recoil/atom/currElIndexAtom";
 
 type LayoutProps = {
@@ -14,7 +14,7 @@ type LayoutProps = {
 };
 
 export const Layout = ({ children }: LayoutProps) => {
-  const [currElIndex, setCurrElIndex] = useRecoilState(currElIndexAtom);
+  const setCurrElIndex = useSetRecoilState(currElIndexAtom);
   const [isVisible, setIsVisible] = useState(false);
   useScroll();
 

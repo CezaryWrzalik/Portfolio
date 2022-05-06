@@ -5,6 +5,7 @@ export const breakpoints = {
 	sm: 650,
 	md: 1040,
 	lg: 1400,
+	xl: 1800,
 }
 
 export const dynamicColors = ["ED6A5A", "4178d1", "43d141", "b4bd15", "d964cb", "6bd1b1"];

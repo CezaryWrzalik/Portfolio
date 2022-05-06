@@ -1,4 +1,4 @@
-import { SidebarMenuProps } from "@organisms/SidebarMenu/SidebarMenu";
+import { SidebarMenuProps } from "@organisms/Menu/SidebarMenu/SidebarMenu";
 import {
   MarkerContainer,
   SidebarMarkersWrapper,

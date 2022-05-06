@@ -38,12 +38,13 @@ export const FirstEntryImageWrapper = styled.div<{ animate: boolean }>(
   ({ animate, theme: { colors } }) => css`
     position: absolute;
     display: grid;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     background: ${colors.dynamic};
     opacity: 1;
     transition: 0.5s;
     visibility: visible;
+    top: 0;
 
     ${animate &&
     css`
@@ -54,6 +55,11 @@ export const FirstEntryImageWrapper = styled.div<{ animate: boolean }>(
     `}
   `
 );
+
+export const AnimateImage = styled.div`
+	height: 100vh;
+	position: relative;
+`;
 
 export const ContentWrapper = styled.div<{ animate?: boolean }>(
   ({ animate, theme: { colors } }) => `

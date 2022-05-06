@@ -38,7 +38,7 @@ export const SidebarMenuWrapper = styled.div<{
     align-items: center;
     justify-content: center;
     padding: 0;
-    z-index: 4;
+    z-index: 6;
 
     @media (max-width: ${breakpoints.sm}px) {
       ${sidebarMenuMobileStyles};
@@ -90,7 +90,7 @@ export const ContentWrapper = styled.div``;
 
 export const IconWrapper = styled.div`
   position: fixed;
-  z-index: 5;
+  z-index: 7;
   right: 15px;
   top: 15px;
   visibility: hidden;

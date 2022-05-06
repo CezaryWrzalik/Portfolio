@@ -7,6 +7,7 @@ import { SingleProject } from "@organisms/SingleProject/SingleProject";
 import { currElIndexAtom } from "@@recoil/atom/currElIndexAtom";
 import { projectsData } from "@content/ProjectContent/projectsData";
 import {
+  AnimateImage,
   ContentWrapper,
   FirstEntryImageWrapper,
   ProjectsList,
@@ -27,12 +28,14 @@ export const Projects = () => {
   return (
     <ProjectsWrapper id="Projects">
       <FirstEntryImageWrapper animate={animate}>
-        <AnimatedImage
-          image={ImageProjects}
-          visible={currElIndex > 2}
-          side={animate ? "Mid" : "Top"}
-          halfScreen={true}
-        />
+        <AnimateImage>
+          <AnimatedImage
+            image={ImageProjects}
+            visible={currElIndex > 2}
+            side={animate ? "Mid" : "Top"}
+            halfScreen={true}
+          />
+        </AnimateImage>
       </FirstEntryImageWrapper>
       <ContentWrapper animate={animate}>
         <SectionHeader>Portfolio</SectionHeader>
