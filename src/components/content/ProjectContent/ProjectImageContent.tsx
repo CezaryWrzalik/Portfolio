@@ -5,7 +5,6 @@ import {
   ProjectImageWrapper,
 } from "./ProjectContent.styled";
 import Image from "next/image";
-import { SingleProjectProps } from "@organisms/SingleProject/SingleProject";
 import { ProjectDataType } from "@@types/CommonTypes";
 
 interface ProjectImageContentProps {

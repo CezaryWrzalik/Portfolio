@@ -1,12 +1,19 @@
-import { ImageTictactoe, ImageTictactoeMobile } from "@shared/images";
+import {
+  ImagePortfolio,
+  ImagePortfolioMobile,
+  ImageStarwars,
+  ImageStarwarsMobile,
+  ImageTictactoe,
+  ImageTictactoeMobile,
+} from "@shared/images";
 
 export const projectsData = [
   {
     title: "Tic-tac-toe",
     year: "2021",
     description:
-      "Game application which alows u to play against your friend or Ai",
-    technologies: ["Next.js", "Recoil", "Styled-Compoenents", "TypeScript"],
+      "Basic Tic tac toe game with minimax algorithm.",
+    technologies: ["HTML/CSS", "RWD", "TypeScript", "Next.js", "Styled-Components", "Next-auth", "Recoil", "MongoDB"],
     stage: "Singleplayer finished. Multiplayer in progress",
     previewLink: "https://github.com/CezaryWrzalik/Tic-tac-toe-v2",
     pageLink: "https://tic-tac-toe-v2-eight.vercel.app/",
@@ -16,29 +23,30 @@ export const projectsData = [
     },
   },
   {
-    title: "Starwars Api",
+    title: "Starwars",
     year: "2022",
-    description: "App displaying basic info about characters vechicles etc. ",
-    technologies: ["Next.js", "Redux", "Styled-Compoenents", "Next-auth"],
-    stage: "Need some improvements in details page",
-    previewLink: "https://github.com/CezaryWrzalik/Tic-tac-toe-v2",
-    pageLink: "https://tic-tac-toe-v2-eight.vercel.app/",
+    description: "Page displaying info about characters, vechiles, movies, etc. ",
+    technologies: ["HTML/CSS", "RWD", "TypeScript", "Next.js", "Styled-Components", "Next-auth", "Redux-toolkit"],
+    stage: "In Progress",
+    previewLink: "https://github.com/CezaryWrzalik/Starwars-v2",
+    pageLink: "https://starwars-v2.vercel.app/",
     images: {
-      dekstop: ImageTictactoe,
-      mobile: ImageTictactoeMobile,
+      dekstop: ImageStarwars,
+      mobile: ImageStarwarsMobile,
     },
   },
   {
     title: "Portfolio",
     year: "2022",
-    description: "My personal page. About me and my projects as u can see :D",
-    technologies: ["Next.js", "Recoil", "Styled-Compoenents"],
+    description:
+      "My personal page. I placed it here mainly for fast access to Github page",
+    technologies: ["HTML/CSS", "RWD", "TypeScript", "Next.js", "Styled-Components", "Figma", "Storybook"],
     stage: "In progress",
-    previewLink: "https://github.com/CezaryWrzalik/Tic-tac-toe-v2",
-    pageLink: "https://tic-tac-toe-v2-eight.vercel.app/",
+    previewLink: "https://github.com/CezaryWrzalik/Portfolio",
+    pageLink: "#",
     images: {
-      dekstop: ImageTictactoe,
-      mobile: ImageTictactoeMobile,
+      dekstop: ImagePortfolio,
+      mobile: ImagePortfolioMobile,
     },
   },
 ];

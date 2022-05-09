@@ -7,6 +7,10 @@ import ImageProjects from "./Projects.png";
 import ImageSkills from "./Skills.png";
 import ImageTictactoe from "./Tictactoe.png";
 import ImageTictactoeMobile from "./TictactoeMobile.png";
+import ImageStarwars from "./Starwars.png";
+import ImageStarwarsMobile from "./StarwarsMobile.png";
+import ImagePortfolio from "./Portfolio.png";
+import ImagePortfolioMobile from "./PortfolioMobile.png";
 
 export {
   ImageAbout,
@@ -18,4 +22,8 @@ export {
   ImageSkills,
   ImageTictactoe,
   ImageTictactoeMobile,
+  ImageStarwars,
+  ImageStarwarsMobile,
+  ImagePortfolio,
+  ImagePortfolioMobile,
 };

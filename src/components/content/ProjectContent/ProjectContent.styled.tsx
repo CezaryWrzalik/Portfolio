@@ -10,6 +10,7 @@ export const ProjectImageContentWrapper = styled.div`
   width: 100%;
   @media (max-width: ${breakpoints.sm}px) {
     grid-template: 20px 1fr / 1fr;
+    gap: 20px;
     height: 480px;
   }
 `;
