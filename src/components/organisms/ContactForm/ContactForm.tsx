@@ -10,11 +10,20 @@ import {
 } from "./ContactForm.styled";
 
 export const ContactForm = () => {
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+		console.log(process.env.SERVICE_ID!);
+		console.log(process.env.TEMPLATE_ID!);
+		console.log(process.env.PERSONAL_ID!);
+
     emailjs
-      .sendForm("service_uurehob", "template_a5foe39", e.target, "nrKeg8cMRWUhlEFHg")
+      .sendForm(
+        process.env.SERVICE_ID!,
+        process.env.TEMPLATE_ID!,
+        e.target as HTMLFormElement,
+        process.env.PERSONAL_ID!,
+      )
       .then(
         (result) => {
           console.log(result.text);
@@ -23,17 +32,17 @@ export const ContactForm = () => {
           console.log(error.text);
         }
       );
-			e.target.reset();
+    (e.target as HTMLFormElement).reset();
   };
 
   return (
     <ContactFormWrapper onSubmit={handleSubmit}>
       <ContactFormInputsWrapper>
-        <Input label="Email" name="Email" type="email" required/>
-        <Input label="Title" name="Title" required/>
+        <Input label="Email" name="Email" type="email" required />
+        <Input label="Title" name="Title" required />
       </ContactFormInputsWrapper>
       <ContactFormTextareaWrapper>
-        <Textarea label="Message" name={"Message"} required/>
+        <Textarea label="Message" name={"Message"} required />
       </ContactFormTextareaWrapper>
       <Button fullWidth>Send</Button>
     </ContactFormWrapper>
