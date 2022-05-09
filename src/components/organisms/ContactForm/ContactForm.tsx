@@ -8,28 +8,41 @@ import {
   ContactFormTextareaWrapper,
   ContactFormWrapper,
 } from "./ContactForm.styled";
+import { useSetRecoilState } from "recoil";
+import { statusAtom } from "@@recoil/atom/statusAtom";
 
 export const ContactForm = () => {
+  const setStatusState = useSetRecoilState(statusAtom);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-		console.log(process.env.SERVICE_ID!);
-		console.log(process.env.TEMPLATE_ID!);
-		console.log(process.env.PERSONAL_ID!);
-
+    setStatusState({
+      status: "pending",
+      message: "Waiting for response",
+      title: "Sending Email",
+    });
     emailjs
       .sendForm(
         process.env.SERVICE_ID!,
         process.env.TEMPLATE_ID!,
         e.target as HTMLFormElement,
-        process.env.PERSONAL_ID!,
+        process.env.PERSONAL_ID
       )
       .then(
-        (result) => {
-          console.log(result.text);
+        () => {
+          setStatusState({
+            status: "success",
+            message: "Email send",
+            title: "Sending Email",
+          });
         },
-        (error) => {
-          console.log(error.text);
+        () => {
+          setStatusState({
+            status: "error",
+            message:
+              "Something went wrong. Please try again or send me an Email on wrzalikc@gmail.com",
+            title: "Sending Email",
+          });
         }
       );
     (e.target as HTMLFormElement).reset();
