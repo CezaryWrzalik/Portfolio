@@ -1,29 +1,33 @@
-import { breakpoints } from "@shared/constants";
+import { breakpoints, sections } from "@shared/constants";
 import styled from "styled-components";
 
 export const TemplateWrapper = styled.div`
-  display: grid;
-  max-height: 100%;
-  grid-template: grid-template: repeat(4, minmax(100vh, auto)) / 1fr;
-  padding: 0;
-  margin: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 `;
 
 export const AboutSkillsWrapper = styled.div`
   display: grid;
   grid-template: 1fr / 1fr 1fr;
-  height: 100%;
-  width: 100%;
-  color: white;
 
   @media (max-width: ${breakpoints.sm}px) {
     grid-template: auto / 3fr 1fr;
   }
 `;
 
-export const WrapperForMovingIcons = styled.div`
-  min-height: 200vh;
+export const WrapperForMovingIcons = styled.div<{
+  currElIndex: number;
+}>(
+  ({ currElIndex, theme: { transitions } }) => `
+  
+  position: absolute;
+  width: 100%;
   display: grid;
   grid-template: 1fr 1fr / 1fr;
-  position: relative;
-`;
+  top: ${currElIndex > sections.home ? -100 : 0}%;
+  transition: ${transitions.default}s;
+  height: 200%;
+  `
+);

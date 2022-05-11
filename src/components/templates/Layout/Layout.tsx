@@ -8,6 +8,7 @@ import { Footer } from "@atoms/Footer/Footer";
 import { useEffect, useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { currElIndexAtom } from "@@recoil/atom/currElIndexAtom";
+import { SectionIndexes } from "@@types/CommonTypes";
 
 type LayoutProps = {
   children: JSX.Element;
@@ -18,7 +19,7 @@ export const Layout = ({ children }: LayoutProps) => {
   const [isVisible, setIsVisible] = useState(false);
   useScroll();
 
-  const handleClick = (elementIndex: number) => {
+  const handleClick = (elementIndex: SectionIndexes) => {
     setCurrElIndex(elementIndex);
   };
 
@@ -39,7 +40,7 @@ export const Layout = ({ children }: LayoutProps) => {
             handleClick={(elementIndex) => handleClick(elementIndex)}
           />
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </MainWrapper>
         <VerticalModal />
       </LayoutWrapper>

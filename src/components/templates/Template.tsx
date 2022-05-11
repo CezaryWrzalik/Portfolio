@@ -12,13 +12,16 @@ import { Home } from "./Home/Home";
 import { MovingIcons } from "@organisms/MovingIcons/MovingIcons";
 import { useRecoilValue } from "recoil";
 import { iconsAtom } from "@@recoil/atom/iconsAtom";
+import { currElIndexAtom } from "@@recoil/atom/currElIndexAtom";
 
 export const Template = () => {
   const iconAmount = useRecoilValue(iconsAtom);
+  const currElIndex = useRecoilValue(currElIndexAtom);
+  
   return (
     <Layout>
       <TemplateWrapper>
-        <WrapperForMovingIcons>
+        <WrapperForMovingIcons currElIndex={currElIndex}>
           <MovingIcons numOfEachIcon={iconAmount}/>
           <Home />
           <AboutSkillsWrapper>
@@ -26,9 +29,9 @@ export const Template = () => {
             <LeftSection />
           </AboutSkillsWrapper>
         </WrapperForMovingIcons>
-        <Projects />
-        <Contact />
-      </TemplateWrapper>
+      <Projects />
+       <Contact />
+     </TemplateWrapper>
     </Layout>
   );
 };

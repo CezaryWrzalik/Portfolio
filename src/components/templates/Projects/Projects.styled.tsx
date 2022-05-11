@@ -1,11 +1,20 @@
+import { SectionIndexes } from "@@types/CommonTypes";
+import { sections } from "@shared/constants";
 import styled, { css, keyframes } from "styled-components";
 
-export const ProjectsWrapper = styled.div(
-  ({ theme: { colors } }) => `
+export const ProjectsWrapper = styled.div<{ currElIndex: SectionIndexes }>(
+  ({ currElIndex, theme: { colors, transitions } }) => `
 	background: ${colors.body.bgTeritary};
 	height: 100%;
-	min-height: 100vh;
-	position: relative;
+	overflow: auto;
+	position: absolute;
+	width: 100%;
+	top: ${currElIndex > sections.skills ? 0 : 100}%;
+	transition: ${transitions.default}s;
+	z-index: 5;
+	overscroll-behavior-y: none;
+	-webkit-overflow-scrolling: touch;
+
 	`
 );
 
@@ -58,8 +67,8 @@ export const FirstEntryImageWrapper = styled.div<{ animate: boolean }>(
 );
 
 export const AnimateImage = styled.div`
-	height: 100vh;
-	position: relative;
+  height: 100vh;
+  position: relative;
 `;
 
 export const ContentWrapper = styled.div<{ animate?: boolean }>(

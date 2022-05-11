@@ -11,7 +11,7 @@ export const GlobalStyled = createGlobalStyle<{ theme: ThemeType }>(
 	*::after {
 		box-sizing: inherit;
 	}
-	
+
 	body{
 		font-family: ${fontFamily.primary};
 		background: #2D2D2D;
@@ -21,8 +21,9 @@ export const GlobalStyled = createGlobalStyle<{ theme: ThemeType }>(
 	}
 	
 	html,body,#__next, #root{
-		width: 100%;
 		height: 100%;
+		width: 100%;
+		overflow: hidden;
 	}
 		
 		::-webkit-scrollbar {

@@ -1,7 +1,7 @@
 import { AnimatedImage } from "@molecules/AnimatedImage/AnimatedImage";
 import { ImageProjects } from "@shared/images";
 import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { SingleProject } from "@organisms/SingleProject/SingleProject";
 import { currElIndexAtom } from "@@recoil/atom/currElIndexAtom";
 import { projectsData } from "@content/ProjectContent/projectsData";
@@ -14,7 +14,7 @@ import {
 import { SectionHeader } from "@molecules/SectionHeader/SectionHeader";
 
 export const Projects = () => {
-  const [currElIndex] = useRecoilState(currElIndexAtom);
+  const currElIndex = useRecoilValue(currElIndexAtom);
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export const Projects = () => {
   }, [currElIndex]);
 
   return (
-    <ProjectsWrapper id="Projects">
+    <ProjectsWrapper id="Projects" currElIndex={currElIndex}>
       <FirstEntryImageWrapper animate={animate}>
         <AnimatedImage
           image={ImageProjects}

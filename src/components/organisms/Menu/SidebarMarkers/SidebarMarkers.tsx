@@ -5,19 +5,18 @@ import {
 } from "./SidebarMarkers.styled";
 import { useRecoilState } from "recoil";
 import { currElIndexAtom } from "@@recoil/atom/currElIndexAtom";
-import { ObjectKeys } from "@utils/hooks/useScroll";
+import { menuItems } from "@shared/constants";
 
 export const SidebarMarkers = ({ handleClick }: SidebarMenuProps) => {
   const [currElIndex] = useRecoilState(currElIndexAtom);
-  const menuItems = ObjectKeys;
   return (
     <SidebarMarkersWrapper>
-      {menuItems.map((value: string, markerIndex: number) => (
+      {menuItems.map((data) => (
         <MarkerContainer
-          key={markerIndex}
-          markerIndex={markerIndex}
+          key={data.id}
+          markerIndex={data.id}
           currElIndex={currElIndex}
-          onClick={() => handleClick(markerIndex)}
+          onClick={() => handleClick(data.id)}
         ></MarkerContainer>
       ))}
     </SidebarMarkersWrapper>

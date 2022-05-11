@@ -4,11 +4,11 @@ import styled from "styled-components";
 export const HomeWrapper = styled.div(
   ({ theme: { colors } }) => `
   position: relative;
+	width: 100%;
+	height: 100%;
 	display: grid;
 	place-items: center;
 	grid-template: 1fr / 2fr 1fr;
-	width: 100%;
-	height: 100%;
 	padding: 4px;
 	margin: auto;
 	

@@ -1,3 +1,4 @@
+import { SectionIndexes } from "@@types/CommonTypes";
 import { breakpoints } from "@shared/constants";
 import styled, { css } from "styled-components";
 
@@ -53,8 +54,8 @@ export const MenuWrapper = styled.ul`
 `;
 
 export const ItemContainer = styled.div<{
-  elementId?: number;
-  currElIndex?: number;
+  elementId?: SectionIndexes;
+  currElIndex?: SectionIndexes;
 }>(
   ({ elementId, currElIndex, theme: { colors, transitions } }) => `
 		padding: 17px;

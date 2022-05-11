@@ -41,11 +41,9 @@ export const FirstLoadAnimation = ({
     }
     if (currElIndex >= section) {
       setIsVisible(true);
-      console.log("???")
     }
     if(visibleAt === currElIndex){
       setNoAnimation(true);
-      console.log("?")
     }
   }, [currElIndex]);
   

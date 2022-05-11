@@ -21,7 +21,7 @@ export const NotificationContainer = styled.div`
   box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.2);
   transition: opacity 0.3s;
   opacity: ${({ activeNotification }: NotificationContainerProps) =>
-    activeNotification ? "1" : "1"};
+    activeNotification ? "1" : "0"};
   background: ${({ status }) =>
     status === "pending"
       ? "#177cbe"
