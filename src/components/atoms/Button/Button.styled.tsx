@@ -1,30 +1,6 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
 import { ButtonVariants } from "@@types/CommonTypes";
 import { breakpoints } from "@shared/constants";
-
-const buttonHoverAnimation = keyframes`
-0%{
-	padding: 12px 50px;
-}
-30%{
-	padding: 12px 40px;
-}
-50%{
-	padding: 12px 50px;
-} 
-70%{
-	padding: 12px 45px;
-}
-80%{
-	padding: 12px 50px;
-}
-90%{
-	padding: 12px 48px;
-} 
-100%{
-	padding: 12px 50px;
-} 
-`;
 
 const primaryButtonCss = css<{ disabled?: boolean }>(
   ({ theme: { colors } }) => css`
@@ -78,8 +54,8 @@ export const ButtonWrapper = styled.button<{
     padding: 12px 40px;
     border: none;
     border-radius: ${radius["20"]}px;
-    cursor: pointer;
     border: 2px solid ${colors.dynamic};
+    cursor: pointer;
 
     @media (max-width: ${breakpoints.xs}px), (max-height: ${breakpoints.xs}px) {
       padding: 12px 30px;

@@ -14,6 +14,14 @@ const commonInputStyles = css(
     width: 100%;
     padding: 0 15px;
     font-size: ${fontSizes[16]};
+    :-webkit-autofill,
+    :-webkit-autofill:hover,
+    :-webkit-autofill:focus,
+    :-webkit-autofill:active  {
+      -webkit-box-shadow: 0 0 0 30px ${colors.input.bgPrimary} inset !important;
+      -webkit-text-fill-color: ${colors.input.textPrimary};
+    }
+    
 
     @media (max-width: ${breakpoints.sm}px) {
         font-size: ${fontSizes[14]}px;
@@ -53,10 +61,10 @@ const errorBounceAnimation = keyframes`
 `;
 
 const errorInputStyles = css(
-  ({ theme: { colors } }) => css`
+  ({ theme: { colors, transitions } }) => css`
     border: 2px solid ${colors.input.error};
-    transition: .5s;
-    animation: ${errorBounceAnimation} ease-in-out 1.2s .5s;
+    transition: ${transitions.default}s;
+    animation: ${errorBounceAnimation} ease-in-out 1.2s 0.5s;
   `
 );
 

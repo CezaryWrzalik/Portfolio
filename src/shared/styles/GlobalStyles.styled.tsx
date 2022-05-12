@@ -26,12 +26,12 @@ export const GlobalStyled = createGlobalStyle<{ theme: ThemeType }>(
 		overflow: hidden;
 	}
 		
-		::-webkit-scrollbar {
-			width: 0;
-		}
-		
-		::selection {
-			background: ${colors.dynamic};
-		}
-		`
+	::-webkit-scrollbar {
+		width: 0;
+	}
+	
+	::selection {
+		background: ${colors.dynamic};
+	}
+	`
 );

@@ -7,7 +7,7 @@ const defaultTheme = {
       bgSecondary: palette.dynamic,
       bgTeritary: palette.dark_white,
     },
-    sidebar: {
+    layout: {
       bgPrimary: palette.black_gray,
       borderPrimary: palette.gray,
     },
@@ -25,7 +25,6 @@ const defaultTheme = {
     },
     input: {
       bgPrimary: palette.dark_gray,
-      borderPrimary: palette.dynamic,
       textPrimary: palette.dark_white,
 
       error: palette.red_orange,

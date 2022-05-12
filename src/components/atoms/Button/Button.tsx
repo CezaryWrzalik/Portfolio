@@ -1,6 +1,6 @@
+import { ButtonHTMLAttributes } from "react";
 import { ButtonVariants } from "@@types/CommonTypes";
 import { Typography } from "@atoms/Typography/Typography";
-import { ButtonHTMLAttributes } from "react";
 import { ButtonWrapper } from "./Button.styled";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

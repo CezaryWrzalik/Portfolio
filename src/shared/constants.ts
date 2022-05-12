@@ -39,4 +39,6 @@ export const zIndexes = {
 	skills: 4,
 	projects: 6,
 	contact: 8,
+  contactPlus: 9,
+  max: 12,
 }

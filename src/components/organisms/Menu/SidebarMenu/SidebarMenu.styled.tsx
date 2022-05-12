@@ -34,7 +34,7 @@ export const SidebarMenuWrapper = styled.div<{
     left: ${isVisible ? "0" : "-120"}px;
     transition: left ${transitions.default}s 1s;
     height: 100%;
-    background: ${colors.sidebar.bgPrimary};
+    background: ${colors.layout.bgPrimary};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,13 +61,13 @@ export const ItemContainer = styled.div<{
 		padding: 17px;
 		text-align: center;
 		width: 100%;
-		border-top: 1px solid ${colors.sidebar.borderPrimary};
+		border-top: 1px solid ${colors.layout.borderPrimary};
 		color: ${colors.text.tertiary};
 		cursor: pointer;
     transition: ${transitions.default}s;
 
 	  &:last-child {
-		border-bottom: 1px solid ${colors.sidebar.borderPrimary};
+		border-bottom: 1px solid ${colors.layout.borderPrimary};
 	  }
 
     ${elementId === currElIndex && `color: ${colors.dynamic}`};
