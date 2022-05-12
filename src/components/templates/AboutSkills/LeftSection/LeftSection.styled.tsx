@@ -1,4 +1,4 @@
-import { breakpoints } from "@shared/constants";
+import { breakpoints, zIndexes } from "@shared/constants";
 import styled from "styled-components";
 
 export const LeftSectionWrapper = styled.div(
@@ -7,7 +7,7 @@ export const LeftSectionWrapper = styled.div(
   place-items: center;
   position: relative;
   grid-template: 0 0 1fr / 1fr;
-  z-index: 3;
+  z-index: ${zIndexes.about};
   display: grid;
 	`
 );

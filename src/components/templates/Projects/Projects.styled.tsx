@@ -1,5 +1,5 @@
 import { SectionIndexes } from "@@types/CommonTypes";
-import { sections } from "@shared/constants";
+import { sections, zIndexes } from "@shared/constants";
 import styled, { css, keyframes } from "styled-components";
 
 export const ProjectsWrapper = styled.div<{ currElIndex: SectionIndexes }>(
@@ -11,7 +11,7 @@ export const ProjectsWrapper = styled.div<{ currElIndex: SectionIndexes }>(
 	width: 100%;
 	top: ${currElIndex > sections.skills ? 0 : 100}%;
 	transition: ${transitions.default}s;
-	z-index: 5;
+	z-index: ${zIndexes.projects};
 	overscroll-behavior-y: none;
 	-webkit-overflow-scrolling: touch;
 
@@ -45,14 +45,14 @@ const firstEntryAnimation = ({ theme }: any) => keyframes`
 `;
 
 export const FirstEntryImageWrapper = styled.div<{ animate: boolean }>(
-  ({ animate, theme: { colors } }) => css`
+  ({ animate, theme: { colors, transitions } }) => css`
     position: absolute;
     display: grid;
     height: 100vh;
     width: 100%;
     background: ${colors.dynamic};
     opacity: 1;
-    transition: 0.5s;
+    transition: ${transitions.default}s;
     visibility: visible;
     top: 0;
 
@@ -72,7 +72,7 @@ export const AnimateImage = styled.div`
 `;
 
 export const ContentWrapper = styled.div<{ animate?: boolean }>(
-  ({ animate, theme: { colors } }) => `
+  ({ animate, theme: { colors, transitions } }) => `
 		color: ${colors.text.secondary};
 		padding-top: 50px;
 		opacity: 0;
@@ -80,7 +80,7 @@ export const ContentWrapper = styled.div<{ animate?: boolean }>(
       animate &&
       `opacity: 1;
 		transition-delay: 2s;
-		transition-duration: 1s;
+		transition-duration: ${transitions.long}s;
 		`
     };
 		`

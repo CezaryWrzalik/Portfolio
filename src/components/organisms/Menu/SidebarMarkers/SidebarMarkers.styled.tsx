@@ -1,3 +1,4 @@
+import { zIndexes } from "@shared/constants";
 import styled from "styled-components";
 
 export const SidebarMarkersWrapper = styled.div`
@@ -10,7 +11,7 @@ export const SidebarMarkersWrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 5px;
-  z-index: 4;
+  z-index: ${zIndexes.layout};
 `;
 
 export const MarkerContainer = styled.div<{

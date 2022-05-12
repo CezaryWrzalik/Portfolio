@@ -1,4 +1,4 @@
-import { breakpoints } from "@shared/constants";
+import { breakpoints, zIndexes } from "@shared/constants";
 import styled from "styled-components";
 
 export const HomeSettingsWrapper = styled.div(
@@ -8,7 +8,7 @@ export const HomeSettingsWrapper = styled.div(
 	position: absolute;
 	right: 20px;
 	top: 20px;
-	z-index: 4;
+	z-index: ${zIndexes.layoutPlus};
 	display: grid;
 	place-items: center;
 	cursor: pointer;
@@ -37,7 +37,7 @@ export const SettingsWrapper = styled.div<{ isVisible: boolean }>(
 	display: grid;
 	grid-template: 40px / auto auto ;
 	place-items: center;
-	z-index: 5;
+	z-index: ${zIndexes.layoutPlus};
 	font-weight: bold;
 
 	top: ${isVisible ? 0 : -40}px;

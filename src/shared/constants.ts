@@ -34,13 +34,15 @@ export const menuItems = [
 ];
 
 export const zIndexes = {
-	home: 0,
-  homePlus: 1,
-	about: 2,
-	skills: 4,
-	projects: 6,
-  projectsPlus: 7,
-	contact: 8,
-  layout: 10,
-  max: 12,
+	home: 1,
+  homePlus: 2,
+	about: 4,
+	skills: 7,
+	projects: 10,
+  projectsPlus: 11,
+	contact: 13,
+  layoutMinus: 15,
+  layout: 16,
+  layoutPlus: 17,
+  max: 20,
 }

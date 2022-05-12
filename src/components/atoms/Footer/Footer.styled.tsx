@@ -14,3 +14,4 @@ export const FooterWrapper = styled.div(
 	z-index: ${zIndexes.layout};
 	`
 );
+

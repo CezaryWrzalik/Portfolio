@@ -7,7 +7,7 @@ export const BackgroundModalWrapper = styled.div<{ active: boolean }>(
 	width: 100vw;
 	height: 100vh;
 	top: 0;
-	z-index: ${zIndexes.max};
+	z-index: ${zIndexes.layout};
 	display: ${active ? "block" : "none"};
 `
 );

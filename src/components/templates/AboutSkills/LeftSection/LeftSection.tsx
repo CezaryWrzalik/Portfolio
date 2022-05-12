@@ -25,22 +25,22 @@ export const LeftSection = () => {
   return (
     <LeftSectionWrapper>
       <FirstLoadAnimation
-        visibleAt={0}
+        visibleAt={sections.home}
         section={sections.skills}
         delay={6}
       >
         <AnimatedImage
           destination={sections.about}
-          visible={currElIndex !== 1}
+          visible={currElIndex !== sections.about}
           image={ImageAbout}
           side="Top"
-          direction={currElIndex === 0 ? "Top" : "Bottom"}
+          direction={currElIndex === sections.home ? "Top" : "Bottom"}
         />
       </FirstLoadAnimation>
       <FirstLoadAnimation section={sections.about} delay={7} last>
         <AnimatedImage
           destination={sections.home}
-          visible={currElIndex === 1}
+          visible={currElIndex === sections.about}
           image={ImageHi}
           side="Top"
           direction="Bottom"

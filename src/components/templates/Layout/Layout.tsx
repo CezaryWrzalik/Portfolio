@@ -4,7 +4,6 @@ import { SidebarMenu } from "@organisms/Menu/SidebarMenu/SidebarMenu";
 import { PageLoader } from "@molecules/PageLoader/PageLoader";
 import {LayoutWrapper, MainWrapper } from "./Layout.styled";
 import useScroll from "@utils/hooks/useScroll";
-import { Footer } from "@atoms/Footer/Footer";
 import { useEffect, useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { currElIndexAtom } from "@@recoil/atom/currElIndexAtom";
@@ -41,7 +40,6 @@ export const Layout = ({ children }: LayoutProps) => {
             handleClick={(elementIndex) => handleClick(elementIndex)}
           />
           {children}
-          {/* <Footer /> */}
         </MainWrapper>
         <VerticalModal />
       </LayoutWrapper>
