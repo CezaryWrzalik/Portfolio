@@ -1,3 +1,4 @@
+import { zIndexes } from "@shared/constants";
 import styled, { css, keyframes } from "styled-components";
 import { ScrollDownProps } from "./ScrollDown";
 
@@ -19,7 +20,7 @@ export const ScrollDownWrapper = styled.div<ScrollDownProps>(
   display: grid;
   grid-template: 150px 50px / 25px;
   bottom: 0;
-  z-index: 10;
+  z-index: ${zIndexes.homePlus};
   gap: 10px;
   place-items: center;
 
@@ -28,13 +29,14 @@ export const ScrollDownWrapper = styled.div<ScrollDownProps>(
 );
 
 export const ScrollDownTextWrapper = styled.div(
-  ({ theme: { colors } }) => css`
+  ({ theme: { colors, transitions } }) => css`
     display: block;
     transform: rotate(-90deg);
     width: 150px;
     font-size: 14px;
     color: ${colors.text.tertiary};
     cursor: default;
-    animation: ${TextAnimation} 1s linear infinite;
+    animation: ${TextAnimation} ${transitions.long}s linear infinite;
+    cursor: pointer;
   `
 );

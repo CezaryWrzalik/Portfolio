@@ -1,4 +1,4 @@
-import { breakpoints } from "@shared/constants";
+import { breakpoints, zIndexes } from "@shared/constants";
 import styled, { css } from "styled-components";
 
 // Image Content
@@ -45,7 +45,7 @@ const cssProjectContentWrapperMobile = css<{ mobileContentVisible: boolean }>(
       position: absolute;
       opacity: 0;
       visibility: hidden;
-      z-index: 4;
+      z-index: ${zIndexes.projectsPlus};
 
       ${mobileContentVisible &&
       `

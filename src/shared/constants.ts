@@ -35,6 +35,7 @@ export const menuItems = [
 
 export const zIndexes = {
 	home: 0,
+  homePlus: 1,
 	about: 2,
 	skills: 4,
 	projects: 6,

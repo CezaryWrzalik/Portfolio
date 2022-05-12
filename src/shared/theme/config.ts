@@ -34,6 +34,8 @@ export const global = {
     "50": 50,
   },
   transitions: {
+    quick: .25,
     default: 0.5,
+    long: 1,
   },
 };

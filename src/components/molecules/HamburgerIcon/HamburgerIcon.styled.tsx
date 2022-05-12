@@ -7,7 +7,7 @@ export const HamburgerIconWrapper = styled.div`
 `;
 
 export const SpanWrapper = styled.span<{ open: boolean }>(
-  ({ open, theme: {colors} }) => `
+  ({ open, theme: {colors, transitions} }) => `
   display: block;
   position: absolute;
   height: 3px;
@@ -18,10 +18,10 @@ export const SpanWrapper = styled.span<{ open: boolean }>(
   -moz-transform: rotate(0deg);
   -o-transform: rotate(0deg);
   transform: rotate(0deg);
-  -webkit-transition: 0.25s ease-in-out;
-  -moz-transition: 0.25s ease-in-out;
-  -o-transition: 0.25s ease-in-out;
-  transition: 0.25s ease-in-out;
+  -webkit-transition: ${transitions.quick}s ease-in-out;
+  -moz-transition: ${transitions.quick}s ease-in-out;
+  -o-transition: ${transitions.quick}s ease-in-out;
+  transition: ${transitions.quick}s ease-in-out;
 	
 	&:nth-child(even) {
 		left: 50%;
