@@ -24,7 +24,8 @@
       "@utils/*": ["src/utils/*"],
       "@shared/*": ["src/shared/*"],
       "@@types/*": ["src/types/*"],
-      "@@recoil/*": ["src/recoil/*"]
+      "@@recoil/*": ["src/recoil/*"],
+      "@@@public/*": ["public/*"]
     }
   },
   "include": [
