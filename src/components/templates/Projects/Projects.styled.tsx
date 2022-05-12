@@ -2,11 +2,13 @@ import { SectionIndexes } from "@@types/CommonTypes";
 import { sections, zIndexes } from "@shared/constants";
 import styled, { css, keyframes } from "styled-components";
 
-export const ProjectsWrapper = styled.div<{ currElIndex: SectionIndexes }>(
-  ({ currElIndex, theme: { colors, transitions } }) => `
+export const ProjectsWrapper = styled.div<{
+  currElIndex: SectionIndexes;
+  canScroll: boolean;
+}>(
+  ({ currElIndex, canScroll, theme: { colors, transitions } }) => `
 	background: ${colors.body.bgTeritary};
 	height: 100%;
-	overflow: auto;
 	position: absolute;
 	width: 100%;
 	top: ${currElIndex > sections.skills ? 0 : 100}%;
@@ -14,6 +16,7 @@ export const ProjectsWrapper = styled.div<{ currElIndex: SectionIndexes }>(
 	z-index: ${zIndexes.projects};
 	overscroll-behavior-y: none;
 	-webkit-overflow-scrolling: touch;
+	overflow: ${canScroll ? "auto" : "hidden"};
 
 	`
 );
@@ -46,7 +49,8 @@ const firstEntryAnimation = ({ theme }: any) => keyframes`
 
 export const FirstEntryImageWrapper = styled.div<{ animate: boolean }>(
   ({ animate, theme: { colors, transitions } }) => css`
-    position: fixed;
+    position: absolute;
+    top: 0;
     display: grid;
     height: 100vh;
     width: 100%;
@@ -58,6 +62,7 @@ export const FirstEntryImageWrapper = styled.div<{ animate: boolean }>(
 
     ${animate &&
     css`
+      position: absolute;
       animation: ${firstEntryAnimation} ease-in-out 2s;
       background: ${colors.dynamic};
       opacity: 0;
