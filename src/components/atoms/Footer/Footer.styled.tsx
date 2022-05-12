@@ -11,6 +11,6 @@ export const FooterWrapper = styled.div(
 	text-align: center;
 	background: ${colors.layout.bgPrimary};
 	color: ${colors.text.primary};
-	z-index: ${zIndexes.contactPlus};
+	z-index: ${zIndexes.layout};
 	`
 );

@@ -38,7 +38,8 @@ export const zIndexes = {
 	about: 2,
 	skills: 4,
 	projects: 6,
+  projectsPlus: 7,
 	contact: 8,
-  contactPlus: 9,
+  layout: 10,
   max: 12,
 }

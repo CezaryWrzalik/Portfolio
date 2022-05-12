@@ -26,9 +26,6 @@ export const WelcomeTextWrapper = styled.div`
   gap: 10px;
   margin: auto;
   width: fit-content;
-
-  @media (max-width: ${breakpoints.sm}px) {
-  }
 `;
 
 export const InfoWrapper = styled.div`
