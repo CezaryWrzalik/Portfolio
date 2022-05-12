@@ -46,7 +46,7 @@ const firstEntryAnimation = ({ theme }: any) => keyframes`
 
 export const FirstEntryImageWrapper = styled.div<{ animate: boolean }>(
   ({ animate, theme: { colors, transitions } }) => css`
-    position: absolute;
+    position: fixed;
     display: grid;
     height: 100vh;
     width: 100%;
