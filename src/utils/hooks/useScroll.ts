@@ -18,11 +18,13 @@ const useScroll = () => {
 
   //Define number of ticks to scroll to the next element
   const getErrorLimit = (e: WheelEvent) => {
+    // errorLimit for MouseWheel
     let errorLimit = 5;
     const isTouchPad = e.deltaY
       ? e.deltaY === -3 * e.deltaY
       : e.deltaMode === 0;
 
+    //Update errorLimit if touchpad
     if (isTouchPad) {
       errorLimit = currElIndex === sections.projects ? 100 : 25;
     }
@@ -62,43 +64,38 @@ const useScroll = () => {
     }
   };
 
-  //Changing displayed element
-  const updateElementOnScreen = (element: SectionIndexes) => {
-    updateMarginOfError("Reset");
-    setCurrElIndex(element);
-  };
-
-  //Catching wheel event and scrolling to next or previous
-  //element if enough of ticks were delivered
-  const handleWheel = (e: WheelEvent) => {
-    if (!canScrollRef.current) return;
-    if (checkOverscroll()) return;
-
+  //Function checking scroll or swipe direction and changing element if
+  // enough number of ticks were delivered
+  const scroll = (value: number, limit: number) => {
     const error = marginOfError.current;
-    //Getting error limit depending on the device
-    let errorLimit = getErrorLimit(e);
 
-    //Next page
-    if (e.deltaY > 0) {
+    //Next Element
+    if (value > 0) {
       updateMarginOfError("Increment");
 
-      if (error > errorLimit) return;
+      if (error < limit) return;
       const nextElement = currElIndex + 1;
 
       if (currElIndex > 4) return;
       updateElementOnScreen(nextElement as SectionIndexes);
     }
 
-    //Previous page
-    if (e.deltaY < 0) {
+    //Previous Element
+    if (value < 0) {
       updateMarginOfError("Decrement");
 
-      if (error > -errorLimit) return;
+      if (error > -limit) return;
       const prevElement = currElIndex - 1;
 
       if (prevElement < 0) return;
       updateElementOnScreen(prevElement as SectionIndexes);
     }
+  };
+
+  //Changing displayed element
+  const updateElementOnScreen = (element: SectionIndexes) => {
+    updateMarginOfError("Reset");
+    setCurrElIndex(element);
   };
 
   //Function for Projects element reseting ticks while actual scroll occurs
@@ -108,39 +105,31 @@ const useScroll = () => {
     }
   };
 
+  //Catching wheel event and scrolling to next or previous
+  //element if enough of ticks were delivered
+  const handleWheel = (e: WheelEvent) => {
+    if (!canScrollRef.current) return;
+    if (checkOverscroll()) return;
+
+    //Getting error limit depending on the device
+    let errorLimit = getErrorLimit(e);
+
+    scroll(e.deltaY, errorLimit);
+  };
+
   const handleTouchStart = (e: TouchEvent) => {
     touchStartRef.current = e.changedTouches[0].screenY;
   };
 
+  //Same as handleWheel but for touch event
   const handleTouchMove = (e: TouchEvent) => {
     if (!canScrollRef.current) return;
 
-    const error = marginOfError.current;
     const touchStartY = touchStartRef.current;
     const touchCurrentY = e.changedTouches[0].screenY;
-    const direction = touchStartY < touchCurrentY ? "up" : "down";
+    const direction = touchStartY < touchCurrentY ? -1 : 1;
 
-    if (direction === "down") {
-      updateMarginOfError("Increment");
-      if (error >= 500) {
-        const nextElement = currElIndex + 1;
-        if (nextElement <= 4 && canScrollRef.current) {
-          updateElementOnScreen(nextElement as SectionIndexes);
-          return;
-        }
-      }
-    }
-
-    if (direction === "up") {
-      updateMarginOfError("Decrement");
-      if (error <= -500) {
-        const prevElement = currElIndex - 1;
-        if (prevElement >= 0 && canScrollRef.current) {
-          updateElementOnScreen(prevElement as SectionIndexes);
-          return;
-        }
-      }
-    }
+    scroll(direction, 5);
   };
 
   useEffect(() => {
