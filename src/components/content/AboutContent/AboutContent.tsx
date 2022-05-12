@@ -24,7 +24,7 @@ export const AboutContent = () => {
         animation={"slideTop"}
       >
         <Typography.TextBody_16>
-          Hello! My name is Czarek im a <b>Front-end Developer</b> located in
+          Hello! My name is Czarek im a young <b>Front-end Developer</b> located in
           Poland. Making websites is my passion.
         </Typography.TextBody_16>
       </FirstLoadAnimation>

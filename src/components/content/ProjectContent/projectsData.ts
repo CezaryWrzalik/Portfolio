@@ -41,7 +41,7 @@ export const projectsData = [
     description:
       "My personal page. I placed it here mainly for fast access to Github page",
     technologies: ["HTML/CSS", "RWD", "TypeScript", "Next.js", "Styled-Components", "Figma", "Storybook"],
-    stage: "In progress",
+    stage: "Finished",
     previewLink: "https://github.com/CezaryWrzalik/Portfolio",
     pageLink: "#",
     images: {

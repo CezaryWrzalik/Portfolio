@@ -20,7 +20,7 @@ export const ScrollDownWrapper = styled.div<ScrollDownProps>(
   display: grid;
   grid-template: 150px 50px / 25px;
   bottom: 0;
-  z-index: ${zIndexes.homePlus};
+  z-index: ${zIndexes.max};
   gap: 10px;
   place-items: center;
 

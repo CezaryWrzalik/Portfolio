@@ -1,7 +1,6 @@
 import { ProjectDataType } from "@@types/CommonTypes";
 import { Button } from "@atoms/Button/Button";
 import { Typography } from "@atoms/Typography/Typography";
-import { SingleProjectProps } from "@organisms/SingleProject/SingleProject";
 import React from "react";
 import {
   ProjectContentButton,

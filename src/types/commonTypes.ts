@@ -1,7 +1,7 @@
 import * as Icons from "@shared/svgs";
 import defaultTheme from "@shared/theme/default.theme";
 import { projectsData } from "@content/ProjectContent/projectsData";
-import { menuItems, sections } from "@shared/constants";
+import { menuItems } from "@shared/constants";
 
 export enum Theme {
   DEFAULT = "DEFAULT",

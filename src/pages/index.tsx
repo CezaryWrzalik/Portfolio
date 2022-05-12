@@ -1,7 +1,6 @@
 import { colorAtom } from "@@recoil/atom/colorAtom";
 import { Theme } from "@@types/CommonTypes";
 import { GlobalStyled } from "@shared/styles/GlobalStyles.styled";
-import { palette } from "@shared/theme/config";
 import themeVariant from "@utils/themeVariant";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";

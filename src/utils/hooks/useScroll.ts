@@ -135,7 +135,7 @@ const useScroll = () => {
   useEffect(() => {
     projects = document.getElementById("Projects");
 
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       if (projects && currElIndex === sections.projects) {
         projects.addEventListener("scroll", handleScroll);
       }
@@ -144,6 +144,7 @@ const useScroll = () => {
       window.addEventListener("touchmove", handleTouchMove);
     }, 1500);
     return () => {
+      clearTimeout(timer);
       if (projects) {
         projects.removeEventListener("scroll", handleScroll);
       }
