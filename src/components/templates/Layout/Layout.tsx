@@ -29,6 +29,7 @@ export const Layout = ({ children }: LayoutProps) => {
 
   return (
     <>
+      <VerticalModal />
       <LayoutWrapper>
         <PageLoader isVisible={isVisible} />
         <SidebarMenu
