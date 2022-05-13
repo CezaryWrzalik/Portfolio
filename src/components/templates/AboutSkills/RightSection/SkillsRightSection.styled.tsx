@@ -12,6 +12,7 @@ export const SkillsRightSectionWrapper = styled.div<{
 	top: 0;
 	left: ${currElIndex >= sections.skills ? "0" : "-100%"};
 	transition: ${transitions.default}s;
+  z-index: ${zIndexes.skillsMinus}
 	`
 );
 

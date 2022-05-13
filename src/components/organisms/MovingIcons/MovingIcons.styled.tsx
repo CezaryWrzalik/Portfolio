@@ -1,3 +1,4 @@
+import { zIndexes } from "@shared/constants";
 import styled from "styled-components";
 
 export const MovingIconsWrapper = styled.div<{currElIndex: number}>(
@@ -15,6 +16,6 @@ export const MovingIconsWrapper = styled.div<{currElIndex: number}>(
 	transition-delay: 0s;
 
 	`}
-	z-index: ${currElIndex === 2 ? "2" : "-1"};
+	z-index: ${currElIndex === 2 ? zIndexes.skills : "-1"};
 	`
 );

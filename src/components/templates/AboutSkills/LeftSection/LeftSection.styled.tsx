@@ -7,7 +7,7 @@ export const LeftSectionWrapper = styled.div(
   place-items: center;
   position: relative;
   grid-template: 0 0 1fr / 1fr;
-  z-index: ${zIndexes.about};
+  z-index: ${zIndexes.skillsPlus};
   display: grid;
 	`
 );
