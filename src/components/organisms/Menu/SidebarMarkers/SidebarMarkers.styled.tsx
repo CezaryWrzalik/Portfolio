@@ -1,4 +1,4 @@
-import { zIndexes } from "@shared/constants";
+import { sections, zIndexes } from "@shared/constants";
 import styled from "styled-components";
 
 export const SidebarMarkersWrapper = styled.div`
@@ -22,19 +22,31 @@ export const MarkerContainer = styled.div<{
 		width: 12px;
 		height: 12px;
 		border-radius: ${radius[50]}%;
-		border: 2px solid ${currElIndex > 0 && currElIndex < 4 ? colors.body.bgPrimary : colors.dynamic};
+		border: 2px solid ${
+      currElIndex > 0 && currElIndex < 4
+        ? colors.body.bgPrimary
+        : colors.dynamic
+    };
 		cursor: pointer;
     transition: ${transitions.default}s;
 
     @media(hover: hover){
 	    :hover{
-		  background: ${colors.dynamic};
+		  background: ${
+        currElIndex > sections.home && currElIndex < sections.contact
+          ? colors.body.bgPrimary
+          : colors.dynamic
+      };
 	}
 }
 
     ${
       markerIndex === currElIndex &&
-      `background: ${currElIndex > 0 && currElIndex < 4 ? colors.body.bgPrimary : colors.dynamic}`
+      `background: ${
+        currElIndex > sections.home && currElIndex < sections.contact
+          ? colors.body.bgPrimary
+          : colors.dynamic
+      }`
     };
   
   
