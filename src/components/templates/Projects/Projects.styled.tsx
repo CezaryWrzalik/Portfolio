@@ -14,10 +14,7 @@ export const ProjectsWrapper = styled.div<{
 	top: ${currElIndex > sections.skills ? 0 : 100}%;
 	transition: ${transitions.default}s;
 	z-index: ${zIndexes.projects};
-	overscroll-behavior-y: none;
-	-webkit-overflow-scrolling: touch;
-	overflow: ${canScroll ? "auto" : "hidden"};
-
+	overflow-y: ${canScroll ? "scroll" : "hidden"};
 	`
 );
 
@@ -26,24 +23,22 @@ const firstEntryAnimation = ({ theme }: any) => keyframes`
 	background: ${theme.colors.dynamic};
 	opacity: 1;
 	visibility: visible;
+  z-index: 10;
 
 }
 50%{background: ${theme.colors.dynamic};
 	opacity: 1;
 	visibility: visible;
-
 }
 99%{
 	background: ${theme.colors.body.bgTeritary};
 	opacity: 0;
 	visibility: visible;
-
 }
 100%{
 	background: ${theme.colors.body.bgTeritary};
 	opacity: 0;
 	visibility: hidden;
-
 }
 `;
 
@@ -71,9 +66,29 @@ export const FirstEntryImageWrapper = styled.div<{ animate: boolean }>(
   `
 );
 
+export const FirstEntryImage = styled.div<{ animate: boolean }>(
+  ({ animate, theme: { transitions } }) => `
+  position: absolute;
+  top: -50px;
+  left: 0%;
+  width: 50%;
+  transition: ${transitions.veryLong}s ease-in-out;
+  height: 150px;
+  ${
+    animate &&
+    `
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  `
+  }
+  `
+);
+
 export const AnimateImage = styled.div`
   height: 100vh;
   position: relative;
+  cursor: default;
 `;
 
 export const ContentWrapper = styled.div<{ animate?: boolean }>(
@@ -90,5 +105,6 @@ export const ContentWrapper = styled.div<{ animate?: boolean }>(
     };
 		`
 );
+
 
 export const ProjectsList = styled.div``;

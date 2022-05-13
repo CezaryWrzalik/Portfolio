@@ -8,7 +8,7 @@ export const palette = {
   dynamic: "#ED6A5A",
   black: "#DEDEDE",
   red_orange: "#FF3131",
-  yellow: '#dde815'
+  yellow: "#dde815",
 };
 
 export const global = {
@@ -34,8 +34,9 @@ export const global = {
     "50": 50,
   },
   transitions: {
-    quick: .25,
+    quick: 0.25,
     default: 0.5,
     long: 1,
+    veryLong: 1.5,
   },
 };

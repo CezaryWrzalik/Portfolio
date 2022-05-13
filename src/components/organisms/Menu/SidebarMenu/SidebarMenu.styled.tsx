@@ -1,5 +1,5 @@
 import { SectionIndexes } from "@@types/CommonTypes";
-import { breakpoints } from "@shared/constants";
+import { breakpoints, zIndexes } from "@shared/constants";
 import styled, { css } from "styled-components";
 
 const sidebarMenuMobileStyles = css<{ showMenu: boolean }>(
@@ -39,7 +39,7 @@ export const SidebarMenuWrapper = styled.div<{
     align-items: center;
     justify-content: center;
     padding: 0;
-    z-index: 6;
+    z-index: ${zIndexes.layoutPlus};
 
     @media (max-width: ${breakpoints.sm}px) {
       ${sidebarMenuMobileStyles};
@@ -91,7 +91,7 @@ export const ContentWrapper = styled.div``;
 
 export const IconWrapper = styled.div`
   position: fixed;
-  z-index: 7;
+  z-index: ${zIndexes.layoutPlus};
   right: 15px;
   top: 15px;
   visibility: hidden;

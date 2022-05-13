@@ -7,12 +7,14 @@ import { currElIndexAtom } from "@@recoil/atom/currElIndexAtom";
 import { projectsData } from "@content/ProjectContent/projectsData";
 import {
   ContentWrapper,
+  FirstEntryImage,
   FirstEntryImageWrapper,
   ProjectsList,
   ProjectsWrapper,
 } from "./Projects.styled";
 import { SectionHeader } from "@molecules/SectionHeader/SectionHeader";
 import { sections } from "@shared/constants";
+import Image from "next/image";
 
 export const Projects = () => {
   const currElIndex = useRecoilValue(currElIndexAtom);
@@ -35,13 +37,9 @@ export const Projects = () => {
       canScroll={canScroll}
     >
       <FirstEntryImageWrapper animate={animate}>
-        <AnimatedImage
-          image={ImageProjects}
-          visible={currElIndex >= sections.projects}
-          side={animate ? "Mid" : "Top"}
-          halfScreen={true}
-          projects
-        />
+        <FirstEntryImage animate={animate}>
+          <Image src={ImageProjects} />
+        </FirstEntryImage>
       </FirstEntryImageWrapper>
       <ContentWrapper animate={animate}>
         <SectionHeader>Portfolio</SectionHeader>

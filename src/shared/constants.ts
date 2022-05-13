@@ -37,6 +37,7 @@ export const zIndexes = {
 	home: 1,
   homePlus: 2,
 	about: 4,
+  aboutPlus: 5,
 	skills: 7,
 	projects: 10,
   projectsPlus: 11,

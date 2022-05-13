@@ -4,13 +4,13 @@ import { Typography } from "@atoms/Typography/Typography";
 import { FirstLoadAnimation } from "@organisms/FirstLoadAnimations/FirstLoadAnimation";
 import { sections } from "@shared/constants";
 import { useSetRecoilState } from "recoil";
-import { ButtonWrapper } from "./AboutContent.styled";
+import { AboutContentWrapper, ButtonWrapper } from "./AboutContent.styled";
 
 export const AboutContent = () => {
   const setCurrElIndex = useSetRecoilState(currElIndexAtom);
 
   return (
-    <>
+    <AboutContentWrapper>
       <FirstLoadAnimation
         section={sections.about}
         delay={1}
@@ -63,6 +63,6 @@ export const AboutContent = () => {
             </Button>
           </ButtonWrapper>
         </FirstLoadAnimation>
-    </>
+    </AboutContentWrapper>
   );
 };

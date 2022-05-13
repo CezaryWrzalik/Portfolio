@@ -4,13 +4,12 @@ import { useSetRecoilState } from "recoil";
 import { currElIndexAtom } from "@@recoil/atom/currElIndexAtom";
 
 export type AnimatedImageProps = {
-  side: "Top" | "Bottom" | "Mid";
+  side: "Top" | "Bottom";
   image: StaticImageData;
   visible?: boolean;
   halfScreen?: boolean;
   direction?: "Top" | "Bottom";
   destination?: 0 | 1 | 2 | 3 | 4;
-  projects?: boolean
 };
 
 export const AnimatedImage = ({
@@ -20,7 +19,6 @@ export const AnimatedImage = ({
   halfScreen = false,
   direction,
   destination,
-  projects
 }: AnimatedImageProps) => {
   const setCurrElIndex = useSetRecoilState(currElIndexAtom);
   const handleClick = () => {
@@ -29,7 +27,7 @@ export const AnimatedImage = ({
     }
   };
   return (
-    <AnimatedImageWrapper side={side} visible={visible} halfScreen={halfScreen} projects={projects}>
+    <AnimatedImageWrapper side={side} visible={visible} halfScreen={halfScreen}>
       <ImageWrapper direction={direction} side={side} onClick={handleClick}>
         <Image src={image} />
       </ImageWrapper>
