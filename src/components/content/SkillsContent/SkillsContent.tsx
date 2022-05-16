@@ -23,7 +23,7 @@ export const SkillsContent = () => {
         delay={1}
         animation={"slideTop"}
       >
-        <IconManager fill={["dynamic"]} name={"Dev"} size={20}></IconManager>
+        <IconManager fill={["dynamic"]} name={"Dev"}></IconManager>
       </FirstLoadAnimation>
       <FirstLoadAnimation
         section={sections.skills}

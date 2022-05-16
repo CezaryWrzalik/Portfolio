@@ -16,7 +16,7 @@ export const SkillsRightSectionWrapper = styled.div<CurrElIndexProps>(
 );
 
 export const SkillsContentWrapper = styled.div`
-  position: relative;
+  position: absolute;
   height: 100%;
   width: 100%;
   display: grid;
