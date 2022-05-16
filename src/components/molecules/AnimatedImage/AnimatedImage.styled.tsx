@@ -1,9 +1,11 @@
+import { zIndexes } from "@shared/constants";
 import styled, { css } from "styled-components";
 
 export const AnimatedImageWrapper = styled.div<{
   visible: boolean;
   side: "Top" | "Bottom";
   halfScreen: boolean;
+  zIndex?: number;
 }>(
   ({ side, visible, halfScreen, theme: { transitions } }) => `
   position: absolute;
@@ -14,7 +16,7 @@ export const AnimatedImageWrapper = styled.div<{
   visibility: ${visible ? "visible" : "hidden"};;
   transition: opacity ${transitions.default}s, visibility 0s, top 1s;
   cursor: default;
-  z-index: 0;
+
 
   ${halfScreen && `width: 50%`};
 	${side === "Top" && "top: 0%"};

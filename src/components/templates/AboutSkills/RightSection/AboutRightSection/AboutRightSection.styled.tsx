@@ -1,4 +1,3 @@
-import { breakpoints } from "@shared/constants";
 import styled from "styled-components";
 
 export const AboutRightSectionWrapper = styled.div`
@@ -9,11 +8,5 @@ export const AboutRightSectionWrapper = styled.div`
   grid-template: 1fr / 1fr;
   place-items: center;
   overflow: hidden;
+  z-index: 0;
 `;
-
-export const TextWrapper = styled.div(
-  ({ theme: { colors } }) => `
-	color: ${colors.text.primary};
-
-	`
-);

@@ -25,7 +25,6 @@ export const LeftSection = () => {
   return (
     <LeftSectionWrapper>
       <FirstLoadAnimation
-        visibleAt={sections.home}
         section={sections.skills}
         delay={6}
       >
@@ -58,7 +57,9 @@ export const LeftSection = () => {
         </FirstLoadAnimation>
       </ImagesWrapper>
       <SkillsImageWrapper currElIndex={currElIndex}>
-        <Image src={ImageSkills} />
+        <FirstLoadAnimation section={sections.skills} delay={6}>
+          <Image src={ImageSkills} />
+        </FirstLoadAnimation>
       </SkillsImageWrapper>
     </LeftSectionWrapper>
   );

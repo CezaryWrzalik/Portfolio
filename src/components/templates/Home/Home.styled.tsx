@@ -1,9 +1,10 @@
-import { breakpoints } from "@shared/constants";
+import { CurrElIndexProps } from "@@types/CommonTypes";
+import { breakpoints, sections } from "@shared/constants";
 import styled from "styled-components";
 
-export const HomeWrapper = styled.div(
-  ({ theme: { colors } }) => `
-  position: relative;
+export const HomeWrapper = styled.div<CurrElIndexProps>(
+  ({ currElIndex, theme: { colors, transitions } }) => `
+  position: absolute;
 	width: 100%;
 	height: 100%;
 	display: grid;
@@ -11,6 +12,8 @@ export const HomeWrapper = styled.div(
 	grid-template: 1fr / 2fr 1fr;
 	padding: 4px;
 	margin: auto;
+	top: ${currElIndex === sections.home ? 0 : -100}%;
+	transition: top ${transitions.default}s;
 	
 	color: ${colors.text.primary};
 	

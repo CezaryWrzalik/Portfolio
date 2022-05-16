@@ -1,8 +1,8 @@
+import { AboutContentWrapper } from "@content/AboutContent/AboutContent.styled";
 import styled from "styled-components";
 
-export const ContentWrapper = styled.div(
+export const SkillsContentWrapper = styled(AboutContentWrapper)(
   ({ theme: { colors } }) => `
-  max-width: 440px;
   svg {
     fill: ${colors.dynamic};
     width: 40%;

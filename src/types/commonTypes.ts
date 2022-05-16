@@ -7,6 +7,7 @@ export enum Theme {
   DEFAULT = "DEFAULT",
 }
 
+
 export type ThemeType = typeof defaultTheme;
 export type ColorType = keyof ThemeType["colors"]["icons"];
 export type ProjectDataType = typeof projectsData[0];
@@ -25,3 +26,7 @@ export type SectionsType = {
 export type menuItemsKeys = typeof menuItems;
 
 export type AnimationTypes = "slideTop" | "opacity";
+
+export type CurrElIndexProps = {
+  currElIndex: SectionIndexes
+}

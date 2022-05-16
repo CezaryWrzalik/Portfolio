@@ -1,11 +1,10 @@
 import { AnimatedImage } from "@molecules/AnimatedImage/AnimatedImage";
 import Projects from "@shared/images/Projects.png";
-import { TextWrapper } from "./AboutRightSection.styled";
 import {
-  ContentWrapper,
+  SkillsContentWrapper,
   SkillsRightSectionWrapper,
 } from "./SkillsRightSection.styled";
-import { SkillsContent } from "../../../content/SkillsContent/SkillsContent";
+import { SkillsContent } from "../../../../content/SkillsContent/SkillsContent";
 import { useRecoilState } from "recoil";
 import { currElIndexAtom } from "src/recoil/atom/currElIndexAtom";
 import { sections } from "@shared/constants";
@@ -15,15 +14,9 @@ export const SkillsRightSection = () => {
   const [currElIndex] = useRecoilState(currElIndexAtom);
   return (
     <SkillsRightSectionWrapper id="Skills" currElIndex={currElIndex}>
-      <ContentWrapper>
-        <TextWrapper>
-          <SkillsContent />
-        </TextWrapper>
-        <FirstLoadAnimation
-          section={sections.skills}
-          delay={6}
-          last
-        >
+      <SkillsContentWrapper>
+        <SkillsContent />
+        <FirstLoadAnimation section={sections.skills} delay={6} last>
           <AnimatedImage
             image={Projects}
             side="Bottom"
@@ -31,7 +24,7 @@ export const SkillsRightSection = () => {
             destination={sections.projects}
           />
         </FirstLoadAnimation>
-      </ContentWrapper>
+      </SkillsContentWrapper>
     </SkillsRightSectionWrapper>
   );
 };

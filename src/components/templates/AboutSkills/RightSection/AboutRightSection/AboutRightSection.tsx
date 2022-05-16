@@ -3,17 +3,12 @@ import { FirstLoadAnimation } from "@organisms/FirstLoadAnimations/FirstLoadAnim
 import { AboutContent } from "@content/AboutContent/AboutContent";
 import { sections } from "@shared/constants";
 import Skills from "@shared/images/Skills.png";
-import {
-  AboutRightSectionWrapper,
-  TextWrapper,
-} from "./AboutRightSection.styled";
+import { AboutRightSectionWrapper } from "./AboutRightSection.styled";
 
 export const AboutRightSection = () => {
   return (
     <AboutRightSectionWrapper id="About">
-      <TextWrapper>
-        <AboutContent />
-      </TextWrapper>
+      <AboutContent />
       <FirstLoadAnimation section={sections.about} delay={7}>
         <AnimatedImage
           image={Skills}
