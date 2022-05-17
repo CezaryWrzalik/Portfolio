@@ -23,7 +23,7 @@ export const MarkerContainer = styled.div<{
 		height: 12px;
 		border-radius: ${radius[50]}%;
 		border: 2px solid ${
-      currElIndex > 0 && currElIndex < 4
+      currElIndex > sections.home && currElIndex < sections.contact
         ? colors.body.bgPrimary
         : colors.dynamic
     };

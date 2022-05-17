@@ -16,7 +16,7 @@ export const MovingIcon = ({ iconName }: MovingIconProps) => {
   });
 
   const getRandom = () => {
-    const random = Math.floor(Math.random() * 140) - 20;
+    const random = Math.floor(Math.random() * 200) - 50;
     return random;
   };
 
