@@ -10,8 +10,7 @@ export const FooterWrapper = styled.div(
 	width: 100%;
 	text-align: center;
 	background: ${colors.layout.bgPrimary};
-	color: ${colors.text.primary};
+	color: ${colors.layout.textPrimary};
 	z-index: ${zIndexes.layout};
 	`
 );
-

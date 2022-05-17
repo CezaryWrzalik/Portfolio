@@ -10,6 +10,7 @@ const defaultTheme = {
     layout: {
       bgPrimary: palette.black_gray,
       borderPrimary: palette.gray,
+      textPrimary: palette.light_gray,
     },
     button: {
       textPrimary: palette.white,

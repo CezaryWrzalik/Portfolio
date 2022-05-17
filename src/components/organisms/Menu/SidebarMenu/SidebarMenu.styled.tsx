@@ -62,7 +62,7 @@ export const ItemContainer = styled.div<{
 		text-align: center;
 		width: 100%;
 		border-top: 1px solid ${colors.layout.borderPrimary};
-		color: ${colors.text.tertiary};
+		color: ${colors.layout.textPrimary};
 		cursor: pointer;
     transition: ${transitions.default}s;
 

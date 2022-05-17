@@ -1,4 +1,4 @@
-import { SectionsType } from "@@types/CommonTypes";
+import { SectionsType, SocialProps } from "@@types/CommonTypes";
 
 export const breakpoints = {
   xs: 400,
@@ -34,18 +34,26 @@ export const menuItems = [
 ];
 
 export const zIndexes = {
-	home: 1,
+  home: 1,
   homePlus: 2,
-	about: 4,
+  about: 4,
   aboutPlus: 5,
   skillsMinus: 6,
-	skills: 7,
+  skills: 7,
   skillsPlus: 8,
-	projects: 10,
+  projects: 10,
   projectsPlus: 11,
-	contact: 13,
+  contact: 13,
   layoutMinus: 15,
   layout: 16,
   layoutPlus: 17,
   max: 20,
-}
+};
+
+export const socials: SocialProps = [
+  { name: "Github", href: "https://github.com/CezaryWrzalik" },
+  {
+    name: "Linkedin",
+    href: "https://www.linkedin.com/in/cezary-wrzalik-71aa6323a/",
+  },
+];

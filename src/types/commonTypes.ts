@@ -30,3 +30,8 @@ export type AnimationTypes = "slideTop" | "opacity";
 export type CurrElIndexProps = {
   currElIndex: SectionIndexes
 }
+
+export type SocialProps = {
+  name: IconName,
+  href: string,
+}[]

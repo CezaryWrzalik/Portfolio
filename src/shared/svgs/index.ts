@@ -8,3 +8,5 @@ export { Arrow } from "./icons/Arrow";
 export { Settings } from "./icons/Settings";
 export { Plus } from "./icons/Plus";
 export { Minus } from "./icons/Minus";
+export { Linkedin } from "./icons/Linkedin";
+export { Github } from "./icons/Github";

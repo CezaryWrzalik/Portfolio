@@ -12,7 +12,7 @@ export const NotificationContainer = styled.div<NotificationContainerProps>(
   bottom: 0px;
   left: 0px;
 	z-index: ${zIndexes.max};
-  height: 5rem;
+  height: 100px;
   width: 100%;
   background-color: #1b1b1b;
   display: flex;
@@ -21,8 +21,8 @@ export const NotificationContainer = styled.div<NotificationContainerProps>(
   color: white;
   padding: 0.5rem 10%;
   box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.2);
-  transition: opacity ${transitions.quick}s;
-  opacity: ${activeNotification ? "1" : "0"};
+  bottom: ${activeNotification ? "0" : "-100"}px;
+  transition: bottom ${transitions.default}s;
   background: ${
     status === "pending"
       ? "#177cbe"
