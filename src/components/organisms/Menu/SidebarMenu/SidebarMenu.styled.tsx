@@ -91,7 +91,7 @@ export const ContentWrapper = styled.div``;
 
 export const IconWrapper = styled.div`
   position: fixed;
-  z-index: ${zIndexes.layoutPlus};
+  z-index: ${zIndexes.max};
   right: 15px;
   top: 15px;
   visibility: hidden;

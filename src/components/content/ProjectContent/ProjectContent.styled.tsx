@@ -45,7 +45,7 @@ const cssProjectContentWrapperMobile = css<{ mobileContentVisible: boolean }>(
       position: absolute;
       opacity: 0;
       visibility: hidden;
-      z-index: ${zIndexes.projectsPlus};
+      z-index: ${zIndexes.max};
 
       ${mobileContentVisible &&
       `

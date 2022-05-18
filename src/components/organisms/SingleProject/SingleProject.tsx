@@ -11,7 +11,7 @@ export type SingleProjectProps = {
   index: number;
 };
 
-export const SingleProject = ({ projectData, index }: SingleProjectProps) => {
+export const SingleProject = ({ projectData }: SingleProjectProps) => {
   const [mobileContentVisible, setMobileContentVisible] = useState(false);
   const contentRef = useRef(null);
   const backgroundRef = useRef(null);
