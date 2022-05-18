@@ -54,7 +54,6 @@ export const FirstEntryImageWrapper = styled.div<{ animate: boolean }>(
     transition: ${transitions.default}s;
     visibility: visible;
     top: 0;
-
     ${animate &&
     css`
       position: absolute;
@@ -77,19 +76,15 @@ export const FirstEntryImage = styled.div<{ animate: boolean }>(
   ${
     animate &&
     `
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    line-height: 185px;
   `
   }
   `
 );
-
-export const AnimateImage = styled.div`
-  height: 100vh;
-  position: relative;
-  cursor: default;
-`;
 
 export const ContentWrapper = styled.div<{ animate?: boolean }>(
   ({ animate, theme: { colors, transitions } }) => `
@@ -105,6 +100,5 @@ export const ContentWrapper = styled.div<{ animate?: boolean }>(
     };
 		`
 );
-
 
 export const ProjectsList = styled.div``;
