@@ -11,6 +11,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"
         />
+        <title>Cezary Wrzalik Portfolio</title>
       </Head>
       <RecoilRoot>
         <Component {...pageProps} />

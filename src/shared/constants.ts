@@ -13,7 +13,7 @@ export const dynamicColors = [
   "4178d1",
   "43d141",
   "b4bd15",
-  "d964cb",
+  "ffc0cb",
   "6bd1b1",
 ];
 
