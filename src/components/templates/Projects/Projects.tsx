@@ -1,7 +1,7 @@
 import { AnimatedImage } from "@molecules/AnimatedImage/AnimatedImage";
 import { ImageProjects } from "@shared/images";
 import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { SingleProject } from "@organisms/SingleProject/SingleProject";
 import { currElIndexAtom } from "@@recoil/atom/currElIndexAtom";
 import { projectsData } from "@content/ProjectContent/projectsData";
@@ -20,6 +20,7 @@ export const Projects = () => {
   const currElIndex = useRecoilValue(currElIndexAtom);
   const [animate, setAnimate] = useState(false);
   const [canScroll, setCanScroll] = useState(false);
+
 
   useEffect(() => {
     if (currElIndex >= sections.projects && !animate) {
